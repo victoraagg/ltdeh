@@ -7,6 +7,10 @@ composer.json
 composer.lock
 /.vscode
 
+# PWA #
+/pwa/node_modules
+/pwa/build
+
 # WordPress #
 /wp-admin
 /wp-content/*.php
