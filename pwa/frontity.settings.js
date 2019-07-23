@@ -2,9 +2,9 @@ const settings = {
   "name": "ltdeh-pwa",
   "state": {
     "frontity": {
-      "url": "https://www.latorredestebanhambran.es",
+      "url": "https://www.ltdeh.com",
       "title": "LTDEH Frontity",
-      "description": "WordPress installation for LTDEH PWA development"
+      "description": "WordPress for LTDEH PWA development"
     }
   },
   "packages": [
@@ -41,7 +41,7 @@ const settings = {
       "name": "@frontity/wp-source",
       "state": {
         "source": {
-          "api": "https://www.latorredestebanhambran.es/wp-json"
+          "api": "http://ltdeh.com/wp-json"
         }
       }
     },
