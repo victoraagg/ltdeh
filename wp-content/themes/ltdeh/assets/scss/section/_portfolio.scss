@@ -1,0 +1,165 @@
+.dx-portfolio-item {
+    position: relative;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    width: 100%;
+    overflow: hidden;
+    background-color: #fff;
+    border-radius: 3px;
+}
+
+.dx-portfolio-item:hover .dx-portfolio-item-overlay {
+    visibility: visible;
+    opacity: 1;
+}
+
+.dx-portfolio-item:hover .dx-portfolio-item-image img {
+    -webkit-transform: scale(1.02);
+        -ms-transform: scale(1.02);
+            transform: scale(1.02);
+}
+
+.dx-portfolio-item .dx-portfolio-item-overlay {
+    position: absolute;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    visibility: hidden;
+    opacity: 0;
+    will-change: opacity;
+    -webkit-transition: visibility .2s ease-in-out, opacity .2s ease-in-out;
+    -o-transition: visibility .2s ease-in-out, opacity .2s ease-in-out;
+    transition: visibility .2s ease-in-out, opacity .2s ease-in-out;
+    z-index: 1;
+}
+
+.dx-portfolio-item .dx-portfolio-item-image {
+    position: relative;
+    overflow: hidden;
+}
+
+.dx-portfolio-item .dx-portfolio-item-image::after {
+    content: "";
+    display: block;
+    padding-top: calc(60% - 2px);
+}
+
+.dx-portfolio-item .dx-portfolio-item-image img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    font-family: "object-fit: cover";
+    -o-object-fit: cover;
+       object-fit: cover;
+    will-change: transform;
+    -webkit-transition: -webkit-transform .2s ease-in-out;
+    transition: -webkit-transform .2s ease-in-out;
+    -o-transition: transform .2s ease-in-out;
+    transition: transform .2s ease-in-out;
+    transition: transform .2s ease-in-out, -webkit-transform .2s ease-in-out;
+    -webkit-transform: scale(1);
+        -ms-transform: scale(1);
+            transform: scale(1);
+    z-index: 0;
+}
+
+.dx-portfolio-item .dx-portfolio-item-info {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: stretch;
+        -ms-flex-align: stretch;
+            align-items: stretch;
+}
+
+.dx-portfolio-item .dx-portfolio-item-info:hover, .dx-portfolio-item .dx-portfolio-item-info:focus {
+    text-decoration: none;
+}
+
+.dx-portfolio-item .dx-portfolio-item-info:hover .dx-portfolio-item-title, .dx-portfolio-item .dx-portfolio-item-info:focus .dx-portfolio-item-title {
+    color: $primary_color;
+}
+
+.dx-portfolio-item .dx-portfolio-item-title {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    width: 100%;
+    min-height: 96px;
+    padding: 24px 0 24px 30px;
+    font-weight: 600;
+    color: $dark3;
+    -webkit-transition: color .2s ease-in-out;
+    -o-transition: color .2s ease-in-out;
+    transition: color .2s ease-in-out;
+}
+
+.dx-portfolio-item .dx-portfolio-item-date {
+    display: -webkit-inline-box;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    padding: 10px;
+    font-size: 1rem;
+    font-weight: 700;
+    color: $dark3;
+}
+
+.dx-portfolio-item-style-2 {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    padding: 15px;
+}
+
+.dx-portfolio-item-style-2:hover, .dx-portfolio-item-style-2:focus {
+    text-decoration: none;
+}
+
+.dx-portfolio-item-style-2:hover .dx-portfolio-item-title, .dx-portfolio-item-style-2:focus .dx-portfolio-item-title {
+    color: $primary_color;
+}
+
+.dx-portfolio-item-style-2 .dx-portfolio-item-img {
+    width: 80px;
+    min-width: 80px;
+    height: 70px;
+    overflow: hidden;
+    border-radius: 3px;
+}
+
+.dx-portfolio-item-style-2 .dx-portfolio-item-img + .dx-portfolio-item-title {
+    margin-left: 25px;
+}
+
+.dx-portfolio-item-style-2 .dx-portfolio-item-img img {
+    max-width: 100%;
+}
+
+.dx-portfolio-item-style-2 .dx-portfolio-item-title {
+    min-height: auto;
+    padding: 0;
+}

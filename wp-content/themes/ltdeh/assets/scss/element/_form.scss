@@ -1,0 +1,350 @@
+/* Placeholders */
+::-webkit-input-placeholder,
+.form-control::-webkit-input-placeholder {
+    color: inherit;
+    opacity: .8;
+    will-change: opacity;
+    -webkit-transition: opacity .2s ease-in-out;
+    -o-transition: opacity .2s ease-in-out;
+    transition: opacity .2s ease-in-out;
+}
+::-ms-input-placeholder,
+.form-control::-ms-input-placeholder {
+    color: inherit;
+    opacity: .8;
+    will-change: opacity;
+    -webkit-transition: opacity .2s ease-in-out;
+    -o-transition: opacity .2s ease-in-out;
+    transition: opacity .2s ease-in-out;
+}
+::placeholder,
+.form-control::placeholder {
+    color: inherit;
+    opacity: .8;
+    will-change: opacity;
+    -webkit-transition: opacity .2s ease-in-out;
+    -o-transition: opacity .2s ease-in-out;
+    transition: opacity .2s ease-in-out;
+}
+
+/* Remove outline from focused buttons */
+button:focus {
+    outline: 0;
+}
+
+/* From Style 1 */
+.dx-form {
+    margin: 0;
+}
+
+.dx-form .dx-form-group + .dx-form-group {
+    margin-top: 30px;
+}
+
+.dx-form .dx-form-group-md + .dx-form-group-md {
+    margin-top: 20px;
+}
+
+.dx-form .form-control {
+    height: 54px;
+    padding: 12px 26px;
+    font-family: $primary_font;
+    color: #525252;
+    text-align: left;
+    text-transform: none;
+    background-color: #fff;
+    border: 0;
+    border-radius: 3px;
+    opacity: 1;
+}
+
+.dx-form .form-control:hover::-webkit-input-placeholder, .dx-form .form-control.hover::-webkit-input-placeholder {
+    opacity: 1;
+}
+
+.dx-form .form-control:hover::-ms-input-placeholder, .dx-form .form-control.hover::-ms-input-placeholder {
+    opacity: 1;
+}
+
+.dx-form .form-control:hover::placeholder, .dx-form .form-control.hover::placeholder {
+    opacity: 1;
+}
+
+.dx-form .form-control:focus, .dx-form .form-control.focus {
+    outline: none;
+    -webkit-box-shadow: none;
+            box-shadow: none;
+}
+
+.dx-form .form-control:focus::-webkit-input-placeholder, .dx-form .form-control.focus::-webkit-input-placeholder {
+    opacity: 1;
+}
+
+.dx-form .form-control:focus::-ms-input-placeholder, .dx-form .form-control.focus::-ms-input-placeholder {
+    opacity: 1;
+}
+
+.dx-form .form-control:focus::placeholder, .dx-form .form-control.focus::placeholder {
+    opacity: 1;
+}
+
+.dx-form .form-control-style-2 {
+    padding: 12px 19px;
+    color: rgba(122, 122, 122, 0.8);
+    background-color: #fafafa;
+    -webkit-box-shadow: inset 0 0 0 1px #e8e8e8;
+            box-shadow: inset 0 0 0 1px #e8e8e8;
+    -webkit-transition: background-color .2s ease-in-out, color .2s ease-in-out, -webkit-box-shadow .2s ease-in-out;
+    transition: background-color .2s ease-in-out, color .2s ease-in-out, -webkit-box-shadow .2s ease-in-out;
+    -o-transition: background-color .2s ease-in-out, box-shadow .2s ease-in-out, color .2s ease-in-out;
+    transition: background-color .2s ease-in-out, box-shadow .2s ease-in-out, color .2s ease-in-out;
+    transition: background-color .2s ease-in-out, box-shadow .2s ease-in-out, color .2s ease-in-out, -webkit-box-shadow .2s ease-in-out;
+}
+
+.dx-form .form-control-style-2:hover, .dx-form .form-control-style-2.hover, .dx-form .form-control-style-2:focus, .dx-form .form-control-style-2.focus {
+    color: #616161;
+    background-color: #f2f2f2;
+    -webkit-box-shadow: inset 0 0 0 1px #d4d4d4;
+            box-shadow: inset 0 0 0 1px #d4d4d4;
+}
+
+.dx-form .form-control-style-3 {
+    padding: 12px 19px;
+    color: rgba(122, 122, 122, 0.8);
+    background-color: #fff;
+    -webkit-box-shadow: inset 0 0 0 1px #e8e8e8;
+            box-shadow: inset 0 0 0 1px #e8e8e8;
+    -webkit-transition: color .2s ease-in-out, -webkit-box-shadow .2s ease-in-out;
+    transition: color .2s ease-in-out, -webkit-box-shadow .2s ease-in-out;
+    -o-transition: box-shadow .2s ease-in-out, color .2s ease-in-out;
+    transition: box-shadow .2s ease-in-out, color .2s ease-in-out;
+    transition: box-shadow .2s ease-in-out, color .2s ease-in-out, -webkit-box-shadow .2s ease-in-out;
+}
+
+.dx-form .form-control-style-3:hover, .dx-form .form-control-style-3.hover {
+    color: #616161;
+    background-color: #fff;
+    -webkit-box-shadow: inset 0 0 0 1px #d4d4d4;
+            box-shadow: inset 0 0 0 1px #d4d4d4;
+}
+
+.dx-form .form-control-style-3:focus, .dx-form .form-control-style-3.focus {
+    color: #616161;
+    -webkit-box-shadow: inset 0 0 0 1px #949494;
+            box-shadow: inset 0 0 0 1px #949494;
+}
+
+.dx-form .form-control-style-4 {
+    height: 56px;
+    font-family: "Maven Pro", sans-serif;
+    font-size: .75rem;
+    font-weight: 500;
+    color: #bababa;
+    text-align: center;
+    text-transform: uppercase;
+    background-color: $dark3;
+    -webkit-transition: color .2s ease-in-out;
+    -o-transition: color .2s ease-in-out;
+    transition: color .2s ease-in-out;
+}
+
+.dx-form .form-control-style-4:hover, .dx-form .form-control-style-4.hover, .dx-form .form-control-style-4:focus, .dx-form .form-control-style-4.focus {
+    color: #fff;
+}
+
+.dx-form textarea,
+.dx-form textarea.form-control {
+    height: 170px;
+    min-height: 54px;
+    max-height: 250px;
+}
+
+.dx-form label {
+    display: block;
+    font-family: $primary_font;
+    font-weight: 400;
+    color: $dark1;
+}
+
+.dx-form select.form-control:not([size]):not([multiple]) {
+    height: 54px;
+}
+
+.dx-form select.form-control {
+    color: #525252;
+    /* fix for select on iOs devices */
+    background-color: #fff;
+}
+
+.dx-form select.form-control option {
+    color: #525252;
+}
+
+.dx-form select.form-control-style-2 {
+    color: rgba(122, 122, 122, 0.8);
+    background-color: rgba(247, 247, 247, 0.8);
+}
+
+.dx-form select.form-control-style-2 option {
+    color: #7a7a7a;
+    background-color: #fff;
+}
+
+.dx-form select.form-control-style-3 {
+    color: rgba(122, 122, 122, 0.8);
+}
+
+.dx-form select.form-control-style-3 option {
+    color: #7a7a7a;
+    background-color: #fff;
+}
+
+@-moz-document url-prefix("") {
+    .dx-form select.form-control option {
+        color: inherit;
+    }
+}
+
+.dx-form select.form-control[multiple] option {
+    color: inherit;
+}
+
+.dx-form .custom-select {
+    padding-right: 60px;
+    background: #fff url("../images/icon-drop.svg") no-repeat right 1rem center;
+}
+
+.dx-form.dx-form-group-inputs,
+.dx-form .dx-form-group-inputs {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+}
+
+.dx-form.dx-form-group-inputs > *,
+.dx-form .dx-form-group-inputs > * {
+    margin-right: -1px;
+    border-radius: 0px 7px 7px 0px;
+}
+
+.dx-form.dx-form-group-inputs > button{
+    background-color: $primary_color;
+    color: $secondary_color3;
+    box-shadow: none;
+}
+
+
+.dx-form.dx-form-group-inputs > *:first-child,
+.dx-form .dx-form-group-inputs > *:first-child {
+    border-radius: 7px 0 0 7px;
+}
+
+.dx-form.dx-form-group-inputs > *:last-child,
+.dx-form .dx-form-group-inputs > *:last-child {
+    margin-right: 0;
+    border-radius: 0 7px 7px 0;
+}
+
+.dx-form.dx-form-quantity,
+.dx-form .dx-form-quantity {
+    display: -webkit-inline-box;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+}
+
+.dx-form.dx-form-quantity .dx-form-quantity-input,
+.dx-form .dx-form-quantity .dx-form-quantity-input {
+    display: inline-block;
+    width: 25px;
+    min-width: 25px;
+    height: 26px;
+    padding: 0;
+    font-size: .9375rem;
+    color: $dark1;
+    text-align: center;
+    background-color: #fff;
+}
+
+.dx-form.dx-form-quantity .dx-form-quantity-input[type="number"],
+.dx-form .dx-form-quantity .dx-form-quantity-input[type="number"] {
+    -moz-appearance: textfield;
+}
+
+.dx-form.dx-form-quantity .dx-form-quantity-input::-webkit-outer-spin-button, .dx-form.dx-form-quantity .dx-form-quantity-input::-webkit-inner-spin-button,
+.dx-form .dx-form-quantity .dx-form-quantity-input::-webkit-outer-spin-button,
+.dx-form .dx-form-quantity .dx-form-quantity-input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+
+.dx-form.dx-form-quantity .dx-form-quantity-input:hover, .dx-form.dx-form-quantity .dx-form-quantity-input.hover, .dx-form.dx-form-quantity .dx-form-quantity-input:focus,
+.dx-form .dx-form-quantity .dx-form-quantity-input:hover,
+.dx-form .dx-form-quantity .dx-form-quantity-input.hover,
+.dx-form .dx-form-quantity .dx-form-quantity-input:focus {
+    background-color: #fff;
+}
+
+.dx-form.dx-form-quantity .dx-form-quantity-minus,
+.dx-form.dx-form-quantity .dx-form-quantity-plus,
+.dx-form .dx-form-quantity .dx-form-quantity-minus,
+.dx-form .dx-form-quantity .dx-form-quantity-plus {
+    display: -webkit-inline-box;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    width: 25px;
+    min-width: 25px;
+    height: 26px;
+    color: #bababa;
+    -webkit-box-shadow: inset 0 0 0 1px rgba(229, 229, 229, 0.8);
+            box-shadow: inset 0 0 0 1px rgba(229, 229, 229, 0.8);
+    -webkit-transition: color .2s ease-in-out, -webkit-box-shadow .2s ease-in-out;
+    transition: color .2s ease-in-out, -webkit-box-shadow .2s ease-in-out;
+    -o-transition: box-shadow .2s ease-in-out, color .2s ease-in-out;
+    transition: box-shadow .2s ease-in-out, color .2s ease-in-out;
+    transition: box-shadow .2s ease-in-out, color .2s ease-in-out, -webkit-box-shadow .2s ease-in-out;
+    z-index: 1;
+}
+
+.dx-form.dx-form-quantity .dx-form-quantity-minus:hover, .dx-form.dx-form-quantity .dx-form-quantity-minus.hover, .dx-form.dx-form-quantity .dx-form-quantity-minus:focus,
+.dx-form.dx-form-quantity .dx-form-quantity-plus:hover,
+.dx-form.dx-form-quantity .dx-form-quantity-plus.hover,
+.dx-form.dx-form-quantity .dx-form-quantity-plus:focus,
+.dx-form .dx-form-quantity .dx-form-quantity-minus:hover,
+.dx-form .dx-form-quantity .dx-form-quantity-minus.hover,
+.dx-form .dx-form-quantity .dx-form-quantity-minus:focus,
+.dx-form .dx-form-quantity .dx-form-quantity-plus:hover,
+.dx-form .dx-form-quantity .dx-form-quantity-plus.hover,
+.dx-form .dx-form-quantity .dx-form-quantity-plus:focus {
+    color: $dark1;
+    text-decoration: none;
+    -webkit-box-shadow: inset 0 0 0 1px #d4d4d4;
+            box-shadow: inset 0 0 0 1px #d4d4d4;
+}
+
+.dx-form.dx-form-quantity .dx-form-quantity-minus,
+.dx-form .dx-form-quantity .dx-form-quantity-minus {
+    margin-right: -1px;
+}
+
+.dx-form-navbar{
+    & .form-control{
+        height: 43px;
+        margin-left: 20px;
+        &.form-control-style-2{
+            background-color: #fafafa42;
+            box-shadow: none;
+        }
+    }
+    & .dx-btn-lg{
+        background-color: $secondary_color2 !important;
+        color: $primary_color !important;
+        &.dx-btn-icon {
+            padding: 12px 10px 8px 10px;
+        }
+    }
+}

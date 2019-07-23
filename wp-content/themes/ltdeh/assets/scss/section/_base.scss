@@ -1,0 +1,262 @@
+body {
+    position: relative;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    background-color: #fff;
+}
+
+a {
+    color: $dark1;
+    -webkit-transition: .15s color;
+    -o-transition: .15s color;
+    transition: .15s color;
+}
+
+a:focus,
+a:hover {
+    color: $primary_color !important;
+    text-decoration: none !important;
+}
+
+.dx-main {
+    overflow: hidden;
+}
+
+.dx-decorated {
+    display: block;
+    width: 100%;
+    height: 40px;
+}
+
+.dx-separator {
+    display: block;
+    border-bottom: 1px solid #ececec;
+}
+
+.dx-img {
+    position: relative;
+    display: block;
+    max-width: 100%;
+    overflow: hidden;
+}
+
+.dx-img > img {
+    max-width: 100%;
+    will-change: transform;
+    -webkit-transition: -webkit-transform .4s ease-in-out;
+    transition: -webkit-transform .4s ease-in-out;
+    -o-transition: transform .4s ease-in-out;
+    transition: transform .4s ease-in-out;
+    transition: transform .4s ease-in-out, -webkit-transform .4s ease-in-out;
+    -webkit-transform: scale(1);
+        -ms-transform: scale(1);
+            transform: scale(1);
+}
+
+.dx-img::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    visibility: hidden;
+    background-color: rgba(32, 32, 32, 0.1);
+    opacity: 0;
+    will-change: opacity;
+    -webkit-transition: visibility .2s ease-in-out, opacity .2s ease-in-out;
+    -o-transition: visibility .2s ease-in-out, opacity .2s ease-in-out;
+    transition: visibility .2s ease-in-out, opacity .2s ease-in-out;
+}
+
+.dx-img:hover > img {
+    -webkit-transform: scale(1.03);
+        -ms-transform: scale(1.03);
+            transform: scale(1.03);
+}
+
+.dx-img:hover::after {
+    visibility: visible;
+    opacity: 1;
+}
+
+.dx-video {
+    position: relative;
+    display: block;
+    width: 100%;
+}
+
+.dx-video::after {
+    content: "";
+    display: block;
+    padding-top: 56.25%;
+}
+
+.dx-video > .dx-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.dx-block-decorated {
+    background-color: #fff;
+    border-radius: 3px;
+    -webkit-box-shadow: 0 0 30px 0 rgba(0, 0, 0, 0.04);
+            box-shadow: 0 0 30px 0 rgba(0, 0, 0, 0.04);
+    -webkit-transition: -webkit-box-shadow .2s ease-in-out;
+    transition: -webkit-box-shadow .2s ease-in-out;
+    -o-transition: box-shadow .2s ease-in-out;
+    transition: box-shadow .2s ease-in-out;
+    transition: box-shadow .2s ease-in-out, -webkit-box-shadow .2s ease-in-out;
+}
+
+.dx-block-decorated:hover, .dx-block-decorated.hover {
+    -webkit-box-shadow: 0 0 30px 0 rgba(0, 0, 0, 0.08);
+            box-shadow: 0 0 30px 0 rgba(0, 0, 0, 0.08);
+}
+
+.icon {
+    display: inline-block;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.icon.dx-icon-bag {
+    width: 22px;
+    height: 22px;
+    background-image: url("../images/icon-bag.svg");
+}
+
+.dx-links {
+    padding: 18px 0 28px;
+    margin: 0 -18px;
+}
+
+.dx-links > li {
+    display: inline-block;
+    padding: 10px 0 0;
+    margin: 0 18px 0 18px;
+    font-size: .9375rem;
+    font-weight: 600;
+    color: $dark1;
+    list-style: none;
+    cursor: pointer;
+    -webkit-transition: color .2s ease-in-out;
+    -o-transition: color .2s ease-in-out;
+    transition: color .2s ease-in-out;
+}
+
+.dx-links > li:hover, .dx-links > li.hover, .dx-links > li.active {
+    color: $primary_color;
+}
+
+.dx-links > li a {
+    color: inherit;
+    -webkit-transition: color 0s;
+    -o-transition: color 0s;
+    transition: color 0s;
+}
+
+.dx-links > li a:hover, .dx-links > li a:focus {
+    text-decoration: none;
+}
+
+.bg-image-parallax,
+.bg-image {
+    overflow: hidden;
+}
+
+.bg-image-parallax img,
+.bg-image img {
+    width: 100%;
+    height: 100%;
+    font-family: "object-fit: cover";
+    -o-object-fit: cover;
+       object-fit: cover;
+}
+
+.bg-image {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-position: 50% 50%;
+    background-size: cover;
+    z-index: -1;
+}
+
+.bg-image > * {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-position: 50% 50%;
+    background-size: cover;
+    z-index: 1;
+}
+
+.dx-gap,
+.dx-gap-1,
+.dx-gap-2,
+.dx-gap-3,
+.dx-gap-4,
+.dx-gap-5,
+.dx-gap-6 {
+    display: block;
+    height: 15px;
+}
+
+.dx-gap::after, .dx-gap::before,
+.dx-gap-1::after,
+.dx-gap-1::before,
+.dx-gap-2::after,
+.dx-gap-2::before,
+.dx-gap-3::after,
+.dx-gap-3::before,
+.dx-gap-4::after,
+.dx-gap-4::before,
+.dx-gap-5::after,
+.dx-gap-5::before,
+.dx-gap-6::after,
+.dx-gap-6::before {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.dx-gap-1 {
+    height: 25px;
+}
+
+.dx-gap-2 {
+    height: 40px;
+}
+
+.dx-gap-3 {
+    height: 50px;
+}
+
+.dx-gap-4 {
+    height: 60px;
+}
+
+.dx-gap-5 {
+    height: 80px;
+}
+
+.dx-gap-6 {
+    height: 100px;
+}
+
+.dx-body-scrollbar-measure {
+    position: absolute;
+    top: -9999px;
+    width: 50px;
+    height: 50px;
+    overflow: scroll;
+}

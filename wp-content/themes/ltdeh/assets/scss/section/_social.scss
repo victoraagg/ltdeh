@@ -1,0 +1,551 @@
+.dx-social-links {
+    padding: 0;
+    margin: -10px -5px 0;
+    font-size: 0;
+    list-style-type: none;
+}
+
+.dx-social-links::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.dx-social-links > li {
+    display: inline-block;
+    margin: 10px 6px 0;
+}
+
+.dx-social-links > li > * {
+    display: -webkit-inline-box;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    width: auto;
+    min-height: 22px;
+    font-size: 1.1rem;
+    text-align: center;
+    cursor: pointer;
+    will-change: opacity;
+    -webkit-transition: opacity .2s ease-in-out, color .2s ease-in-out;
+    -o-transition: opacity .2s ease-in-out, color .2s ease-in-out;
+    transition: opacity .2s ease-in-out, color .2s ease-in-out;
+}
+
+.dx-social-links > li > *, .dx-social-links > li > *:focus, .dx-social-links > li > *:active {
+    color: #fff;
+    opacity: .8;
+}
+
+.dx-social-links > li > *:hover, .dx-social-links > li > *.hover {
+    text-decoration: none;
+    opacity: 1;
+}
+
+.dx-social-links > li > *.dx-social-behance {
+    color: #7a7a7a;
+}
+
+.dx-social-links > li > *.dx-social-behance:hover, .dx-social-links > li > *.dx-social-behance.hover {
+    color: #487cfb;
+}
+
+.dx-social-links > li > *.dx-social-bitbucket {
+    color: #7a7a7a;
+}
+
+.dx-social-links > li > *.dx-social-bitbucket:hover, .dx-social-links > li > *.dx-social-bitbucket.hover {
+    color: #36517e;
+}
+
+.dx-social-links > li > *.dx-social-dropbox {
+    color: #7a7a7a;
+}
+
+.dx-social-links > li > *.dx-social-dropbox:hover, .dx-social-links > li > *.dx-social-dropbox.hover {
+    color: #4d86d9;
+}
+
+.dx-social-links > li > *.dx-social-dribbble {
+    color: #7a7a7a;
+}
+
+.dx-social-links > li > *.dx-social-dribbble:hover, .dx-social-links > li > *.dx-social-dribbble.hover {
+    color: #cc4d86;
+}
+
+.dx-social-links > li > *.dx-social-deviantart {
+    color: #7a7a7a;
+}
+
+.dx-social-links > li > *.dx-social-deviantart:hover, .dx-social-links > li > *.dx-social-deviantart.hover {
+    color: #bac940;
+}
+
+.dx-social-links > li > *.dx-social-envato {
+    color: #7a7a7a;
+}
+
+.dx-social-links > li > *.dx-social-envato:hover, .dx-social-links > li > *.dx-social-envato.hover {
+    color: #91b34c;
+}
+
+.dx-social-links > li > *.dx-social-facebook {
+    color: #7a7a7a;
+}
+
+.dx-social-links > li > *.dx-social-facebook:hover, .dx-social-links > li > *.dx-social-facebook.hover {
+    color: #475995;
+}
+
+.dx-social-links > li > *.dx-social-flickr {
+    color: #7a7a7a;
+}
+
+.dx-social-links > li > *.dx-social-flickr:hover, .dx-social-links > li > *.dx-social-flickr.hover {
+    color: #db0180;
+}
+
+.dx-social-links > li > *.dx-social-foursquare {
+    color: #7a7a7a;
+}
+
+.dx-social-links > li > *.dx-social-foursquare:hover, .dx-social-links > li > *.dx-social-foursquare.hover {
+    color: #d94a75;
+}
+
+.dx-social-links > li > *.dx-social-github {
+    color: #7a7a7a;
+}
+
+.dx-social-links > li > *.dx-social-github:hover, .dx-social-links > li > *.dx-social-github.hover {
+    color: #464646;
+}
+
+.dx-social-links > li > *.dx-social-google {
+    color: #7a7a7a;
+}
+
+.dx-social-links > li > *.dx-social-google:hover, .dx-social-links > li > *.dx-social-google.hover {
+    color: #4285f4;
+}
+
+.dx-social-links > li > *.dx-social-google-plus {
+    color: #7a7a7a;
+}
+
+.dx-social-links > li > *.dx-social-google-plus:hover, .dx-social-links > li > *.dx-social-google-plus.hover {
+    color: #c14d3d;
+}
+
+.dx-social-links > li > *.dx-social-instagram {
+    color: #7a7a7a;
+}
+
+.dx-social-links > li > *.dx-social-instagram:hover, .dx-social-links > li > *.dx-social-instagram.hover {
+    color: #d12054;
+}
+
+.dx-social-links > li > *.dx-social-linkedin {
+    color: #7a7a7a;
+}
+
+.dx-social-links > li > *.dx-social-linkedin:hover, .dx-social-links > li > *.dx-social-linkedin.hover {
+    color: #457ab3;
+}
+
+.dx-social-links > li > *.dx-social-medium {
+    color: #7a7a7a;
+}
+
+.dx-social-links > li > *.dx-social-medium:hover, .dx-social-links > li > *.dx-social-medium.hover {
+    color: #71c66d;
+}
+
+.dx-social-links > li > *.dx-social-odnoklassniki {
+    color: #7a7a7a;
+}
+
+.dx-social-links > li > *.dx-social-odnoklassniki:hover, .dx-social-links > li > *.dx-social-odnoklassniki.hover {
+    color: #d8732a;
+}
+
+.dx-social-links > li > *.dx-social-paypal {
+    color: #7a7a7a;
+}
+
+.dx-social-links > li > *.dx-social-paypal:hover, .dx-social-links > li > *.dx-social-paypal.hover {
+    color: #1d3283;
+}
+
+.dx-social-links > li > *.dx-social-pinterest {
+    color: #7a7a7a;
+}
+
+.dx-social-links > li > *.dx-social-pinterest:hover, .dx-social-links > li > *.dx-social-pinterest.hover {
+    color: #ae262b;
+}
+
+.dx-social-links > li > *.dx-social-rss {
+    color: #7a7a7a;
+}
+
+.dx-social-links > li > *.dx-social-rss:hover, .dx-social-links > li > *.dx-social-rss.hover {
+    color: #e06618;
+}
+
+.dx-social-links > li > *.dx-social-reddit {
+    color: #7a7a7a;
+}
+
+.dx-social-links > li > *.dx-social-reddit:hover, .dx-social-links > li > *.dx-social-reddit.hover {
+    color: #de470b;
+}
+
+.dx-social-links > li > *.dx-social-skype {
+    color: #7a7a7a;
+}
+
+.dx-social-links > li > *.dx-social-skype:hover, .dx-social-links > li > *.dx-social-skype.hover {
+    color: #62aded;
+}
+
+.dx-social-links > li > *.dx-social-soundcloud {
+    color: #7a7a7a;
+}
+
+.dx-social-links > li > *.dx-social-soundcloud:hover, .dx-social-links > li > *.dx-social-soundcloud.hover {
+    color: #df5611;
+}
+
+.dx-social-links > li > *.dx-social-slack {
+    color: #7a7a7a;
+}
+
+.dx-social-links > li > *.dx-social-slack:hover, .dx-social-links > li > *.dx-social-slack.hover {
+    color: #543b56;
+}
+
+.dx-social-links > li > *.dx-social-steam {
+    color: #7a7a7a;
+}
+
+.dx-social-links > li > *.dx-social-steam:hover, .dx-social-links > li > *.dx-social-steam.hover {
+    color: #272425;
+}
+
+.dx-social-links > li > *.dx-social-tumblr {
+    color: #7a7a7a;
+}
+
+.dx-social-links > li > *.dx-social-tumblr:hover, .dx-social-links > li > *.dx-social-tumblr.hover {
+    color: #384961;
+}
+
+.dx-social-links > li > *.dx-social-twitter {
+    color: #7a7a7a;
+}
+
+.dx-social-links > li > *.dx-social-twitter:hover, .dx-social-links > li > *.dx-social-twitter.hover {
+    color: #6da9de;
+}
+
+.dx-social-links > li > *.dx-social-vimeo {
+    color: #7a7a7a;
+}
+
+.dx-social-links > li > *.dx-social-vimeo:hover, .dx-social-links > li > *.dx-social-vimeo.hover {
+    color: #69b5e7;
+}
+
+.dx-social-links > li > *.dx-social-vk {
+    color: #7a7a7a;
+}
+
+.dx-social-links > li > *.dx-social-vk:hover, .dx-social-links > li > *.dx-social-vk.hover {
+    color: #657da0;
+}
+
+.dx-social-links > li > *.dx-social-wordpress {
+    color: #7a7a7a;
+}
+
+.dx-social-links > li > *.dx-social-wordpress:hover, .dx-social-links > li > *.dx-social-wordpress.hover {
+    color: #4072a1;
+}
+
+.dx-social-links > li > *.dx-social-youtube {
+    color: #7a7a7a;
+}
+
+.dx-social-links > li > *.dx-social-youtube:hover, .dx-social-links > li > *.dx-social-youtube.hover {
+    color: #c6271e;
+}
+
+.dx-social-links.dx-social-links-style-2 > li > * {
+    padding: 10px 14px;
+    font-size: .875rem;
+    background-color: rgba(247, 247, 247, 0.8);
+    border-radius: 3px;
+    -webkit-box-shadow: inset 0 0 0 1px rgba(229, 229, 229, 0.8);
+            box-shadow: inset 0 0 0 1px rgba(229, 229, 229, 0.8);
+    opacity: 1;
+    -webkit-transition: background-color .2s ease-in-out, color .2s ease-in-out, -webkit-box-shadow .2s ease-in-out;
+    transition: background-color .2s ease-in-out, color .2s ease-in-out, -webkit-box-shadow .2s ease-in-out;
+    -o-transition: background-color .2s ease-in-out, box-shadow .2s ease-in-out, color .2s ease-in-out;
+    transition: background-color .2s ease-in-out, box-shadow .2s ease-in-out, color .2s ease-in-out;
+    transition: background-color .2s ease-in-out, box-shadow .2s ease-in-out, color .2s ease-in-out, -webkit-box-shadow .2s ease-in-out;
+}
+
+.dx-social-links.dx-social-links-style-2 > li > *:hover, .dx-social-links.dx-social-links-style-2 > li > *.hover {
+    background-color: #f2f2f2;
+    -webkit-box-shadow: inset 0 0 0 1px #d4d4d4;
+            box-shadow: inset 0 0 0 1px #d4d4d4;
+}
+
+.dx-social-links.dx-social-links-style-2 > li > * > .icon {
+    margin-right: 8px;
+    font-size: 1.1rem;
+}
+
+.dx-social-links.dx-social-links-style-2 > li > *.dx-social-behance {
+    color: rgba(122, 122, 122, 0.8);
+}
+
+.dx-social-links.dx-social-links-style-2 > li > *.dx-social-behance:hover, .dx-social-links.dx-social-links-style-2 > li > *.dx-social-behance.hover {
+    color: #616161;
+}
+
+.dx-social-links.dx-social-links-style-2 > li > *.dx-social-bitbucket {
+    color: rgba(122, 122, 122, 0.8);
+}
+
+.dx-social-links.dx-social-links-style-2 > li > *.dx-social-bitbucket:hover, .dx-social-links.dx-social-links-style-2 > li > *.dx-social-bitbucket.hover {
+    color: #616161;
+}
+
+.dx-social-links.dx-social-links-style-2 > li > *.dx-social-dropbox {
+    color: rgba(122, 122, 122, 0.8);
+}
+
+.dx-social-links.dx-social-links-style-2 > li > *.dx-social-dropbox:hover, .dx-social-links.dx-social-links-style-2 > li > *.dx-social-dropbox.hover {
+    color: #616161;
+}
+
+.dx-social-links.dx-social-links-style-2 > li > *.dx-social-dribbble {
+    color: rgba(122, 122, 122, 0.8);
+}
+
+.dx-social-links.dx-social-links-style-2 > li > *.dx-social-dribbble:hover, .dx-social-links.dx-social-links-style-2 > li > *.dx-social-dribbble.hover {
+    color: #616161;
+}
+
+.dx-social-links.dx-social-links-style-2 > li > *.dx-social-deviantart {
+    color: rgba(122, 122, 122, 0.8);
+}
+
+.dx-social-links.dx-social-links-style-2 > li > *.dx-social-deviantart:hover, .dx-social-links.dx-social-links-style-2 > li > *.dx-social-deviantart.hover {
+    color: #616161;
+}
+
+.dx-social-links.dx-social-links-style-2 > li > *.dx-social-envato {
+    color: rgba(122, 122, 122, 0.8);
+}
+
+.dx-social-links.dx-social-links-style-2 > li > *.dx-social-envato:hover, .dx-social-links.dx-social-links-style-2 > li > *.dx-social-envato.hover {
+    color: #616161;
+}
+
+.dx-social-links.dx-social-links-style-2 > li > *.dx-social-facebook {
+    color: rgba(122, 122, 122, 0.8);
+}
+
+.dx-social-links.dx-social-links-style-2 > li > *.dx-social-facebook:hover, .dx-social-links.dx-social-links-style-2 > li > *.dx-social-facebook.hover {
+    color: #616161;
+}
+
+.dx-social-links.dx-social-links-style-2 > li > *.dx-social-flickr {
+    color: rgba(122, 122, 122, 0.8);
+}
+
+.dx-social-links.dx-social-links-style-2 > li > *.dx-social-flickr:hover, .dx-social-links.dx-social-links-style-2 > li > *.dx-social-flickr.hover {
+    color: #616161;
+}
+
+.dx-social-links.dx-social-links-style-2 > li > *.dx-social-foursquare {
+    color: rgba(122, 122, 122, 0.8);
+}
+
+.dx-social-links.dx-social-links-style-2 > li > *.dx-social-foursquare:hover, .dx-social-links.dx-social-links-style-2 > li > *.dx-social-foursquare.hover {
+    color: #616161;
+}
+
+.dx-social-links.dx-social-links-style-2 > li > *.dx-social-github {
+    color: rgba(122, 122, 122, 0.8);
+}
+
+.dx-social-links.dx-social-links-style-2 > li > *.dx-social-github:hover, .dx-social-links.dx-social-links-style-2 > li > *.dx-social-github.hover {
+    color: #616161;
+}
+
+.dx-social-links.dx-social-links-style-2 > li > *.dx-social-google {
+    color: rgba(122, 122, 122, 0.8);
+}
+
+.dx-social-links.dx-social-links-style-2 > li > *.dx-social-google:hover, .dx-social-links.dx-social-links-style-2 > li > *.dx-social-google.hover {
+    color: #616161;
+}
+
+.dx-social-links.dx-social-links-style-2 > li > *.dx-social-google-plus {
+    color: rgba(122, 122, 122, 0.8);
+}
+
+.dx-social-links.dx-social-links-style-2 > li > *.dx-social-google-plus:hover, .dx-social-links.dx-social-links-style-2 > li > *.dx-social-google-plus.hover {
+    color: #616161;
+}
+
+.dx-social-links.dx-social-links-style-2 > li > *.dx-social-instagram {
+    color: rgba(122, 122, 122, 0.8);
+}
+
+.dx-social-links.dx-social-links-style-2 > li > *.dx-social-instagram:hover, .dx-social-links.dx-social-links-style-2 > li > *.dx-social-instagram.hover {
+    color: #616161;
+}
+
+.dx-social-links.dx-social-links-style-2 > li > *.dx-social-linkedin {
+    color: rgba(122, 122, 122, 0.8);
+}
+
+.dx-social-links.dx-social-links-style-2 > li > *.dx-social-linkedin:hover, .dx-social-links.dx-social-links-style-2 > li > *.dx-social-linkedin.hover {
+    color: #616161;
+}
+
+.dx-social-links.dx-social-links-style-2 > li > *.dx-social-medium {
+    color: rgba(122, 122, 122, 0.8);
+}
+
+.dx-social-links.dx-social-links-style-2 > li > *.dx-social-medium:hover, .dx-social-links.dx-social-links-style-2 > li > *.dx-social-medium.hover {
+    color: #616161;
+}
+
+.dx-social-links.dx-social-links-style-2 > li > *.dx-social-odnoklassniki {
+    color: rgba(122, 122, 122, 0.8);
+}
+
+.dx-social-links.dx-social-links-style-2 > li > *.dx-social-odnoklassniki:hover, .dx-social-links.dx-social-links-style-2 > li > *.dx-social-odnoklassniki.hover {
+    color: #616161;
+}
+
+.dx-social-links.dx-social-links-style-2 > li > *.dx-social-paypal {
+    color: rgba(122, 122, 122, 0.8);
+}
+
+.dx-social-links.dx-social-links-style-2 > li > *.dx-social-paypal:hover, .dx-social-links.dx-social-links-style-2 > li > *.dx-social-paypal.hover {
+    color: #616161;
+}
+
+.dx-social-links.dx-social-links-style-2 > li > *.dx-social-pinterest {
+    color: rgba(122, 122, 122, 0.8);
+}
+
+.dx-social-links.dx-social-links-style-2 > li > *.dx-social-pinterest:hover, .dx-social-links.dx-social-links-style-2 > li > *.dx-social-pinterest.hover {
+    color: #616161;
+}
+
+.dx-social-links.dx-social-links-style-2 > li > *.dx-social-rss {
+    color: rgba(122, 122, 122, 0.8);
+}
+
+.dx-social-links.dx-social-links-style-2 > li > *.dx-social-rss:hover, .dx-social-links.dx-social-links-style-2 > li > *.dx-social-rss.hover {
+    color: #616161;
+}
+
+.dx-social-links.dx-social-links-style-2 > li > *.dx-social-reddit {
+    color: rgba(122, 122, 122, 0.8);
+}
+
+.dx-social-links.dx-social-links-style-2 > li > *.dx-social-reddit:hover, .dx-social-links.dx-social-links-style-2 > li > *.dx-social-reddit.hover {
+    color: #616161;
+}
+
+.dx-social-links.dx-social-links-style-2 > li > *.dx-social-skype {
+    color: rgba(122, 122, 122, 0.8);
+}
+
+.dx-social-links.dx-social-links-style-2 > li > *.dx-social-skype:hover, .dx-social-links.dx-social-links-style-2 > li > *.dx-social-skype.hover {
+    color: #616161;
+}
+
+.dx-social-links.dx-social-links-style-2 > li > *.dx-social-soundcloud {
+    color: rgba(122, 122, 122, 0.8);
+}
+
+.dx-social-links.dx-social-links-style-2 > li > *.dx-social-soundcloud:hover, .dx-social-links.dx-social-links-style-2 > li > *.dx-social-soundcloud.hover {
+    color: #616161;
+}
+
+.dx-social-links.dx-social-links-style-2 > li > *.dx-social-slack {
+    color: rgba(122, 122, 122, 0.8);
+}
+
+.dx-social-links.dx-social-links-style-2 > li > *.dx-social-slack:hover, .dx-social-links.dx-social-links-style-2 > li > *.dx-social-slack.hover {
+    color: #616161;
+}
+
+.dx-social-links.dx-social-links-style-2 > li > *.dx-social-steam {
+    color: rgba(122, 122, 122, 0.8);
+}
+
+.dx-social-links.dx-social-links-style-2 > li > *.dx-social-steam:hover, .dx-social-links.dx-social-links-style-2 > li > *.dx-social-steam.hover {
+    color: #616161;
+}
+
+.dx-social-links.dx-social-links-style-2 > li > *.dx-social-tumblr {
+    color: rgba(122, 122, 122, 0.8);
+}
+
+.dx-social-links.dx-social-links-style-2 > li > *.dx-social-tumblr:hover, .dx-social-links.dx-social-links-style-2 > li > *.dx-social-tumblr.hover {
+    color: #616161;
+}
+
+.dx-social-links.dx-social-links-style-2 > li > *.dx-social-twitter {
+    color: rgba(122, 122, 122, 0.8);
+}
+
+.dx-social-links.dx-social-links-style-2 > li > *.dx-social-twitter:hover, .dx-social-links.dx-social-links-style-2 > li > *.dx-social-twitter.hover {
+    color: #616161;
+}
+
+.dx-social-links.dx-social-links-style-2 > li > *.dx-social-vimeo {
+    color: rgba(122, 122, 122, 0.8);
+}
+
+.dx-social-links.dx-social-links-style-2 > li > *.dx-social-vimeo:hover, .dx-social-links.dx-social-links-style-2 > li > *.dx-social-vimeo.hover {
+    color: #616161;
+}
+
+.dx-social-links.dx-social-links-style-2 > li > *.dx-social-vk {
+    color: rgba(122, 122, 122, 0.8);
+}
+
+.dx-social-links.dx-social-links-style-2 > li > *.dx-social-vk:hover, .dx-social-links.dx-social-links-style-2 > li > *.dx-social-vk.hover {
+    color: #616161;
+}
+
+.dx-social-links.dx-social-links-style-2 > li > *.dx-social-wordpress {
+    color: rgba(122, 122, 122, 0.8);
+}
+
+.dx-social-links.dx-social-links-style-2 > li > *.dx-social-wordpress:hover, .dx-social-links.dx-social-links-style-2 > li > *.dx-social-wordpress.hover {
+    color: #616161;
+}
+
+.dx-social-links.dx-social-links-style-2 > li > *.dx-social-youtube {
+    color: rgba(122, 122, 122, 0.8);
+}
+
+.dx-social-links.dx-social-links-style-2 > li > *.dx-social-youtube:hover, .dx-social-links.dx-social-links-style-2 > li > *.dx-social-youtube.hover {
+    color: #616161;
+}

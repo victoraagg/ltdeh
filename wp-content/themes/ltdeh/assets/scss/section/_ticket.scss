@@ -1,0 +1,436 @@
+.dx-ticket.dx-ticket-open .dx-ticket-status::before,
+.dx-ticket.dx-ticket-closed .dx-ticket-status::before {
+    content: "";
+    width: 5px;
+    min-width: 5px;
+    height: 5px;
+    margin-top: -2px;
+    margin-right: 10px;
+    border-radius: 5px;
+}
+
+@media screen and (max-width: 575px) {
+    .dx-ticket.dx-ticket-open .dx-ticket-status::before,
+    .dx-ticket.dx-ticket-closed .dx-ticket-status::before {
+        margin: 7px 0 0;
+    }
+}
+
+.dx-ticket.dx-ticket-open .dx-ticket-status::after,
+.dx-ticket.dx-ticket-closed .dx-ticket-status::after {
+    font-family: "Maven Pro", sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+@media screen and (max-width: 575px) {
+    .dx-ticket.dx-ticket-open .dx-ticket-status::after,
+    .dx-ticket.dx-ticket-closed .dx-ticket-status::after {
+        display: none;
+    }
+}
+
+.dx-ticket.dx-ticket-open .dx-ticket-status::before {
+    background-color: $primary_color;
+}
+
+.dx-ticket.dx-ticket-open .dx-ticket-status::after {
+    content: "Open";
+    color: $primary_color;
+}
+
+.dx-ticket.dx-ticket-open .dx-ticket-title {
+    padding-right: 40px;
+}
+
+@media screen and (max-width: 767px) {
+    .dx-ticket.dx-ticket-open .dx-ticket-title {
+        padding-right: 60px;
+    }
+}
+
+@media screen and (max-width: 575px) {
+    .dx-ticket.dx-ticket-open .dx-ticket-title {
+        padding-right: 30px;
+    }
+}
+
+.dx-ticket.dx-ticket-closed .dx-ticket-status::before {
+    background-color: #999;
+}
+
+.dx-ticket.dx-ticket-closed .dx-ticket-status::after {
+    content: "Closed";
+    color: #999;
+}
+
+.dx-ticket.dx-ticket-closed .dx-ticket-title {
+    padding-right: 60px;
+}
+
+@media screen and (max-width: 767px) {
+    .dx-ticket.dx-ticket-closed .dx-ticket-title {
+        padding-right: 70px;
+    }
+}
+
+@media screen and (max-width: 575px) {
+    .dx-ticket.dx-ticket-closed .dx-ticket-title {
+        padding-right: 30px;
+    }
+}
+
+.dx-ticket .dx-ticket-status {
+    position: absolute;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    top: 30px;
+    right: 30px;
+    margin-left: 30px;
+}
+
+.dx-ticket-item {
+    position: relative;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    padding: 30px;
+}
+
+@media screen and (max-width: 575px) {
+    .dx-ticket-item {
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+            -ms-flex-direction: column;
+                flex-direction: column;
+    }
+}
+
+.dx-ticket-item + .dx-ticket-item {
+    margin-top: 30px;
+}
+
+.dx-ticket-item.dx-ticket-new .dx-ticket-info .dx-ticket-new {
+    display: inline-block;
+    padding: 2px 8px;
+    margin-top: 4px;
+    font-family: "Maven Pro", sans-serif;
+    font-size: 9px;
+    color: #fff;
+    text-transform: uppercase;
+    background-color: $primary_color;
+    border-radius: 3px;
+}
+
+.dx-ticket-item.dx-ticket-open .dx-ticket-status,
+.dx-ticket-item.dx-ticket-closed .dx-ticket-status {
+    font-family: "Maven Pro", sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.dx-ticket-item.dx-ticket-open .dx-ticket-status::before,
+.dx-ticket-item.dx-ticket-closed .dx-ticket-status::before {
+    content: "";
+    width: 5px;
+    min-width: 5px;
+    height: 5px;
+    margin-right: 10px;
+    border-radius: 5px;
+}
+
+@media screen and (max-width: 767px) {
+    .dx-ticket-item.dx-ticket-open .dx-ticket-status,
+    .dx-ticket-item.dx-ticket-closed .dx-ticket-status {
+        position: absolute;
+        top: 25px;
+        right: 30px;
+        margin: 0;
+    }
+}
+
+.dx-ticket-item.dx-ticket-open .dx-ticket-status {
+    color: $primary_color;
+}
+
+.dx-ticket-item.dx-ticket-open .dx-ticket-status::before {
+    background-color: $primary_color;
+}
+
+.dx-ticket-item.dx-ticket-closed .dx-ticket-status {
+    color: #999;
+}
+
+.dx-ticket-item.dx-ticket-closed .dx-ticket-status::before {
+    background-color: #999;
+}
+
+.dx-ticket-item .dx-ticket-status {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    margin-left: 30px;
+}
+
+.dx-ticket-item .dx-ticket-cont {
+    width: 100%;
+}
+
+.dx-ticket-item .dx-ticket-img {
+    display: -webkit-inline-box;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    width: 80px;
+    min-width: 80px;
+    height: 80px;
+    overflow: hidden;
+    border-radius: 3px;
+}
+
+.dx-ticket-item .dx-ticket-img + .dx-ticket-cont {
+    margin-left: 30px;
+}
+
+@media screen and (max-width: 575px) {
+    .dx-ticket-item .dx-ticket-img + .dx-ticket-cont {
+        margin-top: 30px;
+        margin-left: 0;
+    }
+}
+
+.dx-ticket-item .dx-ticket-img img {
+    width: 100%;
+    height: 100%;
+    font-family: "object-fit: cover";
+    -o-object-fit: cover;
+       object-fit: cover;
+    border-radius: 3px;
+}
+
+.dx-ticket-item .dx-ticket-name {
+    display: block;
+    margin-top: -6px;
+    font-weight: 600;
+    color: #7a7a7a;
+}
+
+.dx-ticket-item .dx-ticket-name + .dx-ticket-title {
+    margin-top: 9px;
+}
+
+.dx-ticket-item .dx-ticket-title {
+    display: block;
+    margin-bottom: 0;
+    -webkit-transition: color .2s ease-in-out;
+    -o-transition: color .2s ease-in-out;
+    transition: color .2s ease-in-out;
+}
+
+.dx-ticket-item .dx-ticket-title + .dx-ticket-info {
+    margin-top: 10px;
+}
+
+.dx-ticket-item .dx-ticket-info {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    padding: 0;
+    margin: 0 0 -6px;
+    font-size: .875rem;
+    color: #7a7a7a;
+}
+
+.dx-ticket-item .dx-ticket-info > li {
+    display: inline-block;
+    padding-top: 4px;
+    margin-right: 30px;
+    list-style: none;
+}
+
+@media screen and (max-width: 575px) {
+    .dx-ticket-item .dx-ticket-info > li {
+        margin-right: 20px;
+    }
+}
+
+.dx-ticket-item .dx-ticket-info > li:last-child {
+    margin-right: 0;
+}
+
+.dx-ticket-item:hover, .dx-ticket-item.hover {
+    text-decoration: none;
+}
+
+.dx-ticket-item:hover .dx-ticket-title, .dx-ticket-item.hover .dx-ticket-title {
+    color: $primary_color;
+}
+
+.dx-ticket-item:focus, .dx-ticket-item.focus {
+    text-decoration: none;
+}
+
+.dx-ticket-comment {
+    padding: 50px;
+}
+
+.dx-ticket-comment + .dx-ticket-comment {
+    padding: 50px;
+    margin-top: 0;
+}
+
+@media screen and (max-width: 767px) {
+    .dx-ticket-comment {
+        padding: 30px;
+    }
+    .dx-ticket-comment + .dx-ticket-comment {
+        padding: 30px;
+    }
+}
+
+.dx-ticket-comment.dx-comment-replied {
+    -webkit-box-shadow: inset 3px 0 0 0 #dbdbdb, inset 0 1px 0 0 #ececec, inset 0 -1px 0 0 #ececec;
+            box-shadow: inset 3px 0 0 0 #dbdbdb, inset 0 1px 0 0 #ececec, inset 0 -1px 0 0 #ececec;
+}
+
+.dx-ticket-comment.dx-comment-replied .dx-comment-name .dx-comment-replied {
+    margin-left: 3px;
+    color: #7a7a7a;
+}
+
+@media screen and (max-width: 575px) {
+    .dx-ticket-comment.dx-comment-replied .dx-comment-name .dx-comment-replied {
+        display: none;
+    }
+}
+
+.dx-ticket-comment.dx-comment-new .dx-comment-name {
+    display: -webkit-inline-box;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+}
+
+@media screen and (max-width: 575px) {
+    .dx-ticket-comment.dx-comment-new .dx-comment-name {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        padding-right: 40px;
+    }
+}
+
+.dx-ticket-comment.dx-comment-new .dx-comment-name .dx-comment-new {
+    position: relative;
+    display: inline-block;
+    -webkit-box-ordinal-group: 13;
+        -ms-flex-order: 12;
+            order: 12;
+    padding: 2px 8px;
+    margin-left: 25px;
+    font-family: "Maven Pro", sans-serif;
+    font-size: 9px;
+    color: #fff;
+    text-transform: uppercase;
+    background-color: $primary_color;
+    border-radius: 3px;
+}
+
+@media screen and (max-width: 575px) {
+    .dx-ticket-comment.dx-comment-new .dx-comment-name .dx-comment-new {
+        position: absolute;
+        right: 0;
+        margin: 0;
+    }
+}
+
+.dx-ticket-comment .dx-comment-text + .dx-comment-file {
+    margin-top: 30px;
+}
+
+.dx-ticket-comment .dx-comment-file {
+    position: relative;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    padding: 20px 20px 20px 70px;
+    color: rgba(122, 122, 122, 0.8);
+    background-color: rgba(247, 247, 247, 0.8);
+    border-radius: 3px;
+    -webkit-box-shadow: inset 0 0 0 1px rgba(229, 229, 229, 0.8);
+            box-shadow: inset 0 0 0 1px rgba(229, 229, 229, 0.8);
+    -webkit-transition: background-color .2s ease-in-out, color .2s ease-in-out, -webkit-box-shadow .2s ease-in-out;
+    transition: background-color .2s ease-in-out, color .2s ease-in-out, -webkit-box-shadow .2s ease-in-out;
+    -o-transition: background-color .2s ease-in-out, box-shadow .2s ease-in-out, color .2s ease-in-out;
+    transition: background-color .2s ease-in-out, box-shadow .2s ease-in-out, color .2s ease-in-out;
+    transition: background-color .2s ease-in-out, box-shadow .2s ease-in-out, color .2s ease-in-out, -webkit-box-shadow .2s ease-in-out;
+}
+
+.dx-ticket-comment .dx-comment-file .dx-comment-file-img {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+}
+
+.dx-ticket-comment .dx-comment-file .dx-comment-file-name {
+    display: block;
+    margin-top: -8px;
+    font-size: .875rem;
+}
+
+.dx-ticket-comment .dx-comment-file .dx-comment-file-size {
+    display: block;
+    margin-top: -1px;
+    margin-bottom: -6px;
+    font-size: .875rem;
+    color: #bababa;
+}
+
+.dx-ticket-comment .dx-comment-file .dx-comment-file-icon {
+    position: absolute;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    top: 0;
+    right: 20px;
+    bottom: 0;
+    font-size: 1.5rem;
+}
+
+.dx-ticket-comment .dx-comment-file:hover, .dx-ticket-comment .dx-comment-file.hover {
+    color: #616161;
+    text-decoration: none;
+    background-color: #f2f2f2;
+    -webkit-box-shadow: inset 0 0 0 1px #d4d4d4;
+            box-shadow: inset 0 0 0 1px #d4d4d4;
+}

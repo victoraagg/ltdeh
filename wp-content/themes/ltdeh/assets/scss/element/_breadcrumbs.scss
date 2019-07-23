@@ -1,0 +1,45 @@
+.dx-breadcrumbs {
+    display: block;
+    padding: 0;
+    margin: 0;
+    font-size: .9375rem;
+}
+
+.dx-breadcrumbs > li {
+    display: inline-block;
+    color: #bcbcbc;
+}
+
+.dx-breadcrumbs > li::after {
+    content: " / ";
+    margin-right: 3px;
+    margin-left: 3px;
+}
+
+.dx-breadcrumbs > li:last-child::after {
+    content: "";
+}
+
+.dx-breadcrumbs > li > a {
+    color: #bcbcbc;
+    -webkit-transition: color .2s ease-in-out;
+    -o-transition: color .2s ease-in-out;
+    transition: color .2s ease-in-out;
+}
+
+.dx-breadcrumbs > li > a:hover {
+    color: #fff;
+    text-decoration: none;
+}
+
+.dx-breadcrumbs-dark > li {
+    color: $dark1;
+}
+
+.dx-breadcrumbs-dark > li > a {
+    color: $dark1;
+}
+
+.dx-breadcrumbs-dark > li > a:hover {
+    color: $primary_color;
+}

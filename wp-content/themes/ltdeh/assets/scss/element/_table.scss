@@ -1,0 +1,264 @@
+.dx-table {
+    width: 100%;
+}
+
+.dx-table tbody tr {
+    padding: 30px;
+}
+
+.dx-table tbody tr + tr {
+    border-top: 1px solid #ececec;
+}
+
+.dx-table tbody tr th {
+    padding-right: 28px;
+}
+
+.dx-table tbody tr td {
+    padding-right: 30px;
+}
+
+.dx-table tbody tr td:last-child {
+    padding-right: 0;
+}
+
+.dx-table a:not(.dx-btn) {
+    color: $primary_color;
+    text-decoration: none;
+}
+
+.dx-table a:not(.dx-btn):hover, .dx-table a:not(.dx-btn).hover {
+    color: $dark1;
+    text-decoration: none;
+}
+
+.dx-table-checkout tbody tr {
+    display: block;
+}
+
+.dx-table-checkout tbody tr + tr {
+    padding-top: 0;
+    border-top: 0;
+}
+
+.dx-table-checkout tbody tr .dx-table-checkout-img > a {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    width: 60px;
+    min-width: 60px;
+    height: 52px;
+    overflow: hidden;
+    border-radius: 3px;
+}
+
+.dx-table-checkout tbody tr .dx-table-checkout-img > a img {
+    max-width: 100%;
+}
+
+.dx-table-checkout tbody tr .dx-table-checkout-title {
+    min-width: 220px;
+    font-weight: 600;
+    color: $dark1;
+    letter-spacing: normal;
+}
+
+.dx-table-checkout tbody tr .dx-table-checkout-title a:not(.dx-btn) {
+    display: block;
+    color: $dark1;
+}
+
+.dx-table-checkout tbody tr .dx-table-checkout-title a:not(.dx-btn):hover, .dx-table-checkout tbody tr .dx-table-checkout-title a:not(.dx-btn).hover, .dx-table-checkout tbody tr .dx-table-checkout-title a:not(.dx-btn):focus {
+    color: $primary_color;
+    text-decoration: none;
+}
+
+.dx-table-checkout tbody tr .dx-table-checkout-price {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: $dark1;
+}
+
+.dx-table-checkout tbody tr .dx-table-checkout-delete > a {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    width: 14px;
+    font-size: 2.3rem;
+    color: $dark1;
+    -webkit-transition: color .2s ease-in-out;
+    -o-transition: color .2s ease-in-out;
+    transition: color .2s ease-in-out;
+}
+
+.dx-table-checkout tbody tr .dx-table-checkout-delete > a:hover, .dx-table-checkout tbody tr .dx-table-checkout-delete > a.hover {
+    color: $primary_color;
+    text-decoration: none;
+}
+
+.dx-table-checkout tbody tr .dx-table-checkout-delete > a:focus {
+    text-decoration: none;
+}
+
+.dx-table-default thead {
+    background-color: $primary_color;
+}
+
+.dx-table-default thead tr {
+    font-family: "Maven Pro", sans-serif;
+    font-size: .75rem;
+    font-weight: 500;
+    color: #fff;
+    text-transform: uppercase;
+}
+
+.dx-table-default thead tr th {
+    padding: 20px;
+    font-weight: inherit;
+}
+
+.dx-table-default thead tr th:first-child {
+    padding-left: 50px;
+}
+
+.dx-table-default thead tr th:last-child {
+    padding-right: 50px;
+}
+
+.dx-table-default tbody tr {
+    font-size: .9375rem;
+    font-weight: 400;
+    color: #525252;
+    vertical-align: top;
+    background-color: #fff;
+    -webkit-transition: background-color .1s ease-in-out;
+    -o-transition: background-color .1s ease-in-out;
+    transition: background-color .1s ease-in-out;
+}
+
+.dx-table-default tbody tr:hover, .dx-table-default tbody tr.hover {
+    background-color: #fcfcfc;
+}
+
+.dx-table-default tbody tr a:not(.dx-btn) {
+    color: $primary_color;
+}
+
+.dx-table-default tbody tr th {
+    padding: 29px;
+    padding-left: 50px;
+    font-weight: inherit;
+}
+
+.dx-table-default tbody tr td {
+    padding: 29px 20px;
+}
+
+.dx-table-default tbody tr td:last-child {
+    padding-right: 50px;
+}
+
+@media screen and (max-width: 767px) {
+    .dx-table-default tbody tr th {
+        padding: 24px 20px;
+        padding-left: 30px;
+    }
+    .dx-table-default tbody tr td {
+        padding: 24px 20px;
+    }
+    .dx-table-default tbody tr td:last-child {
+        padding-right: 30px;
+    }
+}
+
+.dx-table-default tbody .dx-table-lastPost {
+    min-width: 220px;
+}
+
+@media screen and (max-width: 767px) {
+    .dx-table-default tbody .dx-table-lastPost {
+        min-width: 200px;
+    }
+}
+
+.dx-table-default tbody .dx-table-licenseKey {
+    width: 230px;
+    min-width: 210px;
+}
+
+.dx-table-default tbody .dx-table-website {
+    width: 230px;
+    min-width: 180px;
+}
+
+.dx-table-default .dx-table-default-title {
+    display: block;
+    margin-bottom: 7px;
+    font-weight: 600;
+}
+
+.dx-table-default .dx-table-default-info {
+    font-size: .875rem;
+}
+
+.dx-table-default .dx-table-default-info a:not(.dx-btn) {
+    color: #993d41;
+}
+
+.dx-table-default .dx-table-default-product a:not(.dx-btn) {
+    color: $dark2;
+}
+
+.dx-table-default .dx-table-default-product a:not(.dx-btn):hover, .dx-table-default .dx-table-default-product a:not(.dx-btn).hover {
+    color: $primary_color;
+    text-decoration: none;
+}
+
+.dx-table-default .dx-table-default-website {
+    color: #bababa;
+}
+
+@media screen and (max-width: 767px) {
+    .dx-table-default thead tr th:first-child {
+        padding-left: 30px;
+    }
+    .dx-table-default thead tr th:last-child {
+        padding-right: 30px;
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    table, thead, tbody, tfoot, th, td, tr { 
+        display: block; 
+        text-align: center;
+	}
+	thead tr { 
+		position: absolute;
+		top: -9999px;
+		left: -9999px;
+	}
+	td { 
+		position: relative;
+		padding-left: 50%; 
+	}
+	td:before { 
+		position: absolute;
+		top: 6px;
+		left: 6px;
+		width: 45%; 
+		padding-right: 10px; 
+		white-space: nowrap;
+    }
+    .dx-table-default tbody tr td {
+        padding: 10px;
+    }
+    .dx-table-default tbody tr td:last-child{
+        padding: 10px;
+    }
+}

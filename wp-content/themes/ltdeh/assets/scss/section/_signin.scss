@@ -1,0 +1,66 @@
+.dx-signin {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    padding: 60px 20px;
+    font-size: .875rem;
+}
+
+.dx-signin a:not(.dx-btn) {
+    color: #bababa;
+    -webkit-transition: color .2s ease-in-out;
+    -o-transition: color .2s ease-in-out;
+    transition: color .2s ease-in-out;
+}
+
+.dx-signin a:not(.dx-btn):hover, .dx-signin a:not(.dx-btn):focus {
+    color: #fff;
+    text-decoration: none;
+}
+
+.dx-signin .dx-signin-content {
+    width: 370px;
+    max-width: 100%;
+}
+
+.dx-signin .dx-signin-or {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    padding: 10px 0;
+    font-family: "Maven Pro", sans-serif;
+    font-size: .75rem;
+    font-weight: 500;
+    color: #bababa;
+}
+
+.dx-signin .dx-signin-or::before, .dx-signin .dx-signin-or::after {
+    content: "";
+    display: block;
+    -webkit-box-flex: 1;
+        -ms-flex-positive: 1;
+            flex-grow: 1;
+    height: 1px;
+    background-color: #282828;
+}
+
+.dx-signin .dx-signin-or::before {
+    margin-right: 25px;
+}
+
+.dx-signin .dx-signin-or::after {
+    margin-left: 25px;
+}

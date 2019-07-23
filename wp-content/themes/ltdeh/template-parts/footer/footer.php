@@ -1,0 +1,75 @@
+<footer class="dx-footer">
+    <div class="dx-box-1">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6 col-lg-4 mb-30">
+                    <div class="dx-widget-footer">
+                        <div class="dx-widget-title">
+                            <a href="<?= home_url(); ?>" class="dx-widget-logo">Ayuntamiento de La Torre de Esteban Hambrán</a>
+                        </div>
+                        <div class="dx-widget-text">
+                            <p class="mt-30 mb-0">Plaza Constitución, 1</p>
+                            <p class="mb-0">45920 - La Torre de Esteban Hambrán (Toledo)</p>
+                            <p class="mb-0">CIF: P4517200D</p>
+                            <p class="mb-0"><a href="tel:925795101">925 795 101</a></p>
+                            <p class="mb-0">oficinatorre@gmail.com</p>
+                            <p class="mb-0">Horario de atención al ciudadano:</p>
+                            <p class="mb-0">L-V 9:00h - 14:00h</p>
+                            <ul class="dx-social-links mnt-3">
+                                <li><a href="https://www.facebook.com/latorredestebanhambran/" target="_blank"><span class="fab fa-facebook"></span></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-lg-2 mb-30">
+                    <div class="dx-widget-footer">
+                        <div class="dx-widget-title">Servicios</div>
+                        <?php
+                            $defaults = array(
+                                'theme_location' => 'footer_menu',
+                                'container' => 'ul',
+                                'menu_class' => 'dx-widget-list'
+                            );
+                            wp_nav_menu($defaults);
+                        ?>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-lg-3 mb-30">
+                    <div class="dx-widget-footer">
+                        <div class="dx-widget-title">Noticias</div>
+                        <div class="dx-widget-portfolio">
+                            <?php $post_query = new WP_Query( 'posts_per_page=5' ); ?>
+                            <?php while ($post_query->have_posts()) : $post_query->the_post(); ?>
+                            <a href="<?php the_permalink() ?>"><?php the_title(); ?></a>                            
+                            <?php 
+                            endwhile;
+                            wp_reset_postdata();
+                            ?>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-lg-3 mb-30">
+                    <div class="dx-widget-footer">
+                        <div class="dx-widget-title">Buscador</div>
+                        <div class="dx-widget-portfolio">
+                            <?php get_search_form(); ?>
+                        </div>
+                        <div class="mt-30 dx-widget-title">Cita previa Consultorio</div>
+                        <a class="dx-btn dx-btn-lg text-white" href="https://sescam.jccm.es/csalud/citas/inicioCita.jsf" target="_blank">Solicitar cita previa</a>     
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+<div class="bg-primary-color dx-box-6 text-center">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="dx-widget-text">
+                    <small class="mb-0 text-white">&copy; <?= date('Y') ?> Ayuntamiento de La Torre de Esteban Hambrán - <span class="dib">Todos los derechos reservados.</span></small>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

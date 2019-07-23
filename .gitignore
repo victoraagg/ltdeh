@@ -1,0 +1,96 @@
+# System #
+*.lnk
+Icon
+.settings/
+/.htaccess
+composer.json
+composer.lock
+/.vscode
+
+# WordPress #
+/wp-admin
+/wp-content/*.php
+/wp-content/languages/
+/wp-content/uploads
+/wp-includes
+/.htaccess
+/wp-*.php
+/*.txt
+/*.html
+/*.php
+
+# Plugins #
+/wp-content/plugins/*
+
+# MUST USE Plugins #
+
+# Themes #
+/wp-content/themes/index.php
+/wp-content/themes/twenty*
+/wp-content/themes/ltdeh/assets/vendor/
+
+# Compiled source #
+*.com
+*.class
+*.dll
+*.exe
+*.o
+*.so
+
+# Fonts #
+*.eot
+*.ttf
+*.woff
+*.woff2
+*.otf
+
+# Images #
+*.jpg
+*.jpeg
+*.png
+*.tiff
+*.gif
+*.svg
+*.ico
+*.psd
+*.ai
+
+# Videos #
+*.mov
+*.mp4
+*.webm
+*.avi
+
+# Logs and databases #
+*.log
+
+# Docs #
+*.pdf
+*.csv
+*.xls
+*.xlsx
+*.doc
+*.docx
+
+# Packages #
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
+
+# OS generated files #
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# CodeKit #
+/wp-content/themes/banium/build/
+config.codekit3

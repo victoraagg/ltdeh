@@ -1,0 +1,22 @@
+@import url('https://fonts.googleapis.com/css?family=Nunito+Sans:400,600,700%7cMaven+Pro:400,500,700');
+$primary_font: 'Nunito Sans', sans-serif;
+
+$primary_color: #13609f;
+$secondary_color1: #8e1317;
+$secondary_color2: #ecb725;
+$secondary_color3: #c2c3c8;
+
+$dark1: #1b1b1b;
+$dark2: #121212;
+$dark3: #232323;
+
+// Responsive Variables
+$extraBig-device: 'only screen and (min-width: 1600px)';
+$laptop-device: 'only screen and (min-width: 1200px) and (max-width: 1600px)';
+$desktop-device: 'only screen and (min-width: 992px) and (max-width: 1199px)';
+$tablet-device-up: 'only screen and (min-width: 992px)';
+$tablet-device: 'only screen and (min-width: 768px) and (max-width: 991px)';
+$large-mobile-up: 'only screen and (min-width: 768px)';
+$large-mobile: 'only screen and (max-width: 767px)';
+$small-mobile-up: 'only screen and (min-width: 576px)';
+$small-mobile: 'only screen and (max-width: 479px)';

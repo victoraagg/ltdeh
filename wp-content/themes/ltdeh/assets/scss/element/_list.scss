@@ -1,0 +1,116 @@
+.dx-list {
+    padding-left: 18px;
+    margin: 0;
+}
+
+.dx-list.dx-list-decimal {
+    padding-left: 37px;
+}
+
+.dx-list.dx-list-decimal > li {
+    padding-left: 0;
+    list-style-type: decimal;
+}
+
+.dx-list > li {
+    padding-left: 8px;
+    margin: 0;
+    color: #7a7a7a;
+}
+
+.dx-list > li + li {
+    margin-top: 11px;
+}
+
+.dx-list > li strong {
+    color: $dark1;
+}
+
+.dx-list > li a {
+    display: block;
+    color: $primary_color;
+    text-decoration: none;
+}
+
+.dx-list > li a:hover, .dx-list > li a:focus {
+    color: $dark1;
+    text-decoration: none;
+}
+
+.dx-list-documentation {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -ms-flex-wrap: nowrap;
+        flex-wrap: nowrap;
+    padding: 25px;
+    margin: 0 -5px;
+    -webkit-box-shadow: none;
+            box-shadow: none;
+}
+
+.dx-list-documentation .dx-list-documentation a::after {
+    display: none;
+}
+
+.dx-list-documentation > li {
+    position: relative;
+    padding: 0 15px;
+    list-style: none;
+}
+
+.dx-list-documentation > li + li {
+    margin-top: 16px;
+}
+
+.dx-list-documentation > li a,
+.dx-list-documentation > li button {
+    position: relative;
+    display: block;
+    padding: 3px 0;
+    font-size: 1rem;
+    font-weight: 600;
+    color: $dark1;
+    text-decoration: none;
+    -webkit-transition: color .2s ease-in-out;
+    -o-transition: color .2s ease-in-out;
+    transition: color .2s ease-in-out;
+}
+
+.dx-list-documentation > li a + .dx-accordion-btn,
+.dx-list-documentation > li button + .dx-accordion-btn {
+    position: absolute;
+    top: -1px;
+    right: 15px;
+}
+
+.dx-list-documentation > li a::after,
+.dx-list-documentation > li button::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: auto;
+    bottom: 0;
+    left: -35px;
+    width: 2px;
+    height: auto;
+    background-color: $primary_color;
+    opacity: 0;
+    will-change: opacity;
+    -webkit-transition: opacity .2s ease-in-out;
+    -o-transition: opacity .2s ease-in-out;
+    transition: opacity .2s ease-in-out;
+}
+
+.dx-list-documentation > li a.active, .dx-list-documentation > li a:hover,
+.dx-list-documentation > li button.active,
+.dx-list-documentation > li button:hover {
+    color: $primary_color;
+    text-decoration: none;
+}
+
+.dx-list-documentation > li a.active::after,
+.dx-list-documentation > li button.active::after {
+    opacity: 1;
+}

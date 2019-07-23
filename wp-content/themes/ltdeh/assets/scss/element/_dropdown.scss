@@ -1,0 +1,122 @@
+.dx-dropdown > a::before,
+.dx-dropdown > button::before {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-top: 21px;
+    margin-left: -10px;
+    visibility: hidden;
+    border: 10px solid transparent;
+    border-bottom: 8px solid #fff;
+    z-index: 100;
+}
+
+.dx-dropdown.show > a::before,
+.dx-dropdown.show > button::before {
+    visibility: visible;
+    z-index: 102;
+}
+
+.dx-dropdown .dropdown-menu {
+    display: block;
+    padding: 15px 0;
+    margin: 37px 0 0;
+    font-family: $primary_font;
+    visibility: hidden;
+    border: 0;
+    -webkit-box-shadow: 0 0 40px 0 rgba(0, 0, 0, 0.05);
+            box-shadow: 0 0 40px 0 rgba(0, 0, 0, 0.05);
+    z-index: 100;
+}
+
+.dx-dropdown .dropdown-menu.show {
+    visibility: visible;
+    z-index: 101;
+}
+
+.dx-dropdown .dropdown-menu li > a:not(.dx-btn) {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    padding: 13px 30px 13px 15px;
+    font-size: .875rem;
+    font-weight: 400;
+    color: #7a7a7a;
+    text-transform: none;
+    white-space: nowrap;
+    -webkit-transition: color .2s ease-in-out, background-color .2s ease-in-out;
+    -o-transition: color .2s ease-in-out, background-color .2s ease-in-out;
+    transition: color .2s ease-in-out, background-color .2s ease-in-out;
+}
+
+.dx-dropdown .dropdown-menu li > a:not(.dx-btn):hover, .dx-dropdown .dropdown-menu li > a:not(.dx-btn).hover, .dx-dropdown .dropdown-menu li > a:not(.dx-btn):focus {
+    color: $dark1;
+    background-color: rgba(0, 0, 0, 0.025);
+}
+
+.dx-dropdown.dx-dropdown-checkout {
+    padding: 0;
+    font-family: $primary_font;
+    font-weight: 600;
+}
+
+.dx-dropdown.dx-dropdown-checkout > a::before,
+.dx-dropdown.dx-dropdown-checkout > button::before {
+    margin-top: 27px;
+}
+
+.dx-dropdown.dx-dropdown-checkout .dropdown-menu {
+    padding: 0;
+    margin: 44px 0 0;
+}
+
+.dx-dropdown.dx-dropdown-checkout .dx-table-checkout tr {
+    padding-top: 27px;
+    padding-bottom: 27px;
+}
+
+.dx-dropdown.dx-dropdown-checkout .dx-table-checkout tr + tr {
+    padding-top: 0;
+    border: 0;
+}
+
+.dx-dropdown.dx-dropdown-checkout .dx-table-checkout-title {
+    min-width: 190px;
+}
+
+.dx-dropdown.dx-dropdown-checkout .dx-table-checkout-title a {
+    font-size: .875rem;
+}
+
+.dx-dropdown.dx-dropdown-checkout .dx-table-checkout-price {
+    font-size: .875rem;
+}
+
+.dx-dropdown.dx-dropdown-checkout .dx-table-checkout-delete a {
+    font-size: 1.6rem;
+    color: #bababa;
+}
+
+.dx-dropdown.dx-dropdown-signin > a::before,
+.dx-dropdown.dx-dropdown-signin > button::before {
+    margin-top: 10px;
+    margin-left: -62px;
+}
+
+.dx-dropdown.dx-dropdown-signin .dropdown-menu {
+    padding: 10px 0;
+    margin-top: 27px;
+}
+
+.dx-dropdown.dx-dropdown-signin .dropdown-menu a:not(.dx-btn) {
+    padding: 10px 15px;
+}
+
+.dx-dropdown.dx-dropdown-signin .dropdown-menu > li a .icon {
+    margin-right: 12px;
+    font-size: 1.45rem;
+}

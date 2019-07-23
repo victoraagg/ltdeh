@@ -1,0 +1,81 @@
+.fancybox-slide {
+    padding: 0;
+}
+
+@media screen and (min-width: 768px) {
+    .fancybox-slide::-webkit-scrollbar-track {
+        background-color: $dark1;
+    }
+    .fancybox-slide::-webkit-scrollbar {
+        width: 8px;
+        background-color: $dark1;
+    }
+    .fancybox-slide::-webkit-scrollbar-thumb {
+        background-color: #fff;
+        border-radius: 4px;
+    }
+}
+
+.dx-popup {
+    display: none;
+    padding: 0;
+}
+
+.dx-popup.dx-popup-signin {
+    position: static;
+    background: none;
+}
+
+.dx-popup.dx-popup-signin::after {
+    content: "";
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    pointer-events: none;
+    background-color: $dark1;
+    z-index: -1;
+}
+
+.dx-popup.dx-popup-modal {
+    width: auto;
+    height: auto;
+    margin: 20px 0;
+}
+
+.dx-popup.dx-popup-modal .fancybox-close-small {
+    top: 13px;
+    right: 13px;
+    width: 46px;
+    height: 46px;
+    color: #bababa;
+}
+
+.dx-popup.dx-popup-modal .fancybox-close-small:hover, .dx-popup.dx-popup-modal .fancybox-close-small.hover {
+    color: #7a7a7a;
+}
+
+.dx-popup.dx-popup-subscribe {
+    width: 365px;
+    border-radius: 3px;
+}
+
+.dx-popup .fancybox-close-small {
+    top: 10px;
+    right: 10px;
+    width: 60px;
+    height: 60px;
+    color: #bababa;
+    -webkit-transition: color .2s ease-in-out;
+    -o-transition: color .2s ease-in-out;
+    transition: color .2s ease-in-out;
+}
+
+.dx-popup .fancybox-close-small:hover, .dx-popup .fancybox-close-small.hover {
+    color: #fff;
+}
+
+.dx-popup .fancybox-close-small.fancybox-focus {
+    outline: 0;
+}

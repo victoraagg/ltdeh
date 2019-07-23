@@ -1,0 +1,100 @@
+.dx-blog-post-box{
+    & img{
+        width: 100%;
+        height: auto;
+    }
+}
+
+.dx-gallery .dx-gallery-item {
+    position: relative;
+    display: block;
+    height: 100%;
+    overflow: hidden;
+}
+
+.dx-gallery .dx-gallery-item:focus {
+    outline: none;
+}
+
+.dx-gallery .dx-gallery-item .dx-gallery-item-overlay {
+    position: absolute;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    font-size: 5rem;
+    line-height: 0;
+    color: #fff;
+    background-color: rgba(27, 27, 27, 0.7);
+    opacity: 0;
+    will-change: opacity;
+    -webkit-transition: opacity .2s ease-in-out;
+    -o-transition: opacity .2s ease-in-out;
+    transition: opacity .2s ease-in-out;
+    z-index: 1;
+}
+
+.dx-gallery .dx-gallery-item .dx-gallery-item-overlay > .icon {
+    opacity: 0;
+    will-change: opacity;
+    -webkit-transition: opacity .2s ease-in-out;
+    -o-transition: opacity .2s ease-in-out;
+    transition: opacity .2s ease-in-out;
+    -webkit-transition-delay: .1s;
+         -o-transition-delay: .1s;
+            transition-delay: .1s;
+}
+
+.dx-gallery .dx-gallery-item .dx-gallery-item-overlay.dx-gallery-item-overlay-md {
+    font-size: 3rem;
+}
+
+@media screen and (max-width: 440px) {
+    .dx-gallery .dx-gallery-item .dx-gallery-item-overlay.dx-gallery-item-overlay-md {
+        font-size: 2rem;
+    }
+}
+
+.dx-gallery .dx-gallery-item .dx-gallery-item-overlay.dx-gallery-item-overlay-sm {
+    font-size: 2rem;
+}
+
+.dx-gallery .dx-gallery-item > img {
+    width: 100%;
+    height: 100%;
+    font-family: "object-fit: cover";
+    -o-object-fit: cover;
+       object-fit: cover;
+    will-change: transform;
+    -webkit-transition: -webkit-transform .4s ease-in-out;
+    transition: -webkit-transform .4s ease-in-out;
+    -o-transition: transform .4s ease-in-out;
+    transition: transform .4s ease-in-out;
+    transition: transform .4s ease-in-out, -webkit-transform .4s ease-in-out;
+    -webkit-transform: scale(1);
+        -ms-transform: scale(1);
+            transform: scale(1);
+}
+
+.dx-gallery .dx-gallery-item:hover > img {
+    -webkit-transform: scale(1.02);
+        -ms-transform: scale(1.02);
+            transform: scale(1.02);
+}
+
+.dx-gallery .dx-gallery-item:hover .dx-gallery-item-overlay {
+    opacity: 1;
+}
+
+.dx-gallery .dx-gallery-item:hover .dx-gallery-item-overlay > .icon {
+    opacity: 1;
+}

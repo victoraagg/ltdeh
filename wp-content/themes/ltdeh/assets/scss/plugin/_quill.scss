@@ -1,0 +1,61 @@
+.dx-editor-quill .dx-editor {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    width: 100%;
+    -webkit-box-align: stretch;
+        -ms-flex-align: stretch;
+            align-items: stretch;
+    padding: 12px 0 12px 18px;
+}
+
+.dx-editor-quill .dx-editor .ql-editor {
+    width: 100%;
+    height: auto;
+}
+
+.dx-editor-quill .ql-toolbar {
+    min-height: 54px;
+    padding: 12px 10px;
+    background-color: rgba(247, 247, 247, 0.8);
+    border-color: rgba(229, 229, 229, 0.8);
+    border-radius: 3px 3px 0 0;
+}
+
+.dx-editor-quill .ql-container {
+    background-color: rgba(247, 247, 247, 0.8);
+    border-color: rgba(229, 229, 229, 0.8);
+    border-radius: 0 0 3px 3px;
+}
+
+.dx-editor-quill .ql-container .ql-editor {
+    padding: 0 18px 0 0;
+    font-family: $primary_font;
+    font-size: 1rem;
+    color: rgba(122, 122, 122, 0.8);
+    -webkit-transition: color .2s ease-in-out;
+    -o-transition: color .2s ease-in-out;
+    transition: color .2s ease-in-out;
+}
+
+.dx-editor-quill .ql-container .ql-editor::-webkit-scrollbar-track {
+    background-color: rgba(247, 247, 247, 0.8);
+}
+
+.dx-editor-quill .ql-container .ql-editor::-webkit-scrollbar {
+    width: 6px;
+    background-color: rgba(247, 247, 247, 0.8);
+}
+
+.dx-editor-quill .ql-container .ql-editor::-webkit-scrollbar-thumb {
+    background-color: rgba(186, 186, 186, 0.6);
+    border-radius: 3px;
+}
+
+.dx-editor-quill .ql-container .ql-editor::-webkit-scrollbar-thumb:hover {
+    background-color: #bababa;
+}
+
+.dx-editor-quill .ql-container .ql-editor:focus, .dx-editor-quill .ql-container .ql-editor.focus {
+    color: #616161;
+}

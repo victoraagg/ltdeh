@@ -1,0 +1,196 @@
+.dx-tab {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    -webkit-box-align: stretch;
+        -ms-flex-align: stretch;
+            align-items: stretch;
+    padding: 8px 35px;
+    margin-right: -5px;
+    margin-left: -5px;
+    -webkit-box-shadow: 0 6px 0 -5px rgba(0, 0, 0, 0.06), 0 -6px 0 -5px rgba(0, 0, 0, 0.06);
+            box-shadow: 0 6px 0 -5px rgba(0, 0, 0, 0.06), 0 -6px 0 -5px rgba(0, 0, 0, 0.06);
+}
+
+@media screen and (max-width: 1200px) {
+    .dx-tab {
+        padding: 8px 40px;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .dx-tab {
+        padding: 8px 20px;
+    }
+}
+
+.dx-tab > li {
+    position: relative;
+    display: inline-block;
+    padding: 0 5px;
+    font-size: .9375rem;
+    font-weight: 600;
+    letter-spacing: normal;
+}
+
+.dx-tab > li a,
+.dx-tab > li button {
+    position: relative;
+    display: block;
+    width: 100%;
+    padding: 10px 15px;
+    color: rgba(27, 27, 27, 0.7);
+    text-align: left;
+    text-decoration: none;
+    -webkit-transition: color .2s ease-in-out;
+    -o-transition: color .2s ease-in-out;
+    transition: color .2s ease-in-out;
+}
+
+@media screen and (max-width: 1200px) {
+    .dx-tab > li a,
+    .dx-tab > li button {
+        padding: 10px 8px;
+    }
+}
+
+.dx-tab > li a > .icon,
+.dx-tab > li button > .icon {
+    margin-left: 4px;
+    opacity: .9;
+}
+
+.dx-tab > li a::after,
+.dx-tab > li button::after {
+    content: "";
+    position: absolute;
+    right: 5px;
+    bottom: -10px;
+    left: 5px;
+    height: 2px;
+    background-color: $primary_color;
+    opacity: 0;
+    will-change: opacity;
+    -webkit-transition: opacity .2s ease-in-out;
+    -o-transition: opacity .2s ease-in-out;
+    transition: opacity .2s ease-in-out;
+}
+
+@media screen and (max-width: 767px) {
+    .dx-tab > li a::after,
+    .dx-tab > li button::after {
+        bottom: 0;
+    }
+}
+
+.dx-tab > li a.active, .dx-tab > li a:hover,
+.dx-tab > li button.active,
+.dx-tab > li button:hover {
+    color: $dark1;
+    text-decoration: none;
+}
+
+.dx-tab > li a.active::after,
+.dx-tab > li button.active::after {
+    opacity: 1;
+}
+
+.dx-tab > li button {
+    font-weight: inherit;
+    cursor: pointer;
+    background: none;
+    border: 0;
+    -webkit-box-shadow: none;
+            box-shadow: none;
+}
+
+.dx-tab-payment {
+    padding: 0;
+    border: 0;
+    -webkit-box-shadow: none;
+            box-shadow: none;
+}
+
+.dx-tab-payment > li {
+    padding: 0;
+}
+
+.dx-tab-payment > li > a {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    height: 100%;
+    padding: 16px;
+    border-radius: 3px;
+    -webkit-box-shadow: inset 0 0 0 1px rgba(229, 229, 229, 0.8);
+            box-shadow: inset 0 0 0 1px rgba(229, 229, 229, 0.8);
+    -webkit-transition: -webkit-box-shadow .2s ease-in-out;
+    transition: -webkit-box-shadow .2s ease-in-out;
+    -o-transition: box-shadow .2s ease-in-out;
+    transition: box-shadow .2s ease-in-out;
+    transition: box-shadow .2s ease-in-out, -webkit-box-shadow .2s ease-in-out;
+}
+
+.dx-tab-payment > li > a.active {
+    -webkit-box-shadow: inset 0 0 0 2px $primary_color;
+            box-shadow: inset 0 0 0 2px $primary_color;
+}
+
+.dx-tab-payment > li > a.active img {
+    -webkit-filter: grayscale(0);
+            filter: grayscale(0);
+    opacity: 1;
+}
+
+.dx-tab-payment > li > a.active .dx-tab-payment-method-text {
+    opacity: 1;
+}
+
+.dx-tab-payment > li > a img {
+    max-width: 100%;
+    -webkit-filter: grayscale(100%);
+            filter: grayscale(100%);
+    opacity: .7;
+    will-change: opacity;
+    -webkit-transition: opacity .2s ease-in-out, -webkit-filter .2s ease-in-out;
+    transition: opacity .2s ease-in-out, -webkit-filter .2s ease-in-out;
+    -o-transition: opacity .2s ease-in-out, filter .2s ease-in-out;
+    transition: opacity .2s ease-in-out, filter .2s ease-in-out;
+    transition: opacity .2s ease-in-out, filter .2s ease-in-out, -webkit-filter .2s ease-in-out;
+}
+
+.dx-tab-payment > li > a img + .dx-tab-payment-method-text {
+    margin-left: 20px;
+}
+
+.dx-tab-payment > li > a .dx-tab-payment-method-text {
+    font-family: "Maven Pro", sans-serif;
+    font-size: 12px;
+    color: $dark1;
+    text-transform: uppercase;
+    opacity: .7;
+    will-change: opacity;
+    -webkit-transition: opacity .2s ease-in-out;
+    -o-transition: opacity .2s ease-in-out;
+    transition: opacity .2s ease-in-out;
+}
+
+.dx-tab-payment > li > a::after {
+    display: none;
+}
+
+.dx-tab-pane {
+    position: absolute;
+}
+
+.dx-tab-pane.active {
+    position: static;
+}

@@ -1,0 +1,44 @@
+.dx-accordion .dx-accordion-btn {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    width: 30px;
+    height: 30px;
+    padding: 0;
+    margin: 0;
+    font-size: 1.6rem;
+    font-weight: inherit;
+    cursor: pointer;
+    background: none;
+    border: 0;
+    -webkit-box-shadow: none;
+            box-shadow: none;
+}
+
+.dx-accordion .dx-accordion-btn > .icon {
+    -webkit-transition: -webkit-transform .2s ease-in-out;
+    transition: -webkit-transform .2s ease-in-out;
+    -o-transition: transform .2s ease-in-out;
+    transition: transform .2s ease-in-out;
+    transition: transform .2s ease-in-out, -webkit-transform .2s ease-in-out;
+    -webkit-transform: scaleY(1) rotate(90deg);
+        -ms-transform: scaleY(1) rotate(90deg);
+            transform: scaleY(1) rotate(90deg);
+}
+
+.dx-accordion .dx-accordion-btn.collapsed > .icon {
+    -webkit-transform: scaleY(-1);
+        -ms-transform: scaleY(-1);
+            transform: scaleY(-1);
+}
+
+.dx-accordion .dx-collapse .dx-list-documentation {
+    padding-top: 15px;
+    padding-bottom: 0;
+}

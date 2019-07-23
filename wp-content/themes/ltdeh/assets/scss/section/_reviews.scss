@@ -1,0 +1,50 @@
+.dx-review {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    height: 100%;
+    padding: 50px;
+    overflow: hidden;
+}
+
+@media screen and (max-width: 575px) {
+    .dx-review {
+        padding: 30px;
+    }
+}
+
+.dx-review .dx-review-title {
+    margin-bottom: 5px;
+    font-family: "Maven Pro", sans-serif;
+    font-size: .875rem;
+    font-weight: 700;
+    color: $dark2;
+    text-transform: uppercase;
+    letter-spacing: normal;
+}
+
+.dx-review .dx-review-subtitle {
+    color: #bababa;
+}
+
+.dx-review .dx-review-text {
+    margin-top: 17px;
+}
+
+@media screen and (max-width: 575px) {
+    .dx-review .dx-review-text {
+        font-size: 1rem;
+    }
+}
+
+.dx-review .dx-review-rating {
+    margin-top: 20px;
+    color: $primary_color;
+}

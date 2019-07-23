@@ -1,0 +1,68 @@
+.dx-changelog + .dx-changelog {
+    margin-top: 48px;
+}
+
+.dx-changelog ul {
+    padding: 0;
+    margin: 0;
+}
+
+.dx-changelog ul > li {
+    position: relative;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    padding: 0;
+    margin: 0;
+    letter-spacing: normal;
+    list-style: none;
+}
+
+.dx-changelog ul > li + li {
+    margin-top: 12px;
+}
+
+.dx-changelog ul > li .dx-changelog-badge {
+    position: relative;
+    display: inline-block;
+    top: 0;
+    width: 41px;
+    min-width: 41px;
+    margin-right: 24px;
+    font-family: "Maven Pro", sans-serif;
+    font-size: .735rem;
+    font-weight: 700;
+    line-height: 12px;
+    color: $dark1;
+    text-transform: uppercase;
+    -webkit-box-shadow: 4px 0 0 -1px $dark1;
+            box-shadow: 4px 0 0 -1px $dark1;
+}
+
+.dx-changelog ul > li.dx-changelog-fix .dx-changelog-badge {
+    -webkit-box-shadow: 5px -1px 0 -1px #19c485, 5px 0 0 -1px #19c485;
+            box-shadow: 5px -1px 0 -1px #19c485, 5px 0 0 -1px #19c485;
+}
+
+.dx-changelog ul > li.dx-changelog-del .dx-changelog-badge {
+    -webkit-box-shadow: 5px -1px 0 -1px #d74242, 5px 0 0 -1px #d74242;
+            box-shadow: 5px -1px 0 -1px #d74242, 5px 0 0 -1px #d74242;
+}
+
+.dx-changelog ul > li.dx-changelog-add .dx-changelog-badge {
+    -webkit-box-shadow: 5px -1px 0 -1px #009ddc, 5px 0 0 -1px #009ddc;
+            box-shadow: 5px -1px 0 -1px #009ddc, 5px 0 0 -1px #009ddc;
+}
+
+.dx-changelog ul > li.dx-changelog-imp .dx-changelog-badge {
+    -webkit-box-shadow: 5px -1px 0 -1px #967bdc, 5px 0 0 -1px #967bdc;
+            box-shadow: 5px -1px 0 -1px #967bdc, 5px 0 0 -1px #967bdc;
+}
+
+.dx-changelog ul > li.dx-changelog-up .dx-changelog-badge {
+    -webkit-box-shadow: 5px -1px 0 -1px #e66b3f, 5px 0 0 -1px #e66b3f;
+            box-shadow: 5px -1px 0 -1px #e66b3f, 5px 0 0 -1px #e66b3f;
+}
