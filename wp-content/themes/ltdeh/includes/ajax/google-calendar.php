@@ -46,8 +46,8 @@ function notify_event_managers($details, $event_id){
     $end = explode('T',$details['event_time']['end_time']);
     $end_hour = explode(':',$end[1]);
     $to = 'latorredeestebanhambran@gmail.com';
-    $subject = __('Solicitud de reserva de espacio', 'ltdeh');
-    $body = 'Nueva reserva de espacio<br><br>';
+    $subject = __('Solicitud de reserva de '.$calendar, 'ltdeh');
+    $body = 'Datos<br><br>';
     $body .= '<strong>Instalación</strong>: '.$calendar.'<br>';
     $body .= '<strong>Día</strong>: '.$day[2].'-'.$day[1].'-'.$day[0].'<br>';
     $body .= '<strong>Horario inicio</strong>: '.$start_hour[0].':'.$start_hour[1].'<br>';
