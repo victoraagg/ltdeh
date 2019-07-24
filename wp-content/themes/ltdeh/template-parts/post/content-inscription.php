@@ -17,6 +17,19 @@ the_post();
         <div class="dx-separator"></div>
         <div class="dx-box-content">
             <div class="dx-form-group">
+                <label for="surname" class="mnt-7">Apellidos</label>
+                <input type="text" name="surname" class="form-control form-control-style-2" id="surname" placeholder="Apellidos">
+            </div>
+        </div><div class="dx-separator"></div>
+        <div class="dx-box-content">
+            <div class="dx-form-group">
+                <label for="age" class="mnt-7">Edad</label>
+                <input type="text" name="age" class="form-control form-control-style-2" id="age" placeholder="Edad">
+            </div>
+        </div>
+        <div class="dx-separator"></div>
+        <div class="dx-box-content">
+            <div class="dx-form-group">
                 <label for="email" class="mnt-7">Email</label>
                 <input type="text" name="email" class="form-control form-control-style-2" id="email" placeholder="Email">
             </div>
@@ -24,16 +37,30 @@ the_post();
         <div class="dx-separator"></div>
         <div class="dx-box-content">
             <div class="dx-form-group">
-                <label for="duration" class="mnt-7">Clases</label>
-                <select id="duration" name="duration" autocomplete="off">
-                    <option value="1">1 clase</option>
-                    <option value="2">2 clases</option>
-                </select>
+                <div class="row">
+                    <div class="col-sm-4"><p>Sexo</p></div>
+                    <div class="col-sm-4 mb-30">
+                        <label for="male">Masculino</label>
+                        <input type="radio" id="male" name="gender" value="M" required>
+                    </div>
+                    <div class="col-sm-4">
+                        <label for="female">Femenino</label>
+                        <input type="radio" id="female" name="gender" value="F" required>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="dx-separator"></div>
+        <div class="dx-box-content">
+            <div class="dx-form-group">
+                <label for="notes" class="mnt-7">Notas / Información adicional</label>
+                <textarea class="form-control form-control-style-2" name="notes" id="notes" cols="30" rows="10"></textarea>
             </div>
         </div>
         <div class="dx-separator mb-30"></div>
         <?php wp_nonce_field( 'noncename_inscription', 'inscription-request'); ?>
-        <button class="dx-btn dx-btn-lg" type="submit" name="button">Inscribirme</button>
+        <input type="hidden" name="event" value="<?= get_the_title() ?>">
+        <button class="dx-btn dx-btn-xl dx-btn-block" type="submit" name="button">Inscribirme</button>
     </form>
 </div>
 <?php

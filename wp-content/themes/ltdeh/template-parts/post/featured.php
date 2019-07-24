@@ -1,6 +1,14 @@
 <?php
+// category: destacada
 $args = array(
-    'posts_per_page' => 2
+    'posts_per_page' => 2,
+    'tax_query' => array(
+        array(
+            'taxonomy' => 'category',
+            'field' => 'term_id',
+            'terms' => 22,
+        ),
+    ),
 );
 $featured_query = new WP_Query($args);
 ?>
