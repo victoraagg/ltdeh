@@ -10,6 +10,9 @@ $params['src2'] = 'src=bDU1OW8wNXBwYXM4ODE1cnAzZHY5NG02Y29AZ3JvdXAuY2FsZW5kYXIuZ
 $params['src3'] = 'src=MHQzdmQwcnZlNmVjNGNpcGNkcWthNmRkOWtAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ';
 $params['src4'] = 'src=N2c2M3FpMWhsZHA2Y2k2OTg2b2xlbDVpanNAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ';
 $params['src5'] = 'src=ZHE0MDg1bm1jYjlzdm1kOXBua2Q5aGIzZzhAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ';
+$params['src6'] = 'src=aGNxNHVjNzBzMjhndTZqNGtwY2FiMWw3ZHNAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ';
+$params['src7'] = 'src=N3A5bGNhN3EzcnNhdmhxZGFsMWZ0ZDBkbjBAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ';
+$params['src8'] = 'src=aG04bTN0MW82Njdzbzlsb2VzMTVrZmI0Mm9AZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ';
 $params['title'] = 'title=Reserva%20de%20Espacios';
 $params['zone'] = 'ctz=Europe%2FMadrid';
 $params['bgcolor'] = 'bgcolor=%23ffffff';

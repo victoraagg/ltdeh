@@ -8,7 +8,7 @@
         <div class="dx-navbar-content">
             <?php
             $defaults = array(
-                'theme_location' => 'top_menu',
+                'theme_location' => 'canvas_menu',
                 'container' => 'ul',
                 'menu_class' => 'dx-nav dx-nav-align-left'
             );
