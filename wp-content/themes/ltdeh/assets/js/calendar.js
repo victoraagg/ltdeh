@@ -16,6 +16,7 @@ function AdjustMinTime(ct) {
 
 jQuery("#book-success").hide();
 jQuery("#book-error").hide();
+jQuery("#aditional-info").hide();
 
 // DateTimePicker plugin: http://xdsoft.net/jqplugins/datetimepicker/
 jQuery("#event-start-time").datetimepicker({ 
@@ -29,6 +30,43 @@ jQuery("#event-start-time").datetimepicker({
 	lang: 'es',
 	onShow: AdjustMinTime, 
 	onSelectDate: AdjustMinTime 
+});
+
+jQuery("#event-calendar").on('change', function(e) {
+	switch (jQuery(this).val()) {
+		// Pabellón Multiusos
+		case 'dq4085nmcb9svmd9pnkd9hb3g8@group.calendar.google.com':
+			jQuery("#aditional-info").hide();
+			break;
+		// Claustro "El Convento"
+		case '7g63qi1hldp6ci6986olel5ijs@group.calendar.google.com':
+			jQuery("#aditional-info").show();
+			break;
+		// Salón de Actos "El Convento"
+		case 'hm8m3t1o667so9loes15kfb42o@group.calendar.google.com':
+			jQuery("#aditional-info").show();
+			break;
+		// Pabellón Polideportivo
+		case 'l559o05ppas8815rp3dv94m6co@group.calendar.google.com':
+			jQuery("#aditional-info").hide();
+			break;
+		// Pista Pádel
+		case 'gh6rh0jhfdc6mgj42occ5qctr4@group.calendar.google.com':
+			jQuery("#aditional-info").hide();
+			break;
+		// Casa de la Juventud
+		case '0t3vd0rve6ec4cipcdqka6dd9k@group.calendar.google.com':
+			jQuery("#aditional-info").show();
+			break;
+		// Hogar del Jubilado
+		case 'hcq4uc70s28gu6j4kpcab1l7ds@group.calendar.google.com':
+			jQuery("#aditional-info").show();
+			break;
+		// Hogar del Jubilado - Aula de informática
+		case '7p9lca7q3rsavhqdal1ftd0dn0@group.calendar.google.com':
+			jQuery("#aditional-info").show();
+			break;
+	  }
 });
 
 jQuery("#create-event").on('click', function(e) {
@@ -58,6 +96,9 @@ jQuery("#create-event").on('click', function(e) {
 		title: jQuery("#event-title").val(), 
 		mail: jQuery("#event-mail").val(), 
 		phone: jQuery("#event-phone").val(), 
+		dni: jQuery("#event-dni").val(), 
+		representation: jQuery("#event-representation").val(), 
+		activity: jQuery("#event-activity").val(), 
 		event_time: {
 			start_time: jQuery("#event-start-time").val().replace(' ', 'T') + ':00',
 			end_time: finalHour.replace(' ', 'T') + ':00',
@@ -83,6 +124,7 @@ jQuery("#create-event").on('click', function(e) {
 				jQuery("#book-error").hide();
 				jQuery("#book-success").show().text('Reserva: ' + response.message + ' creada correctamente. Confirmaremos tu reserva en el email indicado.');
 			}	
+			document.getElementById("form-book").reset();
         }
     });
     
