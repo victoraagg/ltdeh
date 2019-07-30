@@ -5,6 +5,7 @@ the_post();
 <div class="col-lg-8">
     <form action="" class="dx-form" method="post">
         <h1><?= get_the_title() ?></h1>
+        <?php the_post_thumbnail('large', array('class' => 'img-fluid')); ?>
         <?php if(isset($_GET['result'])): ?>
             <div class="alert dx-alert dx-alert-success" role="alert">Inscripción recogida, muchas gracias.</div>
         <?php endif; ?>

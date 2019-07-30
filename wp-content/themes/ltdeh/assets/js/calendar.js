@@ -41,6 +41,7 @@ jQuery("#create-event").on('click', function(e) {
 
 	if(!blank_reg_exp.test(jQuery("#event-title").val())) { error = 1; }
 	if(!blank_reg_exp.test(jQuery("#event-mail").val())) { error = 1; }
+	if(!blank_reg_exp.test(jQuery("#event-phone").val())) { error = 1; }
 	if(!blank_reg_exp.test(jQuery("#event-calendar").val())) { error = 1; }
 	if(!blank_reg_exp.test(jQuery("#event-start-time").val())) { error = 1; }		
 	if(error == 1){ return false; }
@@ -56,6 +57,7 @@ jQuery("#create-event").on('click', function(e) {
 	parameters = { 	
 		title: jQuery("#event-title").val(), 
 		mail: jQuery("#event-mail").val(), 
+		phone: jQuery("#event-phone").val(), 
 		event_time: {
 			start_time: jQuery("#event-start-time").val().replace(' ', 'T') + ':00',
 			end_time: finalHour.replace(' ', 'T') + ':00',

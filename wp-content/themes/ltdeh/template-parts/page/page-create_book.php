@@ -28,7 +28,7 @@ try {
         ),
         array(
             'id' => '0t3vd0rve6ec4cipcdqka6dd9k@group.calendar.google.com',
-            'summary' => 'Bajos Consultorio Médico'
+            'summary' => 'Casa de la Juventud'
         )
     );
 } catch (\Throwable $th) {
@@ -61,6 +61,12 @@ try {
         <div class="dx-separator"></div>
         <div class="dx-box-content">
             <div class="dx-form-group">
+                <input class="form-control form-control-style-2" type="phone" id="event-phone" placeholder="Teléfono" />
+            </div>
+        </div>
+        <div class="dx-separator"></div>
+        <div class="dx-box-content">
+            <div class="dx-form-group">
                 <input class="form-control form-control-style-2" type="text" id="event-start-time" placeholder="Horario" autocomplete="off" />
             </div>
         </div>
@@ -71,6 +77,10 @@ try {
                     <option value="1">1 hora</option>
                     <option value="2">2 horas</option>
                     <option value="3">3 horas</option>
+                    <option value="4">4 hora</option>
+                    <option value="5">5 horas</option>
+                    <option value="6">6 horas</option>
+                    <option value="7">+ de 6 horas</option>
                 </select>
             </div>
         </div>

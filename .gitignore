@@ -7,6 +7,9 @@ composer.json
 composer.lock
 /.vscode
 
+# Composer #
+/vendor
+
 # PWA #
 /pwa/node_modules
 /pwa/build
