@@ -57,6 +57,13 @@
                         <td>--</td>
                         <td><a href="<?= content_url('/docs/horarios-autobus-el-gato.pdf'); ?>" target="_blank">Ver horarios</a></td>
                     </tr>
+                    <tr>
+                        <th scope="row" class="dx-table-default-product">Recodiga de enseres</th>
+                        <td>--</td>
+                        <td>1º y 3º martes de cada mes a partir de las 8 de la mañana</td>
+                        <td>Los enseres se sacarán la noche anterior</td>
+                        <td>--</td>
+                    </tr>
                 </tbody>
             </table>
         </div>

@@ -10,15 +10,20 @@ $args = array(
         ),
     ),
 );
-$featured_query = new WP_Query($args);
+$featured_post = new WP_Query($args);
+$regular_post = new WP_Query( array('posts_per_page' => 1) );
 ?>
 <h2 class="text-center mb-60">Noticias destacadas</h2>
 <?php
-    if ( $featured_query->have_posts() ) {
-        while ( $featured_query->have_posts() ) {
-            $featured_query->the_post();
+    if ( $featured_post->have_posts() ) {
+        while ( $featured_post->have_posts() ) {
+            $featured_post->the_post();
             get_template_part( 'template-parts/post/content', 'loop' );
         }
-    }                 
+    }        
+    while ( $regular_post->have_posts() ) {
+        $regular_post->the_post();
+        get_template_part( 'template-parts/post/content', 'loop' );
+    }     
     wp_reset_postdata();
 ?>
