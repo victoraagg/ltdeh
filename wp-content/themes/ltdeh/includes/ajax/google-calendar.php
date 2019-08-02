@@ -62,12 +62,6 @@ function create_book_ajax(){
             break;
     }
 
-    $start = explode('T',$details['event_time']['start_time']);
-    $start_hour = explode(':',$start[1]);
-    $day = explode('-',$start[0]);
-    $end = explode('T',$details['event_time']['end_time']);
-    $end_hour = explode(':',$end[1]);
-
     // Send PDF to administration
     $html = '
     <!DOCTYPE html>
@@ -107,8 +101,8 @@ function create_book_ajax(){
                 <p>Teléfono: '.$details['phone'].'</p>
                 <p>En representación de: '.$details['representation'].'</p>
                 <p>Actividad: '.$details['activity'].'</p>
-                <p>Día: '.$day[2].'-'.$day[1].'-'.$day[0].'</p>
-                <p>Horario: '.$start_hour[0].':'.$start_hour[1].' - '.$end_hour[0].':'.$end_hour[1].'</p>
+                <p>Día: '.$details['event_time']['day'].'</p>
+                <p>Horario: '.$details['event_time']['start_time'].' - '.$details['event_time']['end_time'].'</p>
                 <div class="clear mb-20"></div>
                 '.$footer.'
             </div>
@@ -158,9 +152,9 @@ function notify_event_managers($details, $event_id, $calendar, $day, $start_hour
     $subject = __('Reserva '.$event_id.' de '.$calendar, 'ltdeh');
     $body = 'Reserva '.$event_id.'<br><br>';
     $body .= '<strong>Instalación</strong>: '.$calendar.'<br>';
-    $body .= '<strong>Día</strong>: '.$day[2].'-'.$day[1].'-'.$day[0].'<br>';
-    $body .= '<strong>Horario inicio</strong>: '.$start_hour[0].':'.$start_hour[1].'<br>';
-    $body .= '<strong>Horario fin</strong>: '.$end_hour[0].':'.$end_hour[1].'<br>';
+    $body .= '<strong>Día</strong>: '.$details['event_time']['day'].'<br>';
+    $body .= '<strong>Horario inicio</strong>: '.$details['event_time']['start_time'].'<br>';
+    $body .= '<strong>Horario fin</strong>: '.$details['event_time']['end_time'].'<br>';
     $body .= '<strong>Nombre</strong>: '.$details['title'].'<br>';
     $body .= '<strong>Email</strong>: '.$details['mail'].'<br>';
     $body .= '<strong>Teléfono</strong>: '.$details['phone'].'<br>';

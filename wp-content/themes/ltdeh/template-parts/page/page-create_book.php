@@ -92,8 +92,8 @@ try {
                         <option value="3">3 horas</option>
                         <option value="4">4 hora</option>
                         <option value="5">5 horas</option>
-                        <option value="6">6 horas</option>
-                        <option value="7">+ de 6 horas</option>
+                        <option value="10">10 horas</option>
+                        <option value="24">24 horas</option>
                     </select>
                 </div>
             </div>

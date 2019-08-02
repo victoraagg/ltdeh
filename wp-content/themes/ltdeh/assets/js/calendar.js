@@ -14,6 +14,22 @@ function AdjustMinTime(ct) {
 	}
 }
 
+function castHour(date){
+	if(date.getHours() < 10){
+		return '0' + date.getHours();
+	}else{
+		return date.getHours();
+	}
+}
+
+function castMinutes(date){
+	if(date.getMinutes() < 10){
+		return '0' + date.getMinutes();
+	}else{
+		return date.getMinutes();
+	}
+}
+
 jQuery("#book-success").hide();
 jQuery("#book-error").hide();
 jQuery("#aditional-info").hide();
@@ -23,8 +39,8 @@ jQuery("#event-start-time").datetimepicker({
 	lazyInit: true,
 	format: 'Y-m-d H:i', 
 	minDate: 0, 
-	minTime: '08:00', 
-	maxTime: '23:00', 
+	minTime: '06:00', 
+	maxTime: '24:00', 
 	step: 30, 
 	dayOfWeekStart: 1,
 	lang: 'es',
@@ -73,6 +89,11 @@ jQuery("#create-event").on('click', function(e) {
 
 	e.preventDefault();
 
+	Date.prototype.addHours= function(h){
+		this.setHours(this.getHours()+h);
+		return this;
+	}
+
 	var blank_reg_exp = /^([\s]{0,}[^\s]{1,}[\s]{0,}){1,}$/;
 	var error = 0;
 	var parameters;
@@ -84,12 +105,11 @@ jQuery("#create-event").on('click', function(e) {
 	if(!blank_reg_exp.test(jQuery("#event-start-time").val())) { error = 1; }		
 	if(error == 1){ return false; }
 
-    // Cast end time
-    var dateTime = jQuery("#event-start-time").val().split(' ');
-    var time = dateTime[1];
-    var hour = time.split(':');
-    var endHour = parseInt(hour[0]) + parseInt(jQuery("#event-duration").val());
-    var finalHour = dateTime[0] + ' ' + endHour + ':' + hour[1];
+	var startTime = new Date( jQuery("#event-start-time").val() ),
+	day = startTime.getUTCDate() + '-' + startTime.getUTCMonth() + '-' + startTime.getUTCFullYear(),
+	hourInit = castHour(startTime) + ':' + castMinutes(startTime),
+	endTime = new Date(startTime).addHours( parseInt(jQuery("#event-duration").val()) ),
+	hourEnd = castHour(endTime) + ':' + castMinutes(endTime);
 
 	// Event details
 	parameters = { 	
@@ -100,10 +120,11 @@ jQuery("#create-event").on('click', function(e) {
 		representation: jQuery("#event-representation").val(), 
 		activity: jQuery("#event-activity").val(), 
 		event_time: {
-			start_time: jQuery("#event-start-time").val().replace(' ', 'T') + ':00',
-			end_time: finalHour.replace(' ', 'T') + ':00',
+			day: day,
+			start_time: hourInit,
+			end_time: hourEnd
 		},
-		calendar: jQuery("#event-calendar").val(), 
+		calendar: jQuery("#event-calendar").val()
 	};
 
 	jQuery.ajax({
@@ -125,7 +146,8 @@ jQuery("#create-event").on('click', function(e) {
 				jQuery("#book-success").show().text('Reserva: ' + response.message + ' creada correctamente. Confirmaremos tu reserva en el email indicado.');
 			}	
 			document.getElementById("form-book").reset();
+			window.scrollTo(0, 0);
         }
-    });
+	});
     
 });
