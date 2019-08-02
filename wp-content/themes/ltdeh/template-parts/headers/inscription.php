@@ -29,9 +29,11 @@ if( isset($_POST['inscription-request']) && wp_verify_nonce( $_POST['inscription
     $body .= 'Género: '.$_POST['gender'].'<br>';
     $body .= 'Información adicional: '.$_POST['notes'].'<br>';
     $headers[] = 'Content-Type: text/html; charset=UTF-8';
-    $headers[] = 'Cc: works.alonsog@gmail.com';
-    $headers[] = 'Cc: arantza.fernandezmerino@gmail.com';
-    $headers[] = 'Cc: chaleco199879@gmail.com';
+    $headers[] = 'Cc: oficinatorre@gmail.com';
+    $headers[] = 'Bcc: '.$_POST['email'];
+    $headers[] = 'Bcc: works.alonsog@gmail.com';
+    $headers[] = 'Bcc: arantza.fernandezmerino@gmail.com';
+    $headers[] = 'Bcc: chaleco199879@gmail.com';
     wp_mail( $to, $subject, $body, $headers );
 
     wp_redirect( get_permalink().'?result='.$nonce ); 
