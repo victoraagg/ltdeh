@@ -1,7 +1,7 @@
 <div class="col-xl-11">
     <div class="dx-box-decorated">
         <div class="table-responsive">
-            <table class="dx-table dx-table-default">
+            <table class="table dx-table dx-table-default">
                 <thead>
                     <tr>
                         <th scope="col">Servicio</th>

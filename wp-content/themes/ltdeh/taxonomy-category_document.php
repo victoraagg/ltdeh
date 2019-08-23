@@ -9,7 +9,7 @@ get_header();
                 <div class="col-lg-8">
                     <?php if ( have_posts() ) : ?>
                         <div class="table-responsive mb-30">
-                            <table class="dx-table dx-table-default">
+                            <table class="table dx-table dx-table-default">
                                 <thead>
                                     <tr>
                                         <th scope="col">Documento</th>

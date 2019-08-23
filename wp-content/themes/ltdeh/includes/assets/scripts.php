@@ -18,13 +18,16 @@ function custom_enqueue_script() {
         wp_enqueue_script('imagesloaded', get_template_directory_uri() . '/assets/vendor/imagesloaded/imagesloaded.pkgd.min.js', array('jquery'), $ltdeh_theme->version, true);
         wp_enqueue_script('popper', get_template_directory_uri() . '/assets/vendor/popper/dist/umd/popper.min.js', array('jquery'), $ltdeh_theme->version, true);
         wp_enqueue_script('dropzone', get_template_directory_uri() . '/assets/vendor/dropzone/dist/min/dropzone.min.js', array('jquery'), $ltdeh_theme->version, true);
+        wp_enqueue_script('fullcalendar', get_template_directory_uri() . '/assets/vendor/fullcalendar-4.3.1/packages/core/main.js', array('jquery'), $ltdeh_theme->version, true);
+        wp_enqueue_script('fullcalendar', get_template_directory_uri() . '/assets/vendor/fullcalendar-4.3.1/packages/core/locales-all.js', array('jquery'), $ltdeh_theme->version, true);
+        wp_enqueue_script('fullcalendar-daygrid', get_template_directory_uri() . '/assets/vendor/fullcalendar-4.3.1/packages/daygrid/main.js', array('jquery', 'fullcalendar'), $ltdeh_theme->version, true);
         wp_enqueue_script('quill', get_template_directory_uri() . '/assets/vendor/quill/dist/quill.min.js', array('jquery'), $ltdeh_theme->version, true);
         wp_enqueue_script('amdesk', get_template_directory_uri() . '/assets/js/amdesk-min.js', array('jquery'), $ltdeh_theme->version, true);
         wp_enqueue_script('amdesk-init', get_template_directory_uri() . '/assets/js/amdesk-init.js', array('jquery'), $ltdeh_theme->version, true);
-        wp_enqueue_script('datetimepicker', '//cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.1.9/jquery.datetimepicker.min.js', array('jquery'), $ltdeh_theme->version, true);
-        wp_enqueue_script('calendar', get_template_directory_uri() . '/assets/js/calendar.js', array('jquery'), $ltdeh_theme->version, true);
+        wp_enqueue_script('calendar', get_template_directory_uri() . '/assets/js/calendar.js', array('jquery', 'fullcalendar'), $ltdeh_theme->version, true);
         wp_localize_script('calendar', 'wp_ajax_calendar', array(
-            'ajaxurl' => admin_url( 'admin-ajax.php' )
+            'ajaxurl' => admin_url( 'admin-ajax.php' ),
+            'all_books' => ltdeh_get_all_books()
         ));
     }
 }

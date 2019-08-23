@@ -26,39 +26,22 @@ function create_book_ajax(){
     $footer_2 .= '<p>8.- La responsabilidad del consumo de alcohol en los menores recaerá en la persona que alquile este local.</p>';
 
     switch ($details['calendar']) {
-        case 'gh6rh0jhfdc6mgj42occ5qctr4@group.calendar.google.com':
-            $calendar = 'Pista Pádel';
+        case 'Pista Pádel 1':
+        case 'Pista Pádel 2':
+        case 'Pabellón Polideportivo':
+        case 'Pabellón Multiusos':
+        case 'Salón de Actos - El Convento':
+        case 'Hogar del Jubilado':
+        case 'Hogar del Jubilado - Aula de informática':
             $footer = $footer_1;
             break;
-        case 'l559o05ppas8815rp3dv94m6co@group.calendar.google.com':
-            $calendar = 'Pabellón Polideportivo';
-            $footer = $footer_1;
-            break;
-        case 'dq4085nmcb9svmd9pnkd9hb3g8@group.calendar.google.com':
-            $calendar = 'Pabellón multiusos';
-            $footer = $footer_1;
-            break;
-        case '7g63qi1hldp6ci6986olel5ijs@group.calendar.google.com':
-            $calendar = 'Claustro "El Convento"';
+        case 'Claustro - El Convento':
             $footer = $footer_2;
             $footer .= '<p>9.- El usuario abonará una fianza de 60 euros y un cargo por el alquiler de 100 euros.</p>';
             break;
-        case 'hm8m3t1o667so9loes15kfb42o@group.calendar.google.com':
-            $calendar = 'Salón de Actos "El Convento"';
-            $footer = $footer_1;
-            break;
-        case '0t3vd0rve6ec4cipcdqka6dd9k@group.calendar.google.com':
-            $calendar = 'Casa de la Juventud';
+        case 'Casa de la Juventud':
             $footer = $footer_2;
             $footer .= '<p>9.- El usuario abonará una fianza de 60 euros y un cargo por el alquiler de 40 euros.</p>';
-            break;
-        case 'hcq4uc70s28gu6j4kpcab1l7ds@group.calendar.google.com':
-            $calendar = 'Hogar del Jubilado';
-            $footer = $footer_1;
-            break;
-        case '7p9lca7q3rsavhqdal1ftd0dn0@group.calendar.google.com':
-            $calendar = 'Hogar del Jubilado - Aula de informática';
-            $footer = $footer_1;
             break;
     }
 
@@ -94,15 +77,16 @@ function create_book_ajax(){
                 <small>R.E.L. Nº: 01451719</small>
             </div>
             <div class="col-1">
-                <p><strong>AUTORIZACIÓN DE USO - '.$calendar.'</strong></p>
+                <p><strong>AUTORIZACIÓN DE USO - '.$details['calendar'].'</strong></p>
                 <p>D./Dª.: '.$details['title'].'</p>
                 <p>D.N.I.: '.$details['dni'].'</p>
                 <p>Email: '.$details['mail'].'</p>
                 <p>Teléfono: '.$details['phone'].'</p>
                 <p>En representación de: '.$details['representation'].'</p>
                 <p>Actividad: '.$details['activity'].'</p>
-                <p>Día: '.$details['event_time']['day'].'</p>
-                <p>Horario: '.$details['event_time']['start_time'].' - '.$details['event_time']['end_time'].'</p>
+                <p>Día: '.$details['event_time']['day'].' de '.$details['event_time']['month'].' de '.date('Y').'</p>
+                <p>Hora inicio: '.$details['event_time']['start_time'].' h.</p>
+                <p>Duración: '.$details['event_time']['duration'].' h.</p>
                 <div class="clear mb-20"></div>
                 '.$footer.'
             </div>
@@ -119,32 +103,56 @@ function create_book_ajax(){
     $mpdf->Output('../wp-content/solicitudes/'.$event_id.'.pdf', \Mpdf\Output\Destination::FILE);
     $attachment = array(ABSPATH.'/wp-content/solicitudes/'.$event_id.'.pdf');
 
-    notify_event_managers($details, $event_id, $calendar, $day, $start_hour, $end_hour, $attachment);
+    $availability = ltdeh_check_availability_book($details['event_time'], $details['calendar']);
+    if(!$availability){
+        wp_send_json( array('message' => 'Error') );
+        exit();
+    }
+    
+    if(strlen($details['event_time']['day'])==1){
+        $day = '0'.$details['event_time']['day'];
+    }else{
+        $day = $details['event_time']['day'];
+    }
+
+    if(strlen($details['event_time']['month'])==1){
+        $month = '0'.$details['event_time']['month'];
+    }else{
+        $month = $details['event_time']['month'];
+    }
+    
+    $new_book = array(
+        'post_title' => $event_id,
+        'post_status' => 'publish',
+        'post_type' => 'book',
+        'meta_input' => array(
+            '_book_name' => $details['title'],
+            '_book_mail' => $details['mail'],
+            '_book_phone' => $details['phone'],
+            '_book_day' => $day,
+            '_book_month' => $month,
+            '_book_year' => date('Y'),
+            '_book_hour' => $details['event_time']['start_time'],
+            '_book_duration' => $details['event_time']['duration'],
+            '_book_site' => $details['calendar'],
+            '_book_dni' => $details['dni'],
+            '_book_representation' => $details['representation'],
+            '_book_activity' => $details['activity']
+        )
+    );    
+    wp_insert_post( $new_book );
+
+    notify_event_managers($details, $event_id, $details['calendar'], $day, $start_hour, $end_hour, $attachment);
     wp_send_json( array('message' => __($event_id, 'ltdeh') ) );
 
-    /*
-    $capi = new GoogleCalendarApi();
-    // Get user calendar timezone
-    $user_timezone = $capi->GetUserCalendarTimezone(ACCESS_TOKEN);
-    if($capi->checkAvailability($event['calendar'], $event['event_time'], ACCESS_TOKEN) == true){
-        // Create event on specific calendar - default value: 'primary' 
-        $event_id = $capi->CreateCalendarEvent($event['calendar'], $event['title'], $event['event_time'], $user_timezone, ACCESS_TOKEN);
-        wp_send_json( array('message' => __($event_id, 'ltdeh') ) );
-    }else{
-        wp_send_json( array('message' => __('Error', 'ltdeh') ) );
-    }
-    */
 }
 
 function notify_event_managers($details, $event_id, $calendar, $day, $start_hour, $end_hour, $attachment){
     switch ($calendar) {
-        case 'Pista Pádel':
-            $attachment = NULL;
-            break;
+        case 'Pista Pádel 1':
+        case 'Pista Pádel 2':
         case 'Pabellón Polideportivo':
-            $attachment = NULL;
-            break;
-        case 'Pabellón multiusos':
+        case 'Pabellón Multiusos':
             $attachment = NULL;
             break;
     }
@@ -152,9 +160,9 @@ function notify_event_managers($details, $event_id, $calendar, $day, $start_hour
     $subject = __('Reserva '.$event_id.' de '.$calendar, 'ltdeh');
     $body = 'Reserva '.$event_id.'<br><br>';
     $body .= '<strong>Instalación</strong>: '.$calendar.'<br>';
-    $body .= '<strong>Día</strong>: '.$details['event_time']['day'].'<br>';
-    $body .= '<strong>Horario inicio</strong>: '.$details['event_time']['start_time'].'<br>';
-    $body .= '<strong>Horario fin</strong>: '.$details['event_time']['end_time'].'<br>';
+    $body .= '<strong>Día</strong>: '.$details['event_time']['day'].' de '.$details['event_time']['month'].' de '.date('Y').'<br>';
+    $body .= '<strong>Hora inicio</strong>: '.$details['event_time']['start_time'].' h.<br>';
+    $body .= '<strong>Duración</strong>: '.$details['event_time']['duration'].' h.<br>';
     $body .= '<strong>Nombre</strong>: '.$details['title'].'<br>';
     $body .= '<strong>Email</strong>: '.$details['mail'].'<br>';
     $body .= '<strong>Teléfono</strong>: '.$details['phone'].'<br>';

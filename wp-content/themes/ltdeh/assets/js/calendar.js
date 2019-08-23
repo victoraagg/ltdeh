@@ -1,85 +1,60 @@
-// Selected time should not be less than current time
-function AdjustMinTime(ct) {
-	var dtob = new Date(),
-  		current_date = dtob.getDate(),
-  		current_month = dtob.getMonth() + 1,
-  		current_year = dtob.getFullYear();
-  			
-	var full_date = current_year + '-' + ( current_month < 10 ? '0' + current_month : current_month ) + '-' +  ( current_date < 10 ? '0' + current_date : current_date );
-
-	if(ct.dateFormat('Y-m-d') == full_date){
-		this.setOptions({ minTime: 0 });
-	} else {
-		this.setOptions({ minTime: false });
-	}
-}
-
-function castHour(date){
-	if(date.getHours() < 10){
-		return '0' + date.getHours();
-	}else{
-		return date.getHours();
-	}
-}
-
-function castMinutes(date){
-	if(date.getMinutes() < 10){
-		return '0' + date.getMinutes();
-	}else{
-		return date.getMinutes();
-	}
-}
+// https://fullcalendar.io/
+document.addEventListener('DOMContentLoaded', function() {
+	var calendarEl = document.getElementById('calendar');
+	var calendar = new FullCalendar.Calendar(calendarEl, {
+		header: {
+			left: '',
+			center: 'title',
+			right: 'prev,next'
+		},
+		plugins: [ 'dayGrid' ],
+		events: wp_ajax_calendar.all_books
+		/*
+		events: [
+			{
+			  	title: 'Event title',
+				start: '2019-08-01T19:00:00',
+				end: '2019-08-01T21:00:00'
+			}
+		]
+		*/
+	});
+	calendar.setOption('locale', 'es');
+	calendar.setOption('firstDay', 1);
+	calendar.render();
+});
 
 jQuery("#book-success").hide();
 jQuery("#book-error").hide();
 jQuery("#aditional-info").hide();
 
-// DateTimePicker plugin: http://xdsoft.net/jqplugins/datetimepicker/
-jQuery("#event-start-time").datetimepicker({ 
-	lazyInit: true,
-	format: 'Y-m-d H:i', 
-	minDate: 0, 
-	minTime: '06:00', 
-	maxTime: '24:00', 
-	step: 30, 
-	dayOfWeekStart: 1,
-	lang: 'es',
-	onShow: AdjustMinTime, 
-	onSelectDate: AdjustMinTime 
-});
-
 jQuery("#event-calendar").on('change', function(e) {
 	switch (jQuery(this).val()) {
-		// Pabellón Multiusos
-		case 'dq4085nmcb9svmd9pnkd9hb3g8@group.calendar.google.com':
+		case 'Pabellón Multiusos':
 			jQuery("#aditional-info").hide();
 			break;
-		// Claustro "El Convento"
-		case '7g63qi1hldp6ci6986olel5ijs@group.calendar.google.com':
+		case 'Claustro - El Convento':
 			jQuery("#aditional-info").show();
 			break;
-		// Salón de Actos "El Convento"
-		case 'hm8m3t1o667so9loes15kfb42o@group.calendar.google.com':
+		case 'Salón de Actos - El Convento':
 			jQuery("#aditional-info").show();
 			break;
-		// Pabellón Polideportivo
-		case 'l559o05ppas8815rp3dv94m6co@group.calendar.google.com':
+		case 'Pabellón Polideportivo':
 			jQuery("#aditional-info").hide();
 			break;
-		// Pista Pádel
-		case 'gh6rh0jhfdc6mgj42occ5qctr4@group.calendar.google.com':
+		case 'Casa de la Juventud':
+			jQuery("#aditional-info").show();
+			break;
+		case 'Pista Pádel 1':
 			jQuery("#aditional-info").hide();
 			break;
-		// Casa de la Juventud
-		case '0t3vd0rve6ec4cipcdqka6dd9k@group.calendar.google.com':
+		case 'Pista Pádel 2':
+			jQuery("#aditional-info").hide();
+			break;
+		case 'Hogar del Jubilado':
 			jQuery("#aditional-info").show();
 			break;
-		// Hogar del Jubilado
-		case 'hcq4uc70s28gu6j4kpcab1l7ds@group.calendar.google.com':
-			jQuery("#aditional-info").show();
-			break;
-		// Hogar del Jubilado - Aula de informática
-		case '7p9lca7q3rsavhqdal1ftd0dn0@group.calendar.google.com':
+		case 'Hogar del Jubilado - Aula de informática':
 			jQuery("#aditional-info").show();
 			break;
 	  }
@@ -89,11 +64,6 @@ jQuery("#create-event").on('click', function(e) {
 
 	e.preventDefault();
 
-	Date.prototype.addHours= function(h){
-		this.setHours(this.getHours()+h);
-		return this;
-	}
-
 	var blank_reg_exp = /^([\s]{0,}[^\s]{1,}[\s]{0,}){1,}$/;
 	var error = 0;
 	var parameters;
@@ -101,15 +71,12 @@ jQuery("#create-event").on('click', function(e) {
 	if(!blank_reg_exp.test(jQuery("#event-title").val())) { error = 1; }
 	if(!blank_reg_exp.test(jQuery("#event-mail").val())) { error = 1; }
 	if(!blank_reg_exp.test(jQuery("#event-phone").val())) { error = 1; }
+	if(!blank_reg_exp.test(jQuery("#event-day").val())) { error = 1; }
+	if(!blank_reg_exp.test(jQuery("#event-month").val())) { error = 1; }
+	if(!blank_reg_exp.test(jQuery("#event-start-time").val())) { error = 1; }	
+	if(!blank_reg_exp.test(jQuery("#event-duration").val())) { error = 1; }	
 	if(!blank_reg_exp.test(jQuery("#event-calendar").val())) { error = 1; }
-	if(!blank_reg_exp.test(jQuery("#event-start-time").val())) { error = 1; }		
 	if(error == 1){ return false; }
-
-	var startTime = new Date( jQuery("#event-start-time").val() ),
-	day = startTime.getUTCDate() + '-' + startTime.getUTCMonth() + '-' + startTime.getUTCFullYear(),
-	hourInit = castHour(startTime) + ':' + castMinutes(startTime),
-	endTime = new Date(startTime).addHours( parseInt(jQuery("#event-duration").val()) ),
-	hourEnd = castHour(endTime) + ':' + castMinutes(endTime);
 
 	// Event details
 	parameters = { 	
@@ -120,9 +87,10 @@ jQuery("#create-event").on('click', function(e) {
 		representation: jQuery("#event-representation").val(), 
 		activity: jQuery("#event-activity").val(), 
 		event_time: {
-			day: day,
-			start_time: hourInit,
-			end_time: hourEnd
+			day: jQuery("#event-day").val(),
+			month: jQuery("#event-month").val(),
+			start_time: jQuery("#event-start-time").val(),
+			duration: jQuery("#event-duration").val()
 		},
 		calendar: jQuery("#event-calendar").val()
 	};
