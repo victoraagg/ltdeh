@@ -7,7 +7,10 @@ document.addEventListener('DOMContentLoaded', function() {
 			center: 'title',
 			right: 'prev,next'
 		},
-		plugins: [ 'dayGrid' ],
+		plugins: [ 'dayGrid', 'interaction' ],
+		eventClick: function(event, jsEvent, view) {
+			alert(event.event._def.title);
+        },
 		events: wp_ajax_calendar.all_books
 		/*
 		events: [

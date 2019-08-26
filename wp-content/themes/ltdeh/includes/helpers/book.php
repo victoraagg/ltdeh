@@ -20,7 +20,11 @@ function ltdeh_get_all_books(){
             $_book_duration = get_post_meta( get_the_ID(), '_book_duration', true );
             $_book_site = get_post_meta( get_the_ID(), '_book_site', true );
             $_book_duration_desc = explode(':',$_book_hour);
-            $_end_hour = $_book_duration_desc[0]+$_book_duration.':'.$_book_duration_desc[1].':'.$_book_duration_desc[2];
+            $initial_end_hour = $_book_duration_desc[0]+$_book_duration;
+            if($initial_end_hour > 24){
+                $initial_end_hour = 24;
+            }
+            $_end_hour = $initial_end_hour.':'.$_book_duration_desc[1].':'.$_book_duration_desc[2];
             $book = [
                 'title' => $_book_site,
                 'start' => $_book_year.'-'.$_book_month.'-'.$_book_day.'T'.$_book_hour,

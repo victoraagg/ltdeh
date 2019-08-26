@@ -21,6 +21,7 @@ function custom_enqueue_script() {
         wp_enqueue_script('fullcalendar', get_template_directory_uri() . '/assets/vendor/fullcalendar-4.3.1/packages/core/main.js', array('jquery'), $ltdeh_theme->version, true);
         wp_enqueue_script('fullcalendar', get_template_directory_uri() . '/assets/vendor/fullcalendar-4.3.1/packages/core/locales-all.js', array('jquery'), $ltdeh_theme->version, true);
         wp_enqueue_script('fullcalendar-daygrid', get_template_directory_uri() . '/assets/vendor/fullcalendar-4.3.1/packages/daygrid/main.js', array('jquery', 'fullcalendar'), $ltdeh_theme->version, true);
+        wp_enqueue_script('fullcalendar-interaction', get_template_directory_uri() . '/assets/vendor/fullcalendar-4.3.1/packages/interaction/main.js', array('jquery', 'fullcalendar'), $ltdeh_theme->version, true);
         wp_enqueue_script('quill', get_template_directory_uri() . '/assets/vendor/quill/dist/quill.min.js', array('jquery'), $ltdeh_theme->version, true);
         wp_enqueue_script('amdesk', get_template_directory_uri() . '/assets/js/amdesk-min.js', array('jquery'), $ltdeh_theme->version, true);
         wp_enqueue_script('amdesk-init', get_template_directory_uri() . '/assets/js/amdesk-init.js', array('jquery'), $ltdeh_theme->version, true);
