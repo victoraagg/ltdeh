@@ -14,7 +14,7 @@
             <span></span>
             <span></span>
         </button>
-        <div class="dx-navbar-content">
+        <div class="dx-navbar-content" role="navigation" aria-label="Main">
             <?php
             $defaults = array(
                 'theme_location' => 'top_menu',
