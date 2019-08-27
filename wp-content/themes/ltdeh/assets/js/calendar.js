@@ -9,7 +9,14 @@ document.addEventListener('DOMContentLoaded', function() {
 		},
 		plugins: [ 'dayGrid', 'interaction' ],
 		eventClick: function(event, jsEvent, view) {
-			alert(event.event._def.title);
+			var title_all = event.event._def.title;
+			var title = title_all.split(' | ');
+			//alert(title[0]);
+			Swal.fire(
+				title[0],
+				title[1],
+				'info'
+			)
         },
 		events: wp_ajax_calendar.all_books
 		/*

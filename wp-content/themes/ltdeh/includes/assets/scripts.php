@@ -7,6 +7,7 @@ function custom_enqueue_script() {
     $ltdeh_theme = wp_get_theme('ltdeh');
     if(!is_admin() && $GLOBALS['pagenow'] != 'wp-login.php'){
         wp_enqueue_script('fontawesome', 'https://kit.fontawesome.com/ac351d98a4.js', array(), $ltdeh_theme->version, true);
+        wp_enqueue_script('swal', 'https://cdn.jsdelivr.net/npm/sweetalert2@8', array(), $ltdeh_theme->version, true);
         wp_enqueue_script('ofi', get_template_directory_uri() . '/assets/vendor/object-fit-images/dist/ofi.min.js', array('jquery'), $ltdeh_theme->version, true);
         wp_enqueue_script('bootstrap', get_template_directory_uri() . '/assets/vendor/bootstrap/dist/js/bootstrap.min.js', array('jquery'), $ltdeh_theme->version, true);
         wp_enqueue_script('fancybox', get_template_directory_uri() . '/assets/vendor/fancybox/dist/jquery.fancybox.min.js', array('jquery'), $ltdeh_theme->version, true);
