@@ -68,7 +68,12 @@
         <div class="row">
             <div class="col-sm-12">
                 <div class="dx-widget-text">
-                    <small class="mb-0 text-white">&copy; <?= date('Y') ?> Ayuntamiento de La Torre de Esteban Hambrán - <span class="dib">Todos los derechos reservados.</span></small>
+                    <small class="mb-0 text-white">2019-<?= date('Y') ?> Ayuntamiento de La Torre de Esteban Hambrán - <span class="dib">Todos los derechos reservados.</span></small>
+                    <hr>
+                    <a target="_blank" rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">
+                        <img alt="Licencia Creative Commons" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" />
+                    </a>
+                    <small class="text-white">Este proyecto está bajo una <a target="_blank" rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Licencia Creative Commons Atribución-NoComercial-CompartirIgual 4.0 Internacional</a></small>
                 </div>
             </div>
         </div>
