@@ -77,3 +77,19 @@ function ltdeh_add_custom_caps() {
 }
 
 add_action( 'admin_init', 'ltdeh_add_custom_caps');
+
+//Estado en columnas de reservas
+function show_book_active_column( $columns ) {
+    $columns['_book_active'] = 'Activa';
+    return $columns;
+}
+add_filter( 'manage_book_posts_columns', 'show_book_active_column' );
+
+function custom_book_column( $column, $post_id ) {
+    switch ( $column ) {
+        case '_book_active' :
+            echo get_post_meta( $post_id , '_book_active' , true ); 
+            break;
+    }
+}
+add_action( 'manage_book_posts_custom_column' , 'custom_book_column', 10, 2 );
