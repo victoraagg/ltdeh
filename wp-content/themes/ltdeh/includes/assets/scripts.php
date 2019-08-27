@@ -25,7 +25,8 @@ function custom_enqueue_script() {
         wp_enqueue_script('quill', get_template_directory_uri() . '/assets/vendor/quill/dist/quill.min.js', array('jquery'), $ltdeh_theme->version, true);
         wp_enqueue_script('amdesk', get_template_directory_uri() . '/assets/js/amdesk-min.js', array('jquery'), $ltdeh_theme->version, true);
         wp_enqueue_script('amdesk-init', get_template_directory_uri() . '/assets/js/amdesk-init.js', array('jquery'), $ltdeh_theme->version, true);
-        wp_enqueue_script('calendar', get_template_directory_uri() . '/assets/js/calendar.js', array('jquery', 'fullcalendar'), $ltdeh_theme->version, true);
+        wp_enqueue_script('calendar', get_template_directory_uri() . '/assets/js/calendar-min.js', array('jquery', 'fullcalendar'), $ltdeh_theme->version, true);
+        wp_enqueue_script('cookies', get_template_directory_uri() . '/assets/js/cookies-min.js', array('jquery'), $ltdeh_theme->version, true);
         wp_localize_script('calendar', 'wp_ajax_calendar', array(
             'ajaxurl' => admin_url( 'admin-ajax.php' ),
             'all_books' => ltdeh_get_all_books()

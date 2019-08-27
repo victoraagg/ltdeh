@@ -1,0 +1,41 @@
+.modal-cookies {
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	z-index: 999;
+	display: none;
+	-webkit-transition: all 0.3s;
+	-moz-transition: all 0.3s;
+	transition: all 0.3s;
+	pointer-events: auto;
+}
+
+.modal-cookies > div {
+	width: 400px;
+	position: relative;
+	margin: 0% 0% 10% 10%;
+	padding: 2.5rem 2rem 2rem 2rem;
+	background-color: $secondary_color2;
+    color: #fff;
+    & a{
+        color: $primary_color;
+    }
+    @media #{$large-mobile}{
+        width: 80%;
+    }
+}
+
+.cookies-close {
+	line-height: 50px;
+	font-size: 80%;
+	position: absolute;
+	right: 0;
+	text-align: center;
+	top: 0;
+	width: 70px;
+	text-decoration: none;
+}
+
+.cookies-close:hover {
+	color: $secondary_color1;
+}
