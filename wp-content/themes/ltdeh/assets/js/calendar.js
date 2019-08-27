@@ -67,7 +67,7 @@ jQuery("#event-calendar").on('change', function(e) {
 		case 'Hogar del Jubilado - Aula de informática':
 			jQuery("#aditional-info").show();
 			break;
-	  }
+	}
 });
 
 jQuery("#create-event").on('click', function(e) {

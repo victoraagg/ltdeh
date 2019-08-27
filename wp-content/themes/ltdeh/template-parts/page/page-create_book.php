@@ -54,6 +54,7 @@
                 <select required id="event-duration">
                     <option value="">Duración</option>
                     <option value="1">1 hora</option>
+                    <option value="1:30">1:30 horas</option>
                     <option value="2">2 horas</option>
                     <option value="3">3 horas</option>
                     <option value="4">4 horas</option>

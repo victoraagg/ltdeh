@@ -26,12 +26,32 @@ function ltdeh_get_all_books(){
             $_book_hour = get_post_meta( get_the_ID(), '_book_hour', true );
             $_book_duration = get_post_meta( get_the_ID(), '_book_duration', true );
             $_book_site = get_post_meta( get_the_ID(), '_book_site', true );
-            $_book_duration_desc = explode(':',$_book_hour);
-            $initial_end_hour = $_book_duration_desc[0]+$_book_duration;
-            if($initial_end_hour > 24){
-                $initial_end_hour = 24;
+            $_book_hour_desc = explode(':',$_book_hour);
+            if (strpos($_book_duration, ':') !== false) {
+                $_book_duration_initial = explode(':',$_book_duration);
+                $final_hour = $_book_hour_desc[0]+$_book_duration_initial[0];
+                if($final_hour > 24){
+                    $final_hour = 24;
+                }
+                $final_mins = $_book_hour_desc[1]+$_book_duration_initial[1];
+                if($final_mins == 60){
+                    $final_mins = '00';
+                    $final_hour = $final_hour+1;
+                    if($final_hour > 24){
+                        $final_hour = 24;
+                    }
+                }
+                $_end_hour = $final_hour.':'.$final_mins.':'.$_book_hour_desc[2];
+            }else{
+                $final_hour = $_book_hour_desc[0]+$_book_duration;
+                if($final_hour > 24){
+                    $final_hour = 24;
+                    $final_mins = '00';
+                }else{
+                    $final_mins = $_book_hour_desc[1];
+                }
+                $_end_hour = $final_hour.':'.$final_mins.':'.$_book_hour_desc[2];
             }
-            $_end_hour = $initial_end_hour.':'.$_book_duration_desc[1].':'.$_book_duration_desc[2];
             $book = [
                 'title' => $_book_site.' | Horario: '.$_book_hour. ' - '.$_end_hour,
                 'start' => $_book_year.'-'.$_book_month.'-'.$_book_day.'T'.$_book_hour,
