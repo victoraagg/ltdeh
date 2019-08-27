@@ -1,7 +1,7 @@
 # Proyecto - Ayto LTDEH :school:
 
 latorredestebanhambran.es
-[Web](https://www.latorredestebanhambran.es)
+[Acceder](https://www.latorredestebanhambran.es)
 
 ## Servicios pendientes
 
