@@ -25,16 +25,8 @@ function create_book_ajax(){
     $footer_2 .= '<p>7.- Por la ley 42/2010 queda totalmente prohibido fumar en este local</p>';
     $footer_2 .= '<p>8.- La responsabilidad del consumo de alcohol en los menores recaerá en la persona que alquile este local.</p>';
 
+    $footer = $footer_1;
     switch ($details['calendar']) {
-        case 'Pista Pádel 1':
-        case 'Pista Pádel 2':
-        case 'Pabellón Polideportivo':
-        case 'Pabellón Multiusos':
-        case 'Salón de Actos - El Convento':
-        case 'Hogar del Jubilado':
-        case 'Hogar del Jubilado - Aula de informática':
-            $footer = $footer_1;
-            break;
         case 'Claustro - El Convento':
             $footer = $footer_2;
             $footer .= '<p>9.- El usuario abonará una fianza de 60 euros y un cargo por el alquiler de 100 euros.</p>';
@@ -57,10 +49,12 @@ function create_book_ajax(){
                 p{ font-size: 12px; }
                 .col-1 { clear: both; display: block; width: 100%; margin-bottom: 10px; }
                 .clear { clear: both; margin: 0; height: 0 }
+                .mb-10 { margin-bottom: 10px; }
                 .mb-20 { margin-bottom: 20px; }
                 .nomargin { margin: 0 }
                 .text-center { text-align: center }
                 .logo-header { display: inline }
+                .conditions p{ font-size: 11px; }
             </style>
         </head>
         <body>
@@ -72,9 +66,8 @@ function create_book_ajax(){
                 <p class="nomargin">PLAZA DE LA CONSTITUCIÓN, NÚM. 1</p>
                 <p class="nomargin">45920 (TOLEDO)</p>
                 <p class="nomargin">TEL: 925 79 51 01 – FAX: 925 79 52 05</p>
-                <div class="clear mb-20"></div>
-                <small>P-4517200-D</small>
-                <small>R.E.L. Nº: 01451719</small>
+                <div class="clear mb-10"></div>
+                <small>P-4517200-D | R.E.L. Nº: 01451719</small>
             </div>
             <div class="col-1">
                 <p><strong>AUTORIZACIÓN DE USO - '.$details['calendar'].'</strong></p>
@@ -87,8 +80,7 @@ function create_book_ajax(){
                 <p>Día: '.$details['event_time']['day'].' de '.$details['event_time']['month'].' de '.date('Y').'</p>
                 <p>Hora inicio: '.$details['event_time']['start_time'].' h.</p>
                 <p>Duración: '.$details['event_time']['duration'].' h.</p>
-                <div class="clear mb-20"></div>
-                '.$footer.'
+                <div class="conditions">'.$footer.'</div>
             </div>
             <div class="clear mb-20"></div>
             <div class="footer text-center">
@@ -109,17 +101,8 @@ function create_book_ajax(){
         exit();
     }
     
-    if(strlen($details['event_time']['day'])==1){
-        $day = '0'.$details['event_time']['day'];
-    }else{
-        $day = $details['event_time']['day'];
-    }
-
-    if(strlen($details['event_time']['month'])==1){
-        $month = '0'.$details['event_time']['month'];
-    }else{
-        $month = $details['event_time']['month'];
-    }
+    if(strlen($details['event_time']['day'])==1){ $day = '0'.$details['event_time']['day']; }else{ $day = $details['event_time']['day']; }
+    if(strlen($details['event_time']['month'])==1){ $month = '0'.$details['event_time']['month']; }else{ $month = $details['event_time']['month']; }
     
     $new_book = array(
         'post_title' => $event_id,

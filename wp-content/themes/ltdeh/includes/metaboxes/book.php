@@ -50,7 +50,12 @@ function ltdeh_custom_metabox_book_data_callback($post, $data) {
     echo '<p>Duración</p>';
     echo '<input type="text" name="_book_duration" value="'.$_book_duration.'" style="width: 100%;">';
     echo '<p>Instalación</p>';
-    echo '<input type="text" name="_book_site" value="'.$_book_site.'" style="width: 100%;">';
+    echo '<select name="_book_site">';
+    foreach(get_all_spaces() as $site){
+        if($_book_site == $site){ $selected = 'selected'; }else{ $selected = ''; }
+        echo '<option '.$selected.' value="'.$site.'">'.$site.'</option>';
+    }
+    echo '</select>';
     echo '<p>DNI</p>';
     echo '<input type="text" name="_book_dni" value="'.$_book_dni.'" style="width: 100%;">';
     echo '<p>En representación de</p>';

@@ -1,16 +1,3 @@
-<?php
-$calendars = array(
-    'Pista Pádel 1',
-    'Pista Pádel 2',
-    'Pabellón Polideportivo',
-    'Pabellón Multiusos',
-    'Claustro - El Convento',
-    'Salón de Actos - El Convento',
-    'Casa de la Juventud',
-    'Hogar del Jubilado',
-    'Hogar del Jubilado - Aula de informática'
-);
-?>
 <div class="col-xl-12" id="form-container">
 
     <header class="mb-50">
@@ -71,8 +58,7 @@ $calendars = array(
                     <option value="3">3 horas</option>
                     <option value="4">4 horas</option>
                     <option value="5">5 horas</option>
-                    <option value="10">10 horas</option>
-                    <option value="24">24 horas</option>
+                    <option value="24">Día completo</option>
                 </select>
             </div>
         </div>
@@ -81,7 +67,7 @@ $calendars = array(
             <div class="dx-form-group">
             <select required id="event-calendar">
                 <option value="">Instalación</option>
-                <?php foreach ($calendars as $value) {
+                <?php foreach (get_all_spaces() as $value) {
                     echo '<option value="'.$value.'">'.$value.'</option>';
                 } ?>
             </select>

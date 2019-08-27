@@ -17,6 +17,7 @@
                             <p class="mb-0">L-V 9:00h - 14:00h</p>
                             <ul class="dx-social-links mnt-3">
                                 <li><a href="https://www.facebook.com/latorredestebanhambran/" target="_blank"><span class="fab fa-facebook"></span></a></li>
+                                <li><a href="https://github.com/victoraagg/ltdeh" target="_blank"><span class="fab fa-github"></span></a></li>
                             </ul>
                         </div>
                     </div>

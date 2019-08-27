@@ -26,7 +26,7 @@ function ltdeh_get_all_books(){
             }
             $_end_hour = $initial_end_hour.':'.$_book_duration_desc[1].':'.$_book_duration_desc[2];
             $book = [
-                'title' => $_book_site,
+                'title' => $_book_site.' | Horario: '.$_book_hour. ' - '.$_end_hour,
                 'start' => $_book_year.'-'.$_book_month.'-'.$_book_day.'T'.$_book_hour,
                 'end' => $_book_year.'-'.$_book_month.'-'.$_book_day.'T'.$_end_hour
             ];
@@ -42,15 +42,22 @@ function ltdeh_check_availability_book($dateTime, $calendar){
     $prev_books = ltdeh_get_all_books();
     $availability = true;
 
-    $newStart = new DateTime(date('Y').'-'.$dateTime['month'].'-'.$dateTime['day'].'T'.$dateTime['start_time']);
+    if(strlen($dateTime['day'])==1){ $day = '0'.$dateTime['day']; }else{ $day = $dateTime['day']; }
+    if(strlen($dateTime['month'])==1){ $month = '0'.$dateTime['month']; }else{ $month = $dateTime['month']; }
+
+    $newStart = new DateTime(date('Y').'-'.$month.'-'.$day.'T'.$dateTime['start_time']);
     $bookEnd = explode(':',$dateTime['start_time']);
-    $_end_hour = $bookEnd[0]+$dateTime['duration'].':'.$bookEnd[1].':'.$bookEnd[2];
-    $newEnd = new DateTime(date('Y').'-'.$dateTime['month'].'-'.$dateTime['day'].'T'.$_end_hour);
+
+    if($bookEnd[0]+$dateTime['duration'] > 24){ $max_end_hour = 24; }else{ $max_end_hour = $bookEnd[0]+$dateTime['duration']; }
+
+    $_end_hour = $max_end_hour.':'.$bookEnd[1].':'.$bookEnd[2];
+    $newEnd = new DateTime(date('Y').'-'.$month.'-'.$day.'T'.$_end_hour);
 
     foreach ($prev_books as $prev_book) {
         $oldStart = new DateTime($prev_book['start']);
         $oldEnd = new DateTime($prev_book['end']);
-        $calendarBook = $prev_book['title'];
+        $calendarBookFull = explode(' | ', $prev_book['title']);
+        $calendarBook = $calendarBookFull[0];
         if ($calendar == $calendarBook && $newStart < $oldStart && $newEnd > $oldStart && $newEnd <= $oldEnd) {
             $availability = false;
         }elseif ($calendar == $calendarBook && $newStart >= $oldStart && $newEnd <= $oldEnd) {
@@ -114,4 +121,19 @@ function ltdeh_replace_name_months($month){
             return 'Diciembre';
             break;
     }
+}
+
+function get_all_spaces(){
+    $sites = array(
+        'Pista Pádel 1',
+        'Pista Pádel 2',
+        'Pabellón Polideportivo',
+        'Pabellón Multiusos',
+        'Claustro - El Convento',
+        'Salón de Actos - El Convento',
+        'Casa de la Juventud',
+        'Hogar del Jubilado',
+        'Hogar del Jubilado - Aula de informática'
+    );
+    return $sites;
 }
