@@ -7,7 +7,14 @@ function ltdeh_get_all_books(){
         'post_status' => array( 'publish' ),
         'posts_per_page' => -1,
         'order' => 'ASC',
-        'orderby' => 'menu_order'
+        'orderby' => 'menu_order',
+        'meta_query' => array(
+            array(
+                'key' => '_book_active',
+                'value' => 'Y',
+                'compare' => 'LIKE',
+            ),
+        ),
     );
     $books = new WP_Query( $args );
     if ($books->have_posts()) {

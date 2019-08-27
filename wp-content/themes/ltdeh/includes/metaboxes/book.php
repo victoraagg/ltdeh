@@ -20,6 +20,7 @@ function ltdeh_custom_metabox_book_data_callback($post, $data) {
 
     $postMeta = get_post_meta($post->ID);
 
+    $_book_active = isset($postMeta['_book_active']) ? $postMeta['_book_active'][0] : '';
     $_book_name = isset($postMeta['_book_name']) ? $postMeta['_book_name'][0] : '';
     $_book_mail = isset($postMeta['_book_mail']) ? $postMeta['_book_mail'][0] : '';
     $_book_phone = isset($postMeta['_book_phone']) ? $postMeta['_book_phone'][0] : '';
@@ -33,6 +34,12 @@ function ltdeh_custom_metabox_book_data_callback($post, $data) {
     $_book_representation = isset($postMeta['_book_representation']) ? $postMeta['_book_representation'][0] : '';
     $_book_activity = isset($postMeta['_book_activity']) ? $postMeta['_book_activity'][0] : '';
 
+    echo '<p>Estado</p>';
+    echo '<select name="_book_active">';
+    if(!$_book_active || $_book_active == 'N'){ $selected = 'selected'; }else{ $selected = ''; }
+    echo '<option value="Y">Activa</option>';
+    echo '<option '.$selected.' value="N">Pendiente</option>';
+    echo '</select>';
     echo '<p>Nombre</p>';
     echo '<input type="text" name="_book_name" value="'.$_book_name.'" style="width: 100%;">';
     echo '<p>Email</p>';
@@ -65,6 +72,9 @@ function ltdeh_custom_metabox_book_data_callback($post, $data) {
 }
 
 function ltdeh_custom_metabox_book_link_list_save($post_id, $post) {
+    if (isset($_POST['_book_active'])){
+        update_post_meta($post_id, '_book_active', $_POST['_book_active']);
+    }
     if (isset($_POST['_book_name'])){
         update_post_meta($post_id, '_book_name', $_POST['_book_name']);
     }

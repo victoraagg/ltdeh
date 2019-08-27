@@ -38,58 +38,12 @@ function create_book_ajax(){
     }
 
     // Send PDF to administration
-    $html = '
-    <!DOCTYPE html>
-    <html lang="es">
-        <head>
-            <meta charset="UTF-8">
-            <style>
-                * { white-space: normal; font-family: serif }
-                h1{ font-size: 18px; }
-                p{ font-size: 12px; }
-                .col-1 { clear: both; display: block; width: 100%; margin-bottom: 10px; }
-                .clear { clear: both; margin: 0; height: 0 }
-                .mb-10 { margin-bottom: 10px; }
-                .mb-20 { margin-bottom: 20px; }
-                .nomargin { margin: 0 }
-                .text-center { text-align: center }
-                .logo-header { display: inline }
-                .conditions p{ font-size: 11px; }
-            </style>
-        </head>
-        <body>
-            <div class="col-1 text-center">
-                <img class="logo-header" src="'.get_stylesheet_directory_uri().'/assets/images/escudo-small.jpg" /> 
-            </div>
-            <div class="col-1 text-center">
-                <h1>AYUNTAMIENTO DE LA TORRE DE ESTEBAN HAMBRÁN</h1>
-                <p class="nomargin">PLAZA DE LA CONSTITUCIÓN, NÚM. 1</p>
-                <p class="nomargin">45920 (TOLEDO)</p>
-                <p class="nomargin">TEL: 925 79 51 01 – FAX: 925 79 52 05</p>
-                <div class="clear mb-10"></div>
-                <small>P-4517200-D | R.E.L. Nº: 01451719</small>
-            </div>
-            <div class="col-1">
-                <p><strong>AUTORIZACIÓN DE USO - '.$details['calendar'].'</strong></p>
-                <p>D./Dª.: '.$details['title'].'</p>
-                <p>D.N.I.: '.$details['dni'].'</p>
-                <p>Email: '.$details['mail'].'</p>
-                <p>Teléfono: '.$details['phone'].'</p>
-                <p>En representación de: '.$details['representation'].'</p>
-                <p>Actividad: '.$details['activity'].'</p>
-                <p>Día: '.$details['event_time']['day'].' de '.$details['event_time']['month'].' de '.date('Y').'</p>
-                <p>Hora inicio: '.$details['event_time']['start_time'].' h.</p>
-                <p>Duración: '.$details['event_time']['duration'].' h.</p>
-                <div class="conditions">'.$footer.'</div>
-            </div>
-            <div class="clear mb-20"></div>
-            <div class="footer text-center">
-                <p>El Ayuntamiento</p>
-                <p>(Documento firmado digitalmente)</p>
-            </div>
-        </body>
-    </html>
-    ';
+    set_query_var('details', $details);
+    set_query_var('footer', $footer);
+    ob_start();
+    get_template_part('template-parts/shared/doc', 'mail');
+    $html = ob_get_contents();
+    ob_end_clean();
     $mpdf = new \Mpdf\Mpdf();
     $mpdf->WriteHTML($html);
     $mpdf->Output('../wp-content/solicitudes/'.$event_id.'.pdf', \Mpdf\Output\Destination::FILE);
@@ -109,6 +63,7 @@ function create_book_ajax(){
         'post_status' => 'publish',
         'post_type' => 'book',
         'meta_input' => array(
+            '_book_active' => 'Y',
             '_book_name' => $details['title'],
             '_book_mail' => $details['mail'],
             '_book_phone' => $details['phone'],
@@ -125,12 +80,12 @@ function create_book_ajax(){
     );    
     wp_insert_post( $new_book );
 
-    notify_event_managers($details, $event_id, $details['calendar'], $day, $start_hour, $end_hour, $attachment);
+    notify_event_managers($details, $event_id, $details['calendar'], $attachment);
     wp_send_json( array('message' => __($event_id, 'ltdeh') ) );
 
 }
 
-function notify_event_managers($details, $event_id, $calendar, $day, $start_hour, $end_hour, $attachment){
+function notify_event_managers($details, $event_id, $calendar, $attachment){
     switch ($calendar) {
         case 'Pista Pádel 1':
         case 'Pista Pádel 2':
