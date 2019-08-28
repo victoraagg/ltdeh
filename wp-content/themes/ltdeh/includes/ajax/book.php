@@ -98,7 +98,7 @@ function notify_event_managers($details, $event_id, $calendar, $attachment){
     $subject = __('Reserva '.$event_id.' de '.$calendar, 'ltdeh');
     $body = 'Reserva '.$event_id.'<br><br>';
     $body .= '<strong>Instalación</strong>: '.$calendar.'<br>';
-    $body .= '<strong>Día</strong>: '.$details['event_time']['day'].' de '.$details['event_time']['month'].' de '.date('Y').'<br>';
+    $body .= '<strong>Día</strong>: '.$details['event_time']['day'].' de '.ltdeh_replace_name_months($details['event_time']['month']).' de '.date('Y').'<br>';
     $body .= '<strong>Hora inicio</strong>: '.$details['event_time']['start_time'].' h.<br>';
     $body .= '<strong>Duración</strong>: '.$details['event_time']['duration'].' h.<br>';
     $body .= '<strong>Nombre</strong>: '.$details['title'].'<br>';
