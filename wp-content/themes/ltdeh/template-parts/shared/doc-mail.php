@@ -40,7 +40,7 @@ $footer = get_query_var('footer');
             <p>Teléfono: <?= $details['phone']; ?></p>
             <p>En representación de: <?= $details['representation']; ?></p>
             <p>Actividad: <?= $details['activity']; ?></p>
-            <p>Día: <?= $details['event_time']['day']; ?> de <?= $details['event_time']['month']; ?> de <?= date('Y'); ?></p>
+            <p>Día: <?= $details['event_time']['day']; ?> de <?= ltdeh_replace_name_months($details['event_time']['month']); ?> de <?= date('Y'); ?></p>
             <p>Hora inicio: <?= $details['event_time']['start_time']; ?> h.</p>
             <p>Duración: <?= $details['event_time']['duration']; ?> h.</p>
             <div class="conditions"><?= $footer; ?></div>
