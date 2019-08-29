@@ -52,24 +52,12 @@ function ltdeh_rewrite_rules() {
     $wp_rewrite->flush_rules();
 }
 
-// Enable SMTP to send emails
-function ltdeh_send_smtp_email($phpmailer)
-{
-    // Define que estamos enviando por SMTP
-    $phpmailer->isSMTP();
-    // La dirección del HOST del servidor de correo SMTP
-    $phpmailer->Host = "smtp.gmail.com";
-    // Uso autenticación por SMTP (true|false)
-    $phpmailer->SMTPAuth = true;
-    // Puerto SMTP
-    $phpmailer->Port = 587;
-    // Usuario de la cuenta de correo
-    $phpmailer->Username = "latorredeestebanhambran@gmail.com";
-    // Contraseña para la autenticación SMTP
-    $phpmailer->Password = get_option( 'gmail_pass' );
-    // El tipo de encriptación que usamos al conectar (ssl|tls)
-    $phpmailer->SMTPSecure = "tls";
-    $phpmailer->From = "latorredeestebanhambran@gmail.com";
-    $phpmailer->FromName = "Ayuntamiento - La Torre de Esteban Hambrán";
+// Change email info
+function ltdeh_sender_email( $original_email_address ) {
+    return 'latorredeestebanhambran@gmail.com';
 }
-add_action('phpmailer_init','ltdeh_send_smtp_email');
+add_filter( 'wp_mail_from', 'ltdeh_sender_email' );
+function ltdeh_sender_name( $original_email_from ) {
+    return 'Ayuntamiento - La Torre de Esteban Hambrán';
+}
+add_filter( 'wp_mail_from_name', 'ltdeh_sender_name' );
