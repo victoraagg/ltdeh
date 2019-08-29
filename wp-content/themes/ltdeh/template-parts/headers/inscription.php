@@ -19,7 +19,7 @@ if( isset($_POST['inscription-request']) && wp_verify_nonce( $_POST['inscription
     $members = serialize($members);
     update_post_meta( $post->ID, 'inscription_members', $members );
 
-    $to = 'latorredeestebanhambran@gmail.com';
+    $to = 'oficinatorre@gmail.com';
     $subject = __('Inscripción '.$nonce.' a '.$_POST['event'], 'ltdeh');
     $body = 'Inscripción '.$nonce.'<br><br>';
     $body .= 'Nombre: '.$_POST['name'].'<br>';
@@ -29,7 +29,7 @@ if( isset($_POST['inscription-request']) && wp_verify_nonce( $_POST['inscription
     $body .= 'Género: '.$_POST['gender'].'<br>';
     $body .= 'Información adicional: '.$_POST['notes'].'<br>';
     $headers[] = 'Content-Type: text/html; charset=UTF-8';
-    $headers[] = 'Cc: oficinatorre@gmail.com';
+    //$headers[] = 'Cc: latorredeestebanhambran@gmail.com';
     $headers[] = 'Bcc: '.$_POST['email'];
     $headers[] = 'Bcc: works.alonsog@gmail.com';
     $headers[] = 'Bcc: arantza.fernandezmerino@gmail.com';
