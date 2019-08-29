@@ -34,7 +34,7 @@
                 </select>
                 <select required id="event-month">
                     <option value="">Mes</option>
-                    <?php for ($m=date('m'); $m<=12; $m++) { 
+                    <?php for ($m = date('n'); $m <= date('n')+2; $m++) { 
                         echo '<option value="'.$m.'">'.ltdeh_replace_name_months($m).'</option>'; 
                     } ?>
                 </select>
