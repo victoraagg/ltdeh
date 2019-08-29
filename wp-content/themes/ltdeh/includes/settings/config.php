@@ -56,7 +56,7 @@ function ltdeh_rewrite_rules() {
 function ltdeh_sender_email( $original_email_address ) {
     return 'latorredeestebanhambran@gmail.com';
 }
-add_filter( 'wp_mail_from', 'ltdeh_sender_email' );
+//add_filter( 'wp_mail_from', 'ltdeh_sender_email' );
 function ltdeh_sender_name( $original_email_from ) {
     return 'Ayuntamiento - La Torre de Esteban Hambrán';
 }

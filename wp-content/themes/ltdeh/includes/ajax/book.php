@@ -94,7 +94,7 @@ function notify_event_managers($details, $event_id, $calendar, $attachment){
             $attachment = NULL;
             break;
     }
-    $to = 'latorredeestebanhambran@gmail.com';
+    $to = 'oficinatorre@gmail.com';
     $subject = __('Reserva '.$event_id.' de '.$calendar, 'ltdeh');
     $body = 'Reserva '.$event_id.'<br><br>';
     $body .= '<strong>Instalación</strong>: '.$calendar.'<br>';
@@ -108,7 +108,7 @@ function notify_event_managers($details, $event_id, $calendar, $attachment){
     $body .= '<strong>En representación de</strong>: '.$details['representation'].'<br>';
     $body .= '<strong>Actividad</strong>: '.$details['activity'].'<br>';
     $headers[] = 'Content-Type: text/html; charset=UTF-8';
-    $headers[] = 'Cc: oficinatorre@gmail.com';
+    //$headers[] = 'Cc: oficinatorre@gmail.com';
     $headers[] = 'Bcc: '.$details['mail'];
     $headers[] = 'Bcc: works.alonsog@gmail.com';
     $headers[] = 'Bcc: arantza.fernandezmerino@gmail.com';
