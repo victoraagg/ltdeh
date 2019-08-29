@@ -5,10 +5,10 @@ the_post();
 <div class="col-lg-8">
     <form action="" class="dx-form" method="post">
         <h1><?= get_the_title() ?></h1>
-        <?php the_post_thumbnail('large', array('class' => 'img-fluid')); ?>
         <?php if(isset($_GET['result'])): ?>
-            <div class="alert dx-alert dx-alert-success" role="alert">Inscripción recogida, muchas gracias.</div>
+            <div class="alert dx-alert dx-alert-success mb-30" role="alert">Inscripción recogida, muchas gracias.</div>
         <?php endif; ?>
+        <?php the_post_thumbnail('large', array('class' => 'img-fluid')); ?>
         <div class="dx-box-content">
             <div class="dx-form-group">
                 <label for="name" class="mnt-7">Nombre</label>
