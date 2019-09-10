@@ -21,7 +21,8 @@ the_post();
                 <label for="surname" class="mnt-7">Apellidos</label>
                 <input type="text" name="surname" class="form-control form-control-style-2" id="surname" placeholder="Apellidos">
             </div>
-        </div><div class="dx-separator"></div>
+        </div>
+        <div class="dx-separator"></div>
         <div class="dx-box-content">
             <div class="dx-form-group">
                 <label for="age" class="mnt-7">Edad</label>
@@ -38,15 +39,22 @@ the_post();
         <div class="dx-separator"></div>
         <div class="dx-box-content">
             <div class="dx-form-group">
+                <label for="phone" class="mnt-7">Teléfono</label>
+                <input type="text" name="phone" class="form-control form-control-style-2" id="phone" placeholder="Teléfono">
+            </div>
+        </div>
+        <div class="dx-separator"></div>
+        <div class="dx-box-content">
+            <div class="dx-form-group">
                 <div class="row">
-                    <div class="col-sm-4"><p>Sexo</p></div>
+                    <div class="col-sm-4"><p>Modalidad</p></div>
                     <div class="col-sm-4 mb-30">
-                        <label for="male">Masculino</label>
-                        <input type="radio" id="male" name="gender" value="M" required>
+                        <label for="iniciacion">Iniciación</label>
+                        <input type="radio" id="iniciacion" name="mode" value="I" required>
                     </div>
                     <div class="col-sm-4">
-                        <label for="female">Femenino</label>
-                        <input type="radio" id="female" name="gender" value="F" required>
+                        <label for="perfeccionamiento">Perfeccionamiento</label>
+                        <input type="radio" id="perfeccionamiento" name="mode" value="P" required>
                     </div>
                 </div>
             </div>

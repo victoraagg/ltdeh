@@ -8,13 +8,15 @@ if( isset($_POST['inscription-request']) && wp_verify_nonce( $_POST['inscription
     
     if(empty($members)){
         $members = array();
-        $member = array($nonce,$_POST['name'],$_POST['surname'],$_POST['age'],$_POST['email'],$_POST['gender'],$_POST['notes']);
+        $member = array($nonce,$_POST['name'],$_POST['surname'],$_POST['age'],$_POST['email'],$_POST['phone'],$_POST['mode'],$_POST['notes']);
         array_push($members,$member);
     }else{
         $members = unserialize($members);
-        $member = array($nonce,$_POST['name'],$_POST['surname'],$_POST['age'],$_POST['email'],$_POST['gender'],$_POST['notes']);
+        $member = array($nonce,$_POST['name'],$_POST['surname'],$_POST['age'],$_POST['email'],$_POST['phone'],$_POST['mode'],$_POST['notes']);
         array_push($members,$member);
     }
+
+    if($_POST['mode'] == 'P'){ $mode = 'Perfeccionamiento'; }else{ $mode = 'Iniciación'; }
 
     $members = serialize($members);
     update_post_meta( $post->ID, 'inscription_members', $members );
@@ -26,10 +28,10 @@ if( isset($_POST['inscription-request']) && wp_verify_nonce( $_POST['inscription
     $body .= 'Apellidos: '.$_POST['surname'].'<br>';
     $body .= 'Edad: '.$_POST['age'].'<br>';
     $body .= 'Email: '.$_POST['email'].'<br>';
-    $body .= 'Género: '.$_POST['gender'].'<br>';
+    $body .= 'Teléfono: '.$_POST['phone'].'<br>';
+    $body .= 'Modalidad: '.$mode.'<br>';
     $body .= 'Información adicional: '.$_POST['notes'].'<br>';
     $headers[] = 'Content-Type: text/html; charset=UTF-8';
-    //$headers[] = 'Cc: latorredeestebanhambran@gmail.com';
     $headers[] = 'Bcc: '.$_POST['email'];
     $headers[] = 'Bcc: works.alonsog@gmail.com';
     $headers[] = 'Bcc: arantza.fernandezmerino@gmail.com';
