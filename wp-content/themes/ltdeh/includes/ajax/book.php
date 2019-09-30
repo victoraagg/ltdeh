@@ -108,10 +108,12 @@ function notify_event_managers($details, $event_id, $calendar, $attachment){
     $body .= '<strong>En representación de</strong>: '.$details['representation'].'<br>';
     $body .= '<strong>Actividad</strong>: '.$details['activity'].'<br>';
     $headers[] = 'Content-Type: text/html; charset=UTF-8';
-    //$headers[] = 'Cc: oficinatorre@gmail.com';
     $headers[] = 'Bcc: '.$details['mail'];
     $headers[] = 'Bcc: works.alonsog@gmail.com';
     $headers[] = 'Bcc: arantza.fernandezmerino@gmail.com';
     $headers[] = 'Bcc: chaleco199879@gmail.com';
+    if($calendar == 'Pista Pádel 1' || $calendar == 'Pista Pádel 2'){
+        $headers[] = 'Bcc: laurlocoloco@gmail.com';
+    }
     wp_mail( $to, $subject, $body, $headers, $attachment );
 }
