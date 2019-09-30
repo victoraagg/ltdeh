@@ -44,29 +44,19 @@ the_post();
             </div>
         </div>
         <div class="dx-separator"></div>
-        <div class="dx-box-content">
-            <div class="dx-form-group">
-                <div class="row">
-                    <div class="col-sm-4"><p>Modalidad</p></div>
-                    <div class="col-sm-4 mb-30">
-                        <label for="iniciacion">Iniciación</label>
-                        <input type="radio" id="iniciacion" name="mode" value="I" required>
-                    </div>
-                    <div class="col-sm-4">
-                        <label for="perfeccionamiento">Perfeccionamiento</label>
-                        <input type="radio" id="perfeccionamiento" name="mode" value="P" required>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="dx-separator"></div>
-        <div class="dx-box-content">
-            <div class="dx-form-group">
-                <label for="notes" class="mnt-7">Notas / Información adicional</label>
-                <textarea class="form-control form-control-style-2" name="notes" id="notes" cols="30" rows="10"></textarea>
-            </div>
-        </div>
-        <div class="dx-separator mb-30"></div>
+        <?php
+        	global $post;
+			$placeholder = get_post_meta( $post->ID, 'notes_inscription', true );
+			if($placeholder): 
+	 	?>
+        	<div class="dx-box-content">
+    			<div class="dx-form-group">
+        			<label for="notes" class="mnt-7"><?= $placeholder ?></label>
+        			<textarea class="form-control form-control-style-2" name="notes" id="notes" cols="30" rows="10"></textarea>
+    			</div>
+			</div>
+			<div class="dx-separator mb-30"></div>
+    	<?php endif; ?>
         <?php wp_nonce_field( 'noncename_inscription', 'inscription-request'); ?>
         <input type="hidden" name="event" value="<?= get_the_title() ?>">
         <button class="dx-btn dx-btn-xl dx-btn-block" type="submit" name="button">Inscribirme</button>
