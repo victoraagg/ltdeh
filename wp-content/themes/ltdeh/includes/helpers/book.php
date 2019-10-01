@@ -52,10 +52,35 @@ function ltdeh_get_all_books(){
                 }
                 $_end_hour = $final_hour.':'.$final_mins.':'.$_book_hour_desc[2];
             }
+            switch ($_book_site) {
+                case 'Pista Pádel 1':
+                case 'Pista Pádel 2':
+                    $color = '#16732a';
+                    break;
+                case 'Pabellón Polideportivo':
+                case 'Pabellón Multiusos':
+                    $color = '#ecb725';
+                    break;
+                case 'Claustro - El Convento':
+                case 'Salón de Actos - El Convento':
+                    $color = '#13609f';
+                    break;
+                case 'Casa de la Juventud':
+                    $color = '#8e1317';
+                    break;
+                case 'Hogar del Jubilado':
+                case 'Hogar del Jubilado - Aula de informática':
+                    $color = '#048a90';
+                    break;
+                default:
+                    $color = '#13609f';
+                    break;
+            }
             $book = [
                 'title' => $_book_site.' | Horario: '.$_book_hour. ' - '.$_end_hour,
                 'start' => $_book_year.'-'.$_book_month.'-'.$_book_day.'T'.$_book_hour,
-                'end' => $_book_year.'-'.$_book_month.'-'.$_book_day.'T'.$_end_hour
+                'end' => $_book_year.'-'.$_book_month.'-'.$_book_day.'T'.$_end_hour,
+                'color' => $color
             ];
             array_push($all_books, $book);
         }
