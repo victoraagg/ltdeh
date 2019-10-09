@@ -70,6 +70,7 @@ jQuery("#event-calendar").on('change', function(e) {
 	}
 });
 
+/*
 jQuery("#create-event").on('click', function(e) {
 
 	e.preventDefault();
@@ -129,3 +130,4 @@ jQuery("#create-event").on('click', function(e) {
 	});
     
 });
+*/

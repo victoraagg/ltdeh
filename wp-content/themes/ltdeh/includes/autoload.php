@@ -16,4 +16,5 @@ require_once __DIR__ . '/metaboxes/document.php';
 require_once __DIR__ . '/metaboxes/inscription.php';
 require_once __DIR__ . '/metaboxes/book.php';
 require_once __DIR__ . '/helpers/book.php';
+require_once __DIR__ . '/helpers/notification.php';
 require_once __DIR__ . '/ajax/book.php';

@@ -1,13 +1,27 @@
 <?php
 require_once ABSPATH.'vendor/autoload.php';
+if (!defined('ABSPATH')) {
+    exit;
+}
 
-add_action('wp_ajax_nopriv_create_book', 'create_book_ajax');
-add_action('wp_ajax_create_book', 'create_book_ajax');
-function create_book_ajax(){
+if( isset($_POST['book-name']) ){
 
-    // Get event details
-    $event_id = date('ynjGi');
-    $details = $_POST['event_details'];
+    $event_id = date('ynjGis');
+    $details = array(
+        'title' => $_POST['book-name'],
+        'mail' => $_POST['book-mail'],
+        'phone' => $_POST['book-phone'],
+        'event_time' => array(
+            'day' => $_POST['book-day'],
+            'month' => $_POST['book-month'],
+            'start_time' => $_POST['book-start'],
+            'duration' => $_POST['book-duration'],
+        ),
+        'calendar' => $_POST['book-calendar'],
+        'dni' => $_POST['book-dni'],
+        'representation' => $_POST['book-representation'],
+        'activity' => $_POST['book-activity'],
+    );
 
     $footer_1 = '<p>Al solicitar el uso de dichos locales se compromete a cumplir las normas establecidas para su uso que, en síntesis, son las siguientes:</p>';
     $footer_1 .= '<p>1.- Compromiso de respetar el mobiliario y enseres de las dependencias.</p>';
@@ -46,7 +60,7 @@ function create_book_ajax(){
     ob_end_clean();
     $mpdf = new \Mpdf\Mpdf();
     $mpdf->WriteHTML($html);
-    $mpdf->Output('../wp-content/solicitudes/'.$event_id.'.pdf', \Mpdf\Output\Destination::FILE);
+    $mpdf->Output('./wp-content/solicitudes/'.$event_id.'.pdf', \Mpdf\Output\Destination::FILE);
     $attachment = array(ABSPATH.'/wp-content/solicitudes/'.$event_id.'.pdf');
 
     $availability = ltdeh_check_availability_book($details['event_time'], $details['calendar']);
@@ -63,7 +77,7 @@ function create_book_ajax(){
         'post_status' => 'publish',
         'post_type' => 'book',
         'meta_input' => array(
-            '_book_active' => 'Y',
+            '_book_active' => 'N',
             '_book_name' => $details['title'],
             '_book_mail' => $details['mail'],
             '_book_phone' => $details['phone'],
@@ -79,8 +93,7 @@ function create_book_ajax(){
         )
     );    
     wp_insert_post( $new_book );
-
     notify_event_managers($details, $event_id, $details['calendar'], $attachment);
-    wp_send_json( array('message' => __($event_id, 'ltdeh') ) );
-
+    wp_redirect(get_permalink(200).'?payment_book='.$event_id);
+    
 }
