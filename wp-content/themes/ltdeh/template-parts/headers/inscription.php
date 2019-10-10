@@ -35,8 +35,8 @@ if( isset($_POST['inscription-request']) && wp_verify_nonce( $_POST['inscription
     $headers[] = 'Bcc: chaleco199879@gmail.com';
     wp_mail( $to, $subject, $body, $headers );
 
-    //wp_redirect(get_permalink(200).'?payment_inscription='.$post->ID.'-'.$nonce);
-    wp_redirect(get_permalink(429).'?payment_inscription='.$post->ID.'-'.$nonce);
+    wp_redirect(get_permalink(200).'?payment_inscription='.$post->ID.'-'.$nonce);
+    //wp_redirect(get_permalink(429).'?payment_inscription='.$post->ID.'-'.$nonce);
     exit;
 
 }
