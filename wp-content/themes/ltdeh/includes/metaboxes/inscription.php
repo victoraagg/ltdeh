@@ -22,18 +22,11 @@ function ltdeh_custom_metabox_inscription_callback($post, $data) {
     echo '<h1>Listado de inscritos ('.count($members).')</h1>';
     if(!empty($members)){
         foreach ($members as $key => $member) {
+            echo '<p>';
             foreach ($member as $key => $value) {
-                if($key == 0){
-                    echo '';
-                }elseif($key == 2){
-                    echo ' '.$value.'</span>';
-                }elseif($key == 1){
-                    echo ' <span>'.$value;
-                }else{
-                    echo ' - <span>'.$value.'</span>';
-                }
+                echo ($key == 0) ? $value : ' - '.$value;
             }
-            echo '<br>';
+            echo '</p>';
         }
     }
 }

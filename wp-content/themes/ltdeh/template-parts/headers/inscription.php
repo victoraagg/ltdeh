@@ -1,7 +1,7 @@
 <?php
 if( isset($_POST['inscription-request']) && wp_verify_nonce( $_POST['inscription-request'], 'noncename_inscription' ) ){
 
-    $nonce = date('ynjGi');
+    $nonce = date('YmdHis');
     
     global $post;
     $members = get_post_meta( $post->ID, 'inscription_members', true );
@@ -16,8 +16,6 @@ if( isset($_POST['inscription-request']) && wp_verify_nonce( $_POST['inscription
         array_push($members,$member);
     }
 
-    if($_POST['mode'] == 'P'){ $mode = 'Perfeccionamiento'; }else{ $mode = 'Iniciación'; }
-
     $members = serialize($members);
     update_post_meta( $post->ID, 'inscription_members', $members );
 
@@ -29,7 +27,6 @@ if( isset($_POST['inscription-request']) && wp_verify_nonce( $_POST['inscription
     $body .= 'Edad: '.$_POST['age'].'<br>';
     $body .= 'Email: '.$_POST['email'].'<br>';
     $body .= 'Teléfono: '.$_POST['phone'].'<br>';
-    $body .= 'Modalidad: '.$mode.'<br>';
     $body .= 'Información adicional: '.$_POST['notes'].'<br>';
     $headers[] = 'Content-Type: text/html; charset=UTF-8';
     $headers[] = 'Bcc: '.$_POST['email'];
@@ -38,7 +35,8 @@ if( isset($_POST['inscription-request']) && wp_verify_nonce( $_POST['inscription
     $headers[] = 'Bcc: chaleco199879@gmail.com';
     wp_mail( $to, $subject, $body, $headers );
 
-    wp_redirect( get_permalink().'?result='.$nonce ); 
+    //wp_redirect(get_permalink(200).'?payment_inscription='.$post->ID.'-'.$nonce);
+    wp_redirect(get_permalink(429).'?payment_inscription='.$post->ID.'-'.$nonce);
     exit;
 
 }

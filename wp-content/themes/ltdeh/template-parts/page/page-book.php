@@ -86,6 +86,7 @@
                 <input class="form-control form-control-style-2" name="book-activity" type="text" id="event-activity" placeholder="Actividad" />
             </div>
         </div>
+        <?php wp_nonce_field( 'noncename_book', 'book-request'); ?>
         <input class="dx-btn dx-btn-lg" id="create-event" type="submit" value="Solicitar reserva" />
     </form>
 

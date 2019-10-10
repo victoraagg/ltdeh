@@ -4,7 +4,7 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-if( isset($_POST['book-name']) ){
+if( isset($_POST['book-request']) && wp_verify_nonce( $_POST['book-request'], 'noncename_book' ) ){
 
     $event_id = date('ynjGis');
     $details = array(
@@ -94,6 +94,7 @@ if( isset($_POST['book-name']) ){
     );    
     wp_insert_post( $new_book );
     notify_event_managers($details, $event_id, $details['calendar'], $attachment);
-    wp_redirect(get_permalink(200).'?payment_book='.$event_id);
+    //wp_redirect(get_permalink(200).'?payment_book='.$event_id);
+    wp_redirect(get_permalink(429).'?payment_book='.$event_id);
     
 }
