@@ -29,6 +29,7 @@ function notificaciones_page(){
     $subscriptions = get_option( 'subscriptions_phone' );
     if($subscriptions){
         $numbers = unserialize($subscriptions);
+        echo '<h2>Total de suscripciones: '.count($numbers).'</h2>';
         foreach ($numbers as $number) {
             echo '<p>'.$number.'</p>';
         }
