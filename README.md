@@ -7,4 +7,3 @@ latorredestebanhambran.es
 
 * Votación presupuestos participativos o proyectos
 * Registro de usuario para participación ciudadana
-* Notificaciones SMS
