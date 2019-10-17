@@ -5,6 +5,18 @@
     </header>
 
     <h1>Solicitar reserva de espacio</h1>
+    <?php 
+        if( isset($_GET['error-book']) ): 
+            switch ($_GET['error-book']) {
+                case 'availability':
+                    echo '<div class="alert dx-alert dx-alert-danger" role="alert">No hay disponibilidad en esa fecha</div>';
+                    break;
+                case 'data':
+                    echo '<div class="alert dx-alert dx-alert-danger" role="alert">Error en los datos enviados</div>';
+                    break;
+            }
+        endif;
+    ?>
     <div class="alert alert-success" id="book-success"></div>
     <div class="alert alert-danger" id="book-error"></div>
     <form id="form-book" action="" method="POST">
@@ -16,7 +28,7 @@
         <div class="dx-separator"></div>
         <div class="dx-box-content">
             <div class="dx-form-group">
-                <input class="form-control form-control-style-2" name="book-mail" type="email" id="event-mail" placeholder="Email" />
+                <input required class="form-control form-control-style-2" name="book-mail" type="email" id="event-mail" placeholder="Email" />
             </div>
         </div>
         <div class="dx-separator"></div>

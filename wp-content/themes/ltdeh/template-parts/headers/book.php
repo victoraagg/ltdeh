@@ -6,6 +6,16 @@ if (!defined('ABSPATH')) {
 
 if( isset($_POST['book-request']) && wp_verify_nonce( $_POST['book-request'], 'noncename_book' ) ){
 
+    $empty = false;
+    if(empty($_POST['book-name'])){
+        $empty = true;
+    }
+
+    if($empty){
+        wp_redirect(get_permalink(120).'?error-book=data');
+        exit();
+    }
+
     $event_id = date('ynjGis');
     $details = array(
         'title' => $_POST['book-name'],
@@ -22,6 +32,12 @@ if( isset($_POST['book-request']) && wp_verify_nonce( $_POST['book-request'], 'n
         'representation' => $_POST['book-representation'],
         'activity' => $_POST['book-activity'],
     );
+
+    $availability = ltdeh_check_availability_book($details['event_time'], $details['calendar']);
+    if(!$availability){
+        wp_redirect(get_permalink(120).'?error-book=availability');
+        exit();
+    }
 
     $footer_1 = '<p>Al solicitar el uso de dichos locales se compromete a cumplir las normas establecidas para su uso que, en síntesis, son las siguientes:</p>';
     $footer_1 .= '<p>1.- Compromiso de respetar el mobiliario y enseres de las dependencias.</p>';
@@ -62,15 +78,18 @@ if( isset($_POST['book-request']) && wp_verify_nonce( $_POST['book-request'], 'n
     $mpdf->WriteHTML($html);
     $mpdf->Output('./wp-content/solicitudes/'.$event_id.'.pdf', \Mpdf\Output\Destination::FILE);
     $attachment = array(ABSPATH.'/wp-content/solicitudes/'.$event_id.'.pdf');
-
-    $availability = ltdeh_check_availability_book($details['event_time'], $details['calendar']);
-    if(!$availability){
-        wp_send_json( array('message' => 'Error') );
-        exit();
-    }
     
-    if(strlen($details['event_time']['day'])==1){ $day = '0'.$details['event_time']['day']; }else{ $day = $details['event_time']['day']; }
-    if(strlen($details['event_time']['month'])==1){ $month = '0'.$details['event_time']['month']; }else{ $month = $details['event_time']['month']; }
+    if(strlen($details['event_time']['day'])==1){ 
+        $day = '0'.$details['event_time']['day']; 
+    }else{ 
+        $day = $details['event_time']['day']; 
+    }
+
+    if(strlen($details['event_time']['month'])==1){ 
+        $month = '0'.$details['event_time']['month']; 
+    }else{ 
+        $month = $details['event_time']['month']; 
+    }
     
     $new_book = array(
         'post_title' => $event_id,
@@ -93,7 +112,7 @@ if( isset($_POST['book-request']) && wp_verify_nonce( $_POST['book-request'], 'n
         )
     );    
     wp_insert_post( $new_book );
-    notify_event_managers($details, $event_id, $details['calendar'], $attachment);
+    //notify_event_managers($details, $event_id, $details['calendar'], $attachment);
     wp_redirect(get_permalink(200).'?payment_book='.$event_id);
     //wp_redirect(get_permalink(429).'?payment_book='.$event_id);
     
