@@ -33,5 +33,7 @@ function notify_event_managers($details, $event_id, $calendar, $attachment){
     if($calendar == 'Pista Pádel 1' || $calendar == 'Pista Pádel 2'){
         $headers[] = 'Bcc: laurlocoloco@gmail.com';
     }
-    wp_mail( $to, $subject, $body, $headers, $attachment );
+    if (defined('WP_DEBUG') && WP_DEBUG === false) {
+        wp_mail( $to, $subject, $body, $headers, $attachment );
+    }
 }

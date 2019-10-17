@@ -72,7 +72,7 @@ get_header();
 						<div class="dx-box-1">
 							<h2 class="text-white">Reserva de espacios</h2>
 							<p class="text-white">Consulta la disponibilidad de las instalaciones municipales y realiza reservas pagando directamente desde la web</p>
-							<a href="<?= get_permalink(96); ?>" class="dx-btn dx-btn-lg dx-btn-transparent">Acceder</a>
+							<a href="<?= ltdeh_get_permalink('calendario'); ?>" class="dx-btn dx-btn-lg dx-btn-transparent">Acceder</a>
 						</div>
 					</div>
 				</div>

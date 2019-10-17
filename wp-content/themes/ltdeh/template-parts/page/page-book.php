@@ -1,7 +1,7 @@
 <div class="col-xl-12" id="form-container">
 
     <header class="mb-50">
-        <a class="dx-btn" href="<?= get_permalink(96); ?>">Volver al calendario</a>
+        <a class="dx-btn" href="<?= ltdeh_get_permalink('calendario'); ?>">Volver al calendario</a>
     </header>
 
     <h1>Solicitar reserva de espacio</h1>

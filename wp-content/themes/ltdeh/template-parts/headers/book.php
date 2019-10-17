@@ -12,7 +12,7 @@ if( isset($_POST['book-request']) && wp_verify_nonce( $_POST['book-request'], 'n
     }
 
     if($empty){
-        wp_redirect(get_permalink(120).'?error-book=data');
+        wp_redirect(ltdeh_get_permalink('reserva').'?error-book=data');
         exit();
     }
 
@@ -35,7 +35,7 @@ if( isset($_POST['book-request']) && wp_verify_nonce( $_POST['book-request'], 'n
 
     $availability = ltdeh_check_availability_book($details['event_time'], $details['calendar']);
     if(!$availability){
-        wp_redirect(get_permalink(120).'?error-book=availability');
+        wp_redirect(ltdeh_get_permalink('reserva').'?error-book=availability');
         exit();
     }
 
@@ -113,7 +113,6 @@ if( isset($_POST['book-request']) && wp_verify_nonce( $_POST['book-request'], 'n
     );    
     wp_insert_post( $new_book );
     notify_event_managers($details, $event_id, $details['calendar'], $attachment);
-    wp_redirect(get_permalink(200).'?payment_book='.$event_id);
-    //wp_redirect(get_permalink(429).'?payment_book='.$event_id);
+    wp_redirect(ltdeh_get_permalink('redsys').'?payment_book='.$event_id);
     
 }

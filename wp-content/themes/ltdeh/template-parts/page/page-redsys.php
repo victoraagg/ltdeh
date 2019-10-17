@@ -18,20 +18,20 @@
                             case 'Pista Pádel 1':
                             case 'Pista Pádel 2':
                                 echo '<p>Para completar la reserva es necesario realizar el pago</p>';
-                                if($hours[0] >= '20'){
-                                    echo do_shortcode('[redsysbutton id=208 qty='.$post_duration.' order="RSRVE-'.$post_id.'"]');
+                                if($hours[0] >= '19'){
+                                    echo do_shortcode('[redsysbutton id='.get_redsys_button_id('padel-luz').' qty='.$post_duration.' order="RSRVE-'.$post_id.'"]');
                                     break;
                                 }else{
-                                    echo do_shortcode('[redsysbutton id=199 qty='.$post_duration.' order="RSRVE-'.$post_id.'"]');
+                                    echo do_shortcode('[redsysbutton id='.get_redsys_button_id('padel').' qty='.$post_duration.' order="RSRVE-'.$post_id.'"]');
                                     break;
                                 }
                             case 'Pabellón Polideportivo':
                                 echo '<p>Para completar la reserva es necesario realizar el pago</p>';
-                                if($hours[0] >= '20'){
-                                    echo do_shortcode('[redsysbutton id=212 qty='.$post_duration.' order="RSRVE-'.$post_id.'"]');
+                                if($hours[0] >= '19'){
+                                    echo do_shortcode('[redsysbutton id='.get_redsys_button_id('pabellon-luz').' qty='.$post_duration.' order="RSRVE-'.$post_id.'"]');
                                     break;
                                 }else{
-                                    echo do_shortcode('[redsysbutton id=211 qty='.$post_duration.' order="RSRVE-'.$post_id.'"]');
+                                    echo do_shortcode('[redsysbutton id='.get_redsys_button_id('pabellon').' qty='.$post_duration.' order="RSRVE-'.$post_id.'"]');
                                     break;
                                 }
                             default:
