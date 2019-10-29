@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', function() {
 			var title = title_all.split(' | ');
 			//alert(title[0]);
 			Swal.fire(
-				title[0],
+				title[0]+' - '+event.event._def.publicId,
 				title[1],
 				'info'
 			)
@@ -22,9 +22,11 @@ document.addEventListener('DOMContentLoaded', function() {
 		/*
 		events: [
 			{
-			  	title: 'Event title',
+				title: 'Event title',
+				id: '0123456789',
 				start: '2019-08-01T19:00:00',
-				end: '2019-08-01T21:00:00'
+				end: '2019-08-01T21:00:00',
+				color: '#048a90'
 			}
 		]
 		*/

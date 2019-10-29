@@ -78,6 +78,7 @@ function ltdeh_get_all_books(){
             }
             $book = [
                 'title' => $_book_site.' | Horario: '.$_book_hour. ' - '.$_end_hour,
+                'id' => get_the_title(),
                 'start' => $_book_year.'-'.$_book_month.'-'.$_book_day.'T'.$_book_hour,
                 'end' => $_book_year.'-'.$_book_month.'-'.$_book_day.'T'.$_end_hour,
                 'color' => $color
