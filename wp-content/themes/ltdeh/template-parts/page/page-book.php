@@ -46,9 +46,8 @@
                 </select>
                 <select required id="event-month" name="book-month">
                     <option value="">Mes</option>
-                    <?php for ($m = date('n'); $m <= date('n')+2; $m++) { 
-                        echo '<option value="'.$m.'">'.ltdeh_replace_name_months($m).'</option>'; 
-                    } ?>
+                    <option value="<?= date("n",strtotime("+1 Months")); ?>"><?= ltdeh_replace_name_months(date("n",strtotime("+1 Months"))); ?></option>
+                    <option value="<?= date("n",strtotime("+2 Months")); ?>"><?= ltdeh_replace_name_months(date("n",strtotime("+2 Months"))); ?></option>
                 </select>
                 <select required id="event-start-time" name="book-start">
                     <option value="">Hora inicio</option>
