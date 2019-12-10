@@ -30,7 +30,7 @@ function notify_event_managers($details, $event_id, $calendar, $attachment){
     $headers[] = 'Bcc: works.alonsog@gmail.com';
     $headers[] = 'Bcc: arantza.fernandezmerino@gmail.com';
     $headers[] = 'Bcc: chaleco199879@gmail.com';
-    if($calendar == 'Pista Pádel 1' || $calendar == 'Pista Pádel 2'){
+    if($calendar == 'Pista Pádel 1' || $calendar == 'Pista Pádel 2' || $calendar == 'Pabellón Polideportivo'){
         $headers[] = 'Bcc: laurlocoloco@gmail.com';
     }
     if (defined('WP_DEBUG') && WP_DEBUG === false) {

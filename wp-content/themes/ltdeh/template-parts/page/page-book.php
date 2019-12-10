@@ -46,6 +46,7 @@
                 </select>
                 <select required id="event-month" name="book-month">
                     <option value="">Mes</option>
+                    <option value="<?= date("n"); ?>"><?= ltdeh_replace_name_months(date("n")); ?></option>
                     <option value="<?= date("n",strtotime("+1 Months")); ?>"><?= ltdeh_replace_name_months(date("n",strtotime("+1 Months"))); ?></option>
                     <option value="<?= date("n",strtotime("+2 Months")); ?>"><?= ltdeh_replace_name_months(date("n",strtotime("+2 Months"))); ?></option>
                 </select>
