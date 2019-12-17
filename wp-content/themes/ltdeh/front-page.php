@@ -21,10 +21,9 @@ get_header();
 
 	<div class="row no-gutters">
 		<div class="container">
-			<div class="mt-50 col-sm-12 text-center mb-50">
+			<div class="mt-50 col-sm-12 text-center">
 				<p class="h3">Buscador</p>
 				<?php get_search_form(); ?>
-				<img src="<?= get_template_directory_uri(); ?>/assets/images/escudo.jpg">
 			</div>
 		</div>
 	</div>
@@ -33,16 +32,21 @@ get_header();
 		<div class="container">
 			<div class="row vertical-gap">
 				<div class="col-sm-6 col-lg-4 text-center">
-					<p class="h2 mb-50">¿Conoces nuestra Sede Electrónica?</p>
+					<p class="h5">¿Conoces nuestra Sede Electrónica?</p>
 					<p>Dentro podrás realizar todos los trámites administrativos del Ayuntamiento sin necesidad de desplazarte. Además, te llegarán todas las notificaciones directamente a tu perfil.</p>
-					<a href="https://latorredestebanhambran.sedelectronica.es/" target="_blank" class="mt-30 dx-btn dx-btn-lg text-center">Acceder</a>
-					<div class="divider mb-30"></div>
+					<a href="https://latorredestebanhambran.sedelectronica.es/" target="_blank" class="dx-btn dx-btn-lg text-center">Acceder</a>
+					<div class="divider"></div>
 					<small><a target="_blank" href="https://www.sede.fnmt.gob.es/certificados/persona-fisica/obtener-certificado-software">¿Cómo obtener mi Certificado Digital?</a></small>
-					<div class="divider mb-30"></div>
-					<p class="h3">Cita previa SESCAM</p>
+					<div class="divider mb-50"></div>
+					<p class="h5">Cita previa SESCAM</p>
 					<p>Solicita cita previa en el consultorio médico de nuestra localidad</p>
 					<img class="img-fluid" src="<?= get_template_directory_uri(); ?>/assets/images/sescam.png" alt="">
-					<a href="https://sescam.jccm.es/csalud/citas/inicioCita.jsf" target="_blank" class="mt-10 dx-btn dx-btn-lg text-center">Solicitar cita previa</a>
+					<a href="https://sescam.jccm.es/csalud/citas/inicioCita.jsf" target="_blank" class="mt-30 dx-btn dx-btn-lg text-center">Solicitar cita previa</a>
+					<div class="divider mb-50"></div>
+					<p class="h5">OAPGT - Organismo Autónomo Provincial de Gestión Tributaria de Toledo</p>
+					<img class="img-fluid mt-10" src="<?= get_template_directory_uri(); ?>/assets/images/oapgt.png" alt="">
+					<div class="divider mb-30"></div>
+					<a href="https://sede.oapgt.es/Paginas/inicio.aspx" target="_blank" class="dx-btn dx-btn-lg text-center">Acceder</a>
 				</div>
 				<div class="col-sm-6 col-lg-8">
 					<?php get_template_part('template-parts/post/featured',''); ?>

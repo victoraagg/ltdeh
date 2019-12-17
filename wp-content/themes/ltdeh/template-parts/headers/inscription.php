@@ -8,11 +8,11 @@ if( isset($_POST['inscription-request']) && wp_verify_nonce( $_POST['inscription
     
     if(empty($members)){
         $members = array();
-        $member = array($nonce,$_POST['name'],$_POST['surname'],$_POST['age'],$_POST['email'],$_POST['phone'],$_POST['mode'],$_POST['notes']);
+        $member = array($nonce,$_POST['name'],$_POST['surname'],$_POST['age'],$_POST['email'],$_POST['phone'],$_POST['notes']);
         array_push($members,$member);
     }else{
         $members = unserialize($members);
-        $member = array($nonce,$_POST['name'],$_POST['surname'],$_POST['age'],$_POST['email'],$_POST['phone'],$_POST['mode'],$_POST['notes']);
+        $member = array($nonce,$_POST['name'],$_POST['surname'],$_POST['age'],$_POST['email'],$_POST['phone'],$_POST['notes']);
         array_push($members,$member);
     }
 

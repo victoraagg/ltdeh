@@ -11,7 +11,7 @@ $args = array(
     ),
 );
 $featured_post = new WP_Query($args);
-$regular_post = new WP_Query( array('posts_per_page' => 1) );
+$regular_post = new WP_Query( array('posts_per_page' => 2) );
 ?>
 <h2 class="text-center mb-60">Noticias destacadas</h2>
 <?php
