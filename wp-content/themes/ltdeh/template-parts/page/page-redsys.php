@@ -18,10 +18,17 @@
                         $post_hour = get_post_meta( $post_id, '_book_hour', true );
                         $hours = explode(':',$post_hour);
                         $order = date('His').substr($post_id,0,6);
+                        echo '<h1>Información del pago:</h1>';
+                        echo '<p>Espacio: '.$post_site.'</p>';
+                        echo '<p>Duración: '.$post_duration.'h.</p>';
+                        echo '<p>Pedido: '.$order.'</p>';
                         switch ($post_site) {
                             case 'Pista Pádel 1':
                             case 'Pista Pádel 2':
                                 echo '<p>Para completar la reserva es necesario realizar el pago</p>';
+                                if($post_duration == 3){
+                                    $post_duration = 2; 
+                                }
                                 if($hours[0] >= '19'){
                                     echo do_shortcode('[redsysbutton desc="Pista Padel - '.$post_id.'" id='.get_redsys_button_id('padel-luz').' qty='.$post_duration.' order="'.$order.'"]');
                                     break;
