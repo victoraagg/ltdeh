@@ -37,3 +37,17 @@ function notify_event_managers($details, $event_id, $calendar, $attachment){
         wp_mail( $to, $subject, $body, $headers, $attachment );
     }
 }
+
+function notify_payment($post_id){
+    $post = get_post($post_id);
+    $to = 'oficinatorre@gmail.com';
+    $subject = __('Pago de reserva', 'ltdeh');
+    $body = 'Reserva '.$post->post_title.' pagada<br><br>';
+    $headers[] = 'Content-Type: text/html; charset=UTF-8';
+    $headers[] = 'Bcc: works.alonsog@gmail.com';
+    $headers[] = 'Bcc: arantza.fernandezmerino@gmail.com';
+    $headers[] = 'Bcc: chaleco199879@gmail.com';
+    if (defined('WP_DEBUG') && WP_DEBUG === false) {
+        wp_mail( $to, $subject, $body, $headers );
+    }
+}
