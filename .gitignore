@@ -28,6 +28,7 @@ composer.lock
 
 # Plugins #
 /wp-content/plugins/*
+!wp-content/plugins/wp-redsys-gateway/
 
 # MUST USE Plugins #
 

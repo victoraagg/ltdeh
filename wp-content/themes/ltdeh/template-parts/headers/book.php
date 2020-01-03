@@ -1,5 +1,4 @@
 <?php
-require_once ABSPATH.'vendor/autoload.php';
 if (!defined('ABSPATH')) {
     exit;
 }
@@ -38,46 +37,6 @@ if( isset($_POST['book-request']) && wp_verify_nonce( $_POST['book-request'], 'n
         wp_redirect(ltdeh_get_permalink('reserva').'?error-book=availability');
         exit();
     }
-
-    $footer_1 = '<p>Al solicitar el uso de dichos locales se compromete a cumplir las normas establecidas para su uso que, en síntesis, son las siguientes:</p>';
-    $footer_1 .= '<p>1.- Compromiso de respetar el mobiliario y enseres de las dependencias.</p>';
-    $footer_1 .= '<p>2.- Compromiso de dejar el mobiliario tal y como se encuentre, sin alterar su orden.</p>';
-    $footer_1 .= '<p>3.- Prohibición de fumar e introducir bebidas en las dependencias.</p>';
-    $footer_1 .= '<p>4.- Cualquier desperfecto ocasionado en el desarrollo de la actividad será de la responsabilidad del peticionario, que deberá asumir los gastos ocasionados en su reparación.</p>';
-    
-    $footer_2 = '<p>Al solicitar el uso de dichos locales se compromete a cumplir las normas establecidas para su uso que, en síntesis, son las siguientes:</p>';
-    $footer_2 .= '<p>1.- Compromiso de respetar el mobiliario y enseres de las dependencias.</p>';
-    $footer_2 .= '<p>2.- Compromiso de dejar el mobiliario tal y como se encuentre, sin alterar su orden. Limpio y en buen estado.</p>';
-    $footer_2 .= '<p>3.- Cualquier desperfecto ocasionado en el desarrollo de la actividad será de la responsabilidad del peticionario, que deberá asumir los gastos ocasionados en su reparación.</p>';
-    $footer_2 .= '<p>4.- El uso de estas dependencias será siempre a título particular.</p>';
-    $footer_2 .= '<p>5.- En caso de uso nocturno será el horario de cierre de los bares de la localidad, respetando siempre el derecho de los vecinos a descansar.</p>';
-    $footer_2 .= '<p>6.- La persona que alquila es la responsable de todo lo que ocurra en el local.</p>';
-    $footer_2 .= '<p>7.- Por la ley 42/2010 queda totalmente prohibido fumar en este local</p>';
-    $footer_2 .= '<p>8.- La responsabilidad del consumo de alcohol en los menores recaerá en la persona que alquile este local.</p>';
-
-    $footer = $footer_1;
-    switch ($details['calendar']) {
-        case 'Claustro - El Convento':
-            $footer = $footer_2;
-            $footer .= '<p>9.- El usuario abonará una fianza de 60 euros y un cargo por el alquiler de 100 euros.</p>';
-            break;
-        case 'Casa de la Juventud':
-            $footer = $footer_2;
-            $footer .= '<p>9.- El usuario abonará una fianza de 60 euros y un cargo por el alquiler de 40 euros.</p>';
-            break;
-    }
-
-    // Send PDF to administration
-    set_query_var('details', $details);
-    set_query_var('footer', $footer);
-    ob_start();
-    get_template_part('template-parts/shared/doc', 'mail');
-    $html = ob_get_contents();
-    ob_end_clean();
-    $mpdf = new \Mpdf\Mpdf();
-    $mpdf->WriteHTML($html);
-    $mpdf->Output('./wp-content/solicitudes/'.$event_id.'.pdf', \Mpdf\Output\Destination::FILE);
-    $attachment = array(ABSPATH.'/wp-content/solicitudes/'.$event_id.'.pdf');
     
     if(strlen($details['event_time']['day'])==1){ 
         $day = '0'.$details['event_time']['day']; 
@@ -111,8 +70,8 @@ if( isset($_POST['book-request']) && wp_verify_nonce( $_POST['book-request'], 'n
             '_book_activity' => $details['activity']
         )
     );    
-    wp_insert_post( $new_book );
-    notify_event_managers($details, $event_id, $details['calendar'], $attachment);
+    $post_id = wp_insert_post( $new_book );
+    generate_doc_auth($event_id, $details);
     wp_redirect(ltdeh_get_permalink('redsys').'?payment_book='.$event_id);
     
 }

@@ -47,6 +47,7 @@
                                 }
                             default:
                                 update_post_meta( $post_id, '_book_active', 'Y' );
+                                notify_event_managers($post_id);
                                 echo '<div class="alert dx-alert dx-alert-info">Reserva completada</div>';
                                 break;
                         }

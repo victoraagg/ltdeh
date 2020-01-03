@@ -25,7 +25,7 @@ function ltdeh_get_permalink($slug){
             if ($environment == 'prod') {
                 return get_permalink(429);
             }else{
-                return get_permalink(200);
+                return get_permalink(252);
             }
             break;
         default:
@@ -48,7 +48,7 @@ function get_redsys_button_id($slug){
             if ($environment == 'prod') {
                 return 425;
             }else{
-                return 199;
+                return 262;
             }
             break;
         case 'padel-luz':
