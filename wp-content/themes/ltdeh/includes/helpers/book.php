@@ -26,6 +26,8 @@ function ltdeh_get_all_books(){
             $_book_hour = get_post_meta( get_the_ID(), '_book_hour', true );
             $_book_duration = get_post_meta( get_the_ID(), '_book_duration', true );
             $_book_site = get_post_meta( get_the_ID(), '_book_site', true );
+            $_book_recurrence = get_post_meta( get_the_ID(), '_book_recurrence', true );
+            $_book_days_recurrence = get_post_meta( get_the_ID(), '_book_days_recurrence', true );
             $_book_hour_desc = explode(':',$_book_hour);
             if (strpos($_book_duration, ':') !== false) {
                 $_book_duration_initial = explode(':',$_book_duration);
@@ -76,13 +78,26 @@ function ltdeh_get_all_books(){
                     $color = '#13609f';
                     break;
             }
-            $book = [
-                'title' => $_book_site.' | Horario: '.$_book_hour. ' - '.$_end_hour,
-                'id' => get_the_title(),
-                'start' => $_book_year.'-'.$_book_month.'-'.$_book_day.'T'.$_book_hour,
-                'end' => $_book_year.'-'.$_book_month.'-'.$_book_day.'T'.$_end_hour,
-                'color' => $color
-            ];
+            if($_book_recurrence == 'Y'){
+                $days = explode(',',$_book_days_recurrence);
+                $book = [
+                    'title' => $_book_site.' | Horario: '.$_book_hour. ' - '.$_end_hour,
+                    'id' => get_the_title(),
+                    'color' => $color,
+                    'daysOfWeek' => $days,
+                    'startRecur' => get_the_date('Y-m-d'),
+                    'startTime' => $_book_hour,
+                    'endTime' => $_end_hour
+                ];
+            }else{
+                $book = [
+                    'title' => $_book_site.' | Horario: '.$_book_hour. ' - '.$_end_hour,
+                    'id' => get_the_title(),
+                    'color' => $color,
+                    'start' => $_book_year.'-'.$_book_month.'-'.$_book_day.'T'.$_book_hour,
+                    'end' => $_book_year.'-'.$_book_month.'-'.$_book_day.'T'.$_end_hour
+                ];
+            }
             array_push($all_books, $book);
         }
     }

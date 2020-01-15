@@ -33,6 +33,8 @@ function ltdeh_custom_metabox_book_data_callback($post, $data) {
     $_book_dni = isset($postMeta['_book_dni']) ? $postMeta['_book_dni'][0] : '';
     $_book_representation = isset($postMeta['_book_representation']) ? $postMeta['_book_representation'][0] : '';
     $_book_activity = isset($postMeta['_book_activity']) ? $postMeta['_book_activity'][0] : '';
+    $_book_recurrence = isset($postMeta['_book_recurrence']) ? $postMeta['_book_recurrence'][0] : '';
+    $_book_days_recurrence = isset($postMeta['_book_days_recurrence']) ? $postMeta['_book_days_recurrence'][0] : '';
 
     echo '<p>Estado</p>';
     echo '<select name="_book_active">';
@@ -69,6 +71,14 @@ function ltdeh_custom_metabox_book_data_callback($post, $data) {
     echo '<input type="text" name="_book_representation" value="'.$_book_representation.'" style="width: 100%;">';
     echo '<p>Actividad</p>';
     echo '<input type="text" name="_book_activity" value="'.$_book_activity.'" style="width: 100%;">';
+    echo '<p>Recurrente</p>';
+    echo '<select name="_book_recurrence">';
+    if(!$_book_recurrence || $_book_recurrence == 'N'){ $selected = 'selected'; }else{ $selected = ''; }
+    echo '<option value="Y">SI</option>';
+    echo '<option '.$selected.' value="N">NO</option>';
+    echo '</select>';
+    echo '<p>Días de recurrencia (0=Domingo y separados por comas)</p>';
+    echo '<input type="text" name="_book_days_recurrence" value="'.$_book_days_recurrence.'" style="width: 100%;">';
 }
 
 function ltdeh_custom_metabox_book_link_list_save($post_id, $post) {
@@ -110,6 +120,12 @@ function ltdeh_custom_metabox_book_link_list_save($post_id, $post) {
     }
     if (isset($_POST['_book_activity'])){
         update_post_meta($post_id, '_book_activity', $_POST['_book_activity']);
+    }
+    if (isset($_POST['_book_recurrence'])){
+        update_post_meta($post_id, '_book_recurrence', $_POST['_book_recurrence']);
+    }
+    if (isset($_POST['_book_days_recurrence'])){
+        update_post_meta($post_id, '_book_days_recurrence', $_POST['_book_days_recurrence']);
     }
 }
 add_action('save_post_book', 'ltdeh_custom_metabox_book_link_list_save', 10, 2);
