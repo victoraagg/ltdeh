@@ -86,6 +86,7 @@ function ltdeh_get_all_books(){
                     'color' => $color,
                     'daysOfWeek' => $days,
                     'startRecur' => get_the_date('Y-m-d'),
+                    //'endRecur' => 'YYYY-mm-dd',
                     'startTime' => $_book_hour,
                     'endTime' => $_end_hour
                 ];
