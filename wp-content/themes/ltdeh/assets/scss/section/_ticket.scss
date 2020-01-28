@@ -281,10 +281,6 @@
     text-decoration: none;
 }
 
-.dx-ticket-item:hover .dx-ticket-title, .dx-ticket-item.hover .dx-ticket-title {
-    color: $primary_color;
-}
-
 .dx-ticket-item:focus, .dx-ticket-item.focus {
     text-decoration: none;
 }
