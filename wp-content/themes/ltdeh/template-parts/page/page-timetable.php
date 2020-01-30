@@ -14,16 +14,23 @@
                 <tbody>
                     <tr>
                         <th scope="row" class="dx-table-default-product">Oficinas del Ayuntamiento</th>
-                        <td>L-V</td>
+                        <td>Lunes a Viernes</td>
                         <td>9:00 - 14:00 h.</td>
                         <td><a href="tel:925795101">925 795 101</a></td>
                         <td>--</td>
                     </tr>
                     <tr>
                         <th scope="row" class="dx-table-default-product">Biblioteca Municipal</th>
-                        <td>L-V</td>
+                        <td>Lunes a Viernes</td>
                         <td>12:00 - 20:00 h.</td>
                         <td>Plaza Manuel García Martín, 0</td>
+                        <td>--</td>
+                    </tr>
+                    <tr>
+                        <th scope="row" class="dx-table-default-product">Arquitecto Municipal</th>
+                        <td>Jueves</td>
+                        <td>9:00 - 14:00 h.</td>
+                        <td>Plaza Constitución, 1</td>
                         <td>--</td>
                     </tr>
                     <tr>
@@ -59,7 +66,7 @@
                     </tr>
                     <tr>
                         <th scope="row" class="dx-table-default-product">Recodiga de enseres</th>
-                        <td>1º y 3º martes de cada mes a partir de las 8 de la mañana</td>
+                        <td>1º y 3º martes de cada mes desde las 8:00</td>
                         <td>Los enseres se sacarán la noche anterior</td>
                         <td>--</td>
                         <td>--</td>
