@@ -23,7 +23,7 @@
             );
             wp_nav_menu($defaults);
             ?>
-            <?php get_template_part('template-parts/header/searchform',''); ?>
+            <?php //get_template_part('template-parts/header/searchform',''); ?>
         </div>
     </div>
 </nav>
