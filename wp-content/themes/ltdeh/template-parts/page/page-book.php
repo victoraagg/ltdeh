@@ -18,8 +18,8 @@
     <div class="alert alert-success" id="book-success"></div>
     <div class="alert alert-danger" id="book-error"></div>
     <?php 
-        $books_active = false;
-        if( $books_active ){
+        $books_active = get_option( '_ltdeh_enable_books' );
+        if( $books_active == 'Y' ){
             get_template_part('template-parts/page/form','book');
         } else {
             echo '<h2>Lo sentimos, las reservas de espacios no están disponibles</h2>';

@@ -4,6 +4,7 @@ if (!defined('ABSPATH')) {
 }
 
 require_once __DIR__ . '/settings/config.php';
+require_once __DIR__ . '/settings/options.php';
 require_once __DIR__ . '/assets/styles.php';
 require_once __DIR__ . '/assets/scripts.php';
 require_once __DIR__ . '/widgets/config.php';
