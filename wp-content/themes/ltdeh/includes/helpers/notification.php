@@ -88,7 +88,7 @@ function notify_event_managers($post_id){
     if($calendar == 'Pista Pádel 1' || $calendar == 'Pista Pádel 2' || $calendar == 'Pabellón Polideportivo'){
         $headers[] = 'Bcc: laurlocoloco@gmail.com';
     }
-    if (defined('WP_DEBUG') && WP_DEBUG === false) {
+    if (get_option( '_ltdeh_notify_managers' ) == 'Y') {
         if($post_meta['_book_active'][0] == 'Y'){
             wp_mail( $to, $subject, $body, $headers, $attachment );
         }

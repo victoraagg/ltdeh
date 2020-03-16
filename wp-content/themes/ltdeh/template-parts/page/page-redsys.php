@@ -17,7 +17,17 @@
                         $post_duration = (int)get_post_meta( $post_id, '_book_duration', true );
                         $post_hour = get_post_meta( $post_id, '_book_hour', true );
                         $hours = explode(':',$post_hour);
-                        $order = date('His').substr($post_id,0,6);
+                        //$order = date('His').substr($post_id,0,6);
+                        $order = '0'.$post_id;
+                        $order = str_pad($order, 12, "X", STR_PAD_RIGHT);
+                        //$order = str_pad($post_id, 8, "0", STR_PAD_LEFT) . date("is");
+                        /*
+                        $len_order = strlen($order);
+                        $rest_chars = 12 - $len_order;
+                        for ($i=0; $i < $rest_chars ; $i++) { 
+                            $order .= 'X';
+                        }
+                        */
                         echo '<h1>Información del pago:</h1>';
                         echo '<p>Espacio: '.$post_site.'</p>';
                         echo '<p>Duración: '.$post_duration.'h.</p>';

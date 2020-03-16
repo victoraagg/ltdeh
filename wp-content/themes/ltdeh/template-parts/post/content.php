@@ -8,11 +8,7 @@ the_post();
             <h1 class="h3 dx-blog-post-title"><?= the_title(); ?></h1>
             <ul class="dx-blog-post-info">
                 <li><?php the_date(); ?></li>
-                <li>Categoría:
-                    <ul class="dx-blog-post-categories">
-                        <li><?php the_category() ?></li>
-                    </ul>
-                </li>
+                <li><?php the_tags() ?></li>
             </ul>
         </div>
         <div class="dx-blog-post-box">

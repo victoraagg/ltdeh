@@ -20,6 +20,7 @@ function ltdeh_custom_menu_site_options_edit() {
     }
     $options = [
         '_ltdeh_enable_books' => ['Activar Reservas (Valores admitidos: Y/N)', 'text'],
+        '_ltdeh_notify_managers' => ['Notificar eventos (Valores admitidos: Y/N)', 'text'],
     ];
     ltdeh_build_custom_menu_site_options(__('Site options', 'ltdeh'), $options);
 }
