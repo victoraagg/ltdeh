@@ -20,6 +20,13 @@
                         <td>--</td>
                     </tr>
                     <tr>
+                        <th scope="row" class="dx-table-default-product">Consultorio Médico</th>
+                        <td>Lunes a Viernes</td>
+                        <td>9:00 - 11:00 h.</td>
+                        <td><a href="tel:925795359">925 795 359</a></td>
+                        <td>--</td>
+                    </tr>
+                    <tr>
                         <th scope="row" class="dx-table-default-product">Biblioteca Municipal</th>
                         <td>Lunes a Viernes</td>
                         <td>12:00 - 20:00 h.</td>
@@ -44,7 +51,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <th scope="row" class="dx-table-default-product">Guardia Civil</th>
+                        <th scope="row" class="dx-table-default-product">Cuartel de la Guardia Civil</th>
                         <td>--</td>
                         <td>--</td>
                         <td><a href="tel:925795318">925 795 318</a></td>
