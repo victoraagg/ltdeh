@@ -34,6 +34,13 @@
                         <td>--</td>
                     </tr>
                     <tr>
+                        <th scope="row" class="dx-table-default-product">Cementerio Municipal</th>
+                        <td>(Abril - Septiembre) - (Octubre - Marzo)</td>
+                        <td>(08:30 - 21:30 h.) - (08:30 - 18:30 h.)</td>
+                        <td>Plaza Manuel García Martín, 0 - Camino de las huertas, S/N</td>
+                        <td>--</td>
+                    </tr>
+                    <tr>
                         <th scope="row" class="dx-table-default-product">Arquitecto Municipal</th>
                         <td>Jueves</td>
                         <td>9:00 - 14:00 h.</td>
@@ -77,6 +84,13 @@
                         <td>Los enseres se sacarán la noche anterior</td>
                         <td>--</td>
                         <td>--</td>
+                    </tr>
+                    <tr>
+                        <th scope="row" class="dx-table-default-product">OMIC</th>
+                        <td>Jueves</td>
+                        <td>09:00 a 14:00 h.</td>
+                        <td>--</td>
+                        <td>687944488</td>
                     </tr>
                 </tbody>
             </table>

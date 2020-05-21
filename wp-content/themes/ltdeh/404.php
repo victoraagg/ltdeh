@@ -1,5 +1,4 @@
 <?php
-$_terms = get_terms( array('category_document') );
 get_header();
 ?>
 

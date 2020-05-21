@@ -13,7 +13,7 @@ get_header();
 			<div class="row">
 				<div class="col-12 col-md-8 col-lg-9 col-xl-9">
 					<h1 class="display-3 text-white t-600">Ayuntamiento de La Torre de Esteban Hambrán</h1>
-					<p class="lead text-1">Información local acerca del coronavirus (CoVid-19)</p>
+					<p class="lead text-1">Información local acerca del COVID-19</p>
 					<a href="<?= get_tag_link(25); ?>" class="dx-btn dx-btn-lg text-center">Más información</a>
 				</div>
 			</div>
@@ -48,11 +48,12 @@ get_header();
 					<p class="h5">Cita previa SESCAM</p>
 					<p>Solicita cita previa en el consultorio médico de nuestra localidad</p>
 					<img class="img-fluid" src="<?= get_template_directory_uri(); ?>/assets/images/sescam.png" alt="">
+					<div class="divider"></div>
 					<a href="https://sescam.jccm.es/csalud/citas/inicioCita.jsf" target="_blank" class="mt-30 dx-btn dx-btn-lg text-center">Solicitar cita previa</a>
 					<div class="divider mb-50"></div>
 					<p class="h5">OAPGT - Organismo Autónomo Provincial de Gestión Tributaria de Toledo</p>
 					<img class="img-fluid mt-10" src="<?= get_template_directory_uri(); ?>/assets/images/oapgt.png" alt="">
-					<div class="divider mb-30"></div>
+					<div class="divider mt-10"></div>
 					<a href="https://sede.oapgt.es/Paginas/inicio.aspx" target="_blank" class="dx-btn dx-btn-lg text-center">Acceder</a>
 				</div>
 				<div class="col-sm-6 col-lg-8">

@@ -17,6 +17,8 @@
                             <p class="mb-0">L-V 9:00h - 14:00h</p>
                             <ul class="dx-social-links mnt-3">
                                 <li><a href="https://www.facebook.com/latorredestebanhambran/" target="_blank"><span class="fab fa-facebook"></span></a></li>
+                                <li><a href="https://www.instagram.com/noticias.latorredeeh/" target="_blank"><span class="fab fa-instagram"></span></a></li>
+                                <li><a href="https://www.youtube.com/channel/UC7l--Q-5WcrJaldstAtNm0Q/" target="_blank"><span class="fab fa-youtube"></span></a></li>
                                 <li><a href="https://github.com/victoraagg/ltdeh" target="_blank"><span class="fab fa-github"></span></a></li>
                             </ul>
                         </div>
