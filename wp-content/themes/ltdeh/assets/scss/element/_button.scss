@@ -2,10 +2,10 @@
 .wp-block-file__button {
     position: relative;
     display: inline-block;
-    padding: 11px 26px !important;
+    padding: 11px 26px;
     margin: 0;
     font-family: "Maven Pro", sans-serif;
-    font-size: 12px !important;
+    font-size: 12px;
     font-weight: 500;
     line-height: 1;
     color: #fff;
@@ -19,9 +19,9 @@
        -moz-user-select: none;
         -ms-user-select: none;
             user-select: none;
-    background-color: $primary_color !important;
+    background-color: $primary_color;
     border: 0;
-    border-radius: 3px !important;
+    border-radius: 3px;
     will-change: transform, opacity;
     -webkit-transition: all .15s ease-in-out;
     -o-transition: all .15s ease-in-out;

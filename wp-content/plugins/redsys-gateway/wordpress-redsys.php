@@ -3,7 +3,7 @@
  * WordPress Redsys Button
  *
  * Plugin Name: WordPress Redsys Button
- * Version: 1.0.0
+ * Version: 2.0.0
  * Author: bthebrand
  * Plugin URI: http://www.bthebrand.es/
  * Description: Botones de pago con RedSys sin necesidad de tener instalado WooCommerce. Configuración muy sencilla.
@@ -11,14 +11,11 @@
  * License URI: http://www.gnu.org/licenses/gpl-3.0.html
  */
 
-define( 'REDSYS_WORDPRESS_VERSION', '1.0.0' );
-define( 'REDSYS_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
-
 if ( ! class_exists( 'RedsysAPI' ) ) {
 	if ( version_compare( PHP_VERSION, '7.0.0', '<' ) ) {
-		require_once 'includes/apiRedsys5.php';
+		require_once 'vendor/apiRedsys5.php';
 	} else {
-		require_once 'includes/apiRedsys7.php';
+		require_once 'vendor/apiRedsys7.php';
 	}
 }
 
@@ -31,46 +28,12 @@ function redsys_menu() {
 }
 add_action( 'admin_menu', 'redsys_menu' );
 
-function get_info_redsys_response($response) {
-	//Ds_Date
-	//Ds_Hour
-	//Ds_SecurePayment
-	//Ds_Amount
-	//Ds_Currency
-	//Ds_Order
-	//Ds_MerchantCode
-	//Ds_Terminal
-	//Ds_Response (0000 a 0099) -> Autorizada
-	//Ds_TransactionType
-	//Ds_MerchantData
-	//Ds_AuthorisationCode
-	//Ds_ConsumerLanguage
-	//Ds_Card_Country
-	//Ds_Card_Brand
-	$apiObj = new RedsysAPI;
-	$encoded = $apiObj->decodeMerchantParameters($response);
-	$decoded = json_decode($encoded);
-	$response = $decoded->Ds_Response;
-	$order = $decoded->Ds_Order;
-	$post_id = substr(str_replace('X','',$order),1);
-	//$post_id = substr($order, 6);
-	$post = get_post($post_id);
-	if($response == '0000' && $post->post_type == 'book'){
-		update_post_meta( $post_id, '_book_active', 'Y' );
-		notify_event_managers($post_id);
-		echo '<div class="alert dx-alert dx-alert-success">Reserva '.$post_id.' autorizada</div>';
-	}elseif($response == '0000' && $post->post_type == 'inscription'){
-		echo '<div class="alert dx-alert dx-alert-success">Inscripción '.$post_id.' autorizada</div>';
-	}else{
-		echo '<div class="alert dx-alert dx-alert-danger">Transacción '.$post_id.' no autorizada</div>';
-	}
-}
-add_action( 'access_api_redsys_public', 'get_info_redsys_response' );
-
 function redsys_page() {
+
     if (!current_user_can('manage_options')) {
         wp_die(__('Insufficient permissions'));
-    }
+	}
+	
     $options = [
 		'_redsys_environment' => ['Entorno', 'select', ['TEST','REAL']],
 		'_redsys_url_tpv_test' => ['URL tpv - TEST', 'text'],
@@ -85,11 +48,7 @@ function redsys_page() {
 		'_redsys_url_ok' => ['URL OK', 'text'],
 		'_redsys_url_ko' => ['URL KO', 'text'],
     ];
-    redsys_build_custom_menu_site_options('Redsys options', $options);
-}
-
-function redsys_build_custom_menu_site_options($title, $options) {
-
+	
 	$hidden_field_name = 'options_hidden';
 
     foreach ($options as $key => $option) {
@@ -99,8 +58,8 @@ function redsys_build_custom_menu_site_options($title, $options) {
         } else {
             array_push($options[$key], '');
         }
-    }
-
+	}
+	
     if (isset($_POST[$hidden_field_name]) && $_POST[$hidden_field_name] == 'Y') {
         foreach ($_POST as $key => $value) {
             $datatype = substr($key, 0, 8);
@@ -109,36 +68,65 @@ function redsys_build_custom_menu_site_options($title, $options) {
             }
 		}
         echo '<div class="updated"><p><strong>Guardado</strong></p></div>';
-    } ?>
+    }
 
-    <div class="wrap">
-		<h1>WordPress Redsys</h1>
-		<hr>
-        <form name="options" method="post" action="">
-			<input type="hidden" name="<?= $hidden_field_name; ?>" value="Y">
-			<?php foreach ($options as $key => $option) { ?>
-				<label for="<?= $key ?>"><?= $option[0] ?></label>
-				<?php 
-				if($option[1] == 'select'){
-					echo '<select id="'.$key.'" name="'.$key.'">';
-					foreach ($option[2] as $option_elect) {
-						if($option[3] == $option_elect){
-							$selected = 'selected';
-						}else{
-							$selected = '';
-						}
-						echo '<option '.$selected.' value="'.$option_elect.'">'.$option_elect.'</option>';
-					}
-					echo '</select>';
-				}elseif($option[1] == 'text'){
-					echo '<input id="'.$key.'" type="'.$option[1].'" name="'.$key.'" value="'.$option[2].'">';
+    echo '<div class="wrap">';
+	echo '<h1>WordPress Redsys</h1>';
+	echo '<hr>';
+ 	echo '<form name="options" method="post" action="">';
+	echo '<input type="hidden" name="'.$hidden_field_name.'" value="Y">';
+	foreach ($options as $key => $option) {
+		echo '<label for="'.$key.'">'.$option[0].'</label>';
+		if($option[1] == 'select'){
+			echo '<select id="'.$key.'" name="'.$key.'">';
+			foreach ($option[2] as $option_elect) {
+				if($option[3] == $option_elect){
+					$selected = 'selected';
+				}else{
+					$selected = '';
 				}
-				?>
-                <hr>
-            <?php } ?>
-			<input type="submit" name="submit" class="button-primary" value="Guardar" />			
-		</form>
-    </div>
-    
-    <?php
+				echo '<option '.$selected.' value="'.$option_elect.'">'.$option_elect.'</option>';
+			}
+			echo '</select>';
+		}elseif($option[1] == 'text'){
+			echo '<input id="'.$key.'" type="'.$option[1].'" name="'.$key.'" value="'.$option[2].'">';
+		}
+        echo '<hr>';
+    }
+	echo '<input type="submit" name="submit" class="button-primary" value="Guardar" />';
+	echo '</form>';
+	echo '</div>';
+
 }
+
+function get_info_redsys_response() {
+	
+	if (!empty($_REQUEST)) {
+		if (!empty($_POST)) {
+			$data = $_POST["Ds_MerchantParameters"];
+			$apiObj = new RedsysAPI;
+			$decode = $apiObj->decodeMerchantParameters($data);
+			$response = $apiObj->getParameter('Ds_Response');
+			$id_trans = $apiObj->getParameter('Ds_AuthorisationCode');
+			$order = $apiObj->getParameter('Ds_Order');
+			$merchantData = $apiObj->getParameter('Ds_MerchantData');
+			$post_id = str_replace('X','',substr($order, 0, -4));
+			$post = get_post($post_id);
+			if ($response < 101 && preg_match("/^\w{1,6}$/", $id_trans)) {
+				if($post->post_type == 'book'){
+					update_post_meta( $post_id, '_book_active', 'Y' );
+					notify_event_managers($post_id);
+				}
+			}
+		} 
+		if(!empty($_GET)){
+			if ($_GET['result'] == 'ok') {
+				echo '<div class="alert dx-alert dx-alert-success">Pago completado</div>';
+			}elseif($_GET['result'] == 'ko'){
+				echo '<div class="alert dx-alert dx-alert-danger">Pago no completado</div>';	
+			}
+		}
+	}
+
+}
+add_action( 'access_api_redsys_public', 'get_info_redsys_response' );
