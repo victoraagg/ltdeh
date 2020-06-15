@@ -27,7 +27,7 @@
                                 if($post_duration == 3){
                                     $post_duration = 2; 
                                 }
-                                if($hours[0] >= '19'){
+                                if($hours[0] >= '21'){
                                     echo do_shortcode('[redsysbutton desc="'.$post_site.'" id='.get_redsys_button_id('padel-luz').' qty='.$post_duration.' post_id="'.$post_id.'"]');
                                     break;
                                 }else{
@@ -36,7 +36,7 @@
                                 }
                             case 'Pabellón Polideportivo':
                                 echo '<p>Para completar la reserva es necesario realizar el pago</p>';
-                                if($hours[0] >= '19'){
+                                if($hours[0] >= '21'){
                                     echo do_shortcode('[redsysbutton desc="'.$post_site.'" id='.get_redsys_button_id('pabellon-luz').' qty='.$post_duration.' post_id="'.$post_id.'"]');
                                     break;
                                 }else{
