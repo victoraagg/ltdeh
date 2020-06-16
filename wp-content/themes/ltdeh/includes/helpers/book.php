@@ -43,7 +43,7 @@ function ltdeh_get_all_books(){
                         $final_hour = 24;
                     }
                 }
-                $_end_hour = $final_hour.':'.$final_mins.':'.$_book_hour_desc[2];
+                $_end_hour = $final_hour.':'.$final_mins.':00';
             }else{
                 $final_hour = $_book_hour_desc[0]+$_book_duration;
                 if($final_hour > 24){
@@ -52,7 +52,7 @@ function ltdeh_get_all_books(){
                 }else{
                     $final_mins = $_book_hour_desc[1];
                 }
-                $_end_hour = $final_hour.':'.$final_mins.':'.$_book_hour_desc[2];
+                $_end_hour = $final_hour.':'.$final_mins.':00';
             }
             switch ($_book_site) {
                 case 'Pista Pádel 1':
