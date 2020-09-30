@@ -29,7 +29,7 @@
                     <tr>
                         <th scope="row" class="dx-table-default-product">Biblioteca Municipal</th>
                         <td>Lunes a Viernes</td>
-                        <td>12:00 - 20:00 h.</td>
+                        <td>Verano (jul-ago): 09:30-13:30 h. | Invierno (sept-jun): 16:00-20:00 h.</td>
                         <td>Plaza Manuel García Martín, 0</td>
                         <td>--</td>
                     </tr>
