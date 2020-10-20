@@ -52,17 +52,6 @@ composer.lock
 *.woff2
 *.otf
 
-# Images #
-*.jpg
-*.jpeg
-*.png
-*.tiff
-*.gif
-*.svg
-*.ico
-*.psd
-*.ai
-
 # Videos #
 *.mov
 *.mp4
