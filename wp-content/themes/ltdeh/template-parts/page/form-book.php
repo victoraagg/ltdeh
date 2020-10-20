@@ -45,6 +45,7 @@
                 foreach($range as $time){ echo '<option value="'.date("H:i:s",$time).'">'.date("H:i",$time).'</option>'; }
                 ?>
             </select>
+            <p>Para reservas en domingo, solamente se podrán realizar en horario de 09:00 a 14:00 h.</p>
         </div>
     </div>
     <div class="dx-separator"></div>

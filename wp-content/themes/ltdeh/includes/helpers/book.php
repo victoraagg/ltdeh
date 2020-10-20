@@ -206,3 +206,20 @@ function get_all_spaces(){
     );
     return $sites;
 }
+
+function ltdeh_check_book_is_sunday($post_id){
+    $post_day = get_post_meta( $post_id, '_book_day', true );
+    $post_month = get_post_meta( $post_id, '_book_month', true );
+    $post_year = get_post_meta( $post_id, '_book_year', true );
+    $post_hour = get_post_meta( $post_id, '_book_hour', true );
+    $hours = explode(':',$post_hour);
+    $date = $post_year.'-'.$post_month.'-'.$post_day;
+    $timestamp = strtotime($date);
+    $weekday = date("l", $timestamp);
+    $normalized_weekday = strtolower($weekday);
+    if ($normalized_weekday == "sunday" && $hours[0] > '14') {
+        return true;
+    } else {
+        return false;
+    }
+}
