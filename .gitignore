@@ -87,7 +87,3 @@ composer.lock
 .Trashes
 ehthumbs.db
 Thumbs.db
-
-# CodeKit #
-/wp-content/themes/banium/build/
-config.codekit3

@@ -18,9 +18,6 @@ function ltdeh_get_permalink($slug){
         case 'reserva':
             return get_permalink(120);
             break;
-        case 'legal':
-            return get_permalink(120);
-            break;
         case 'redsys':
             if ($environment == 'prod') {
                 return get_permalink(429);

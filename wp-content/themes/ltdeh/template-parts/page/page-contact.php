@@ -26,6 +26,14 @@
                 </div>
             </div>
         </div>
+        <div class="dx-box-content">
+            <div class="dx-form-group">
+                <div class="custom-control custom-checkbox">
+                    <input type="checkbox" name="privacy" required class="custom-control-input" id="privacy">
+                    <label class="custom-control-label" for="privacy">Consiento el uso de mis datos para los fines indicados en la <a href="<?= get_privacy_policy_url(); ?>">Política de Privacidad</a>.</label>
+                </div>
+            </div>
+        </div>
         <?php wp_nonce_field( 'noncename_contact', 'contact-request'); ?>
         <button class="dx-btn dx-btn-lg" type="submit" name="button">Enviar</button>
     </form>

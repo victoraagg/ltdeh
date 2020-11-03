@@ -24,7 +24,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-6 col-lg-2 mb-30">
+                <div class="col-sm-6 col-lg-3 mb-30">
                     <div class="dx-widget-footer">
                         <div class="dx-widget-title">Servicios</div>
                         <?php
@@ -37,21 +37,7 @@
                         ?>
                     </div>
                 </div>
-                <div class="col-sm-6 col-lg-3 mb-30">
-                    <div class="dx-widget-footer">
-                        <div class="dx-widget-title">Noticias</div>
-                        <div class="dx-widget-portfolio">
-                            <?php $post_query = new WP_Query( 'posts_per_page=5' ); ?>
-                            <?php while ($post_query->have_posts()) : $post_query->the_post(); ?>
-                            <a href="<?php the_permalink() ?>"><?php the_title(); ?></a>                            
-                            <?php 
-                            endwhile;
-                            wp_reset_postdata();
-                            ?>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-6 col-lg-3 mb-30">
+                <div class="col-sm-6 col-lg-5 mb-30">
                     <div class="dx-widget-footer">
                         <div class="dx-widget-title">Buscador</div>
                         <div class="dx-widget-portfolio">

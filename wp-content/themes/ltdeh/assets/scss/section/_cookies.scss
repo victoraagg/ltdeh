@@ -9,7 +9,6 @@
 	transition: all 0.3s;
 	pointer-events: auto;
 }
-
 .modal-cookies > div {
 	width: 400px;
 	position: relative;
@@ -21,10 +20,14 @@
         color: $primary_color;
     }
     @media #{$large-mobile}{
-        width: 80%;
+		width: 100%;
+		margin: 0px;
+		padding: 45px 10px 10px 10px;
+		font-size: 16px;
+		max-height: 300px;
+		overflow-y: scroll;
     }
 }
-
 .cookies-close {
 	line-height: 50px;
 	font-size: 80%;
@@ -35,7 +38,6 @@
 	width: 70px;
 	text-decoration: none;
 }
-
 .cookies-close:hover {
 	color: $secondary_color1;
 }
