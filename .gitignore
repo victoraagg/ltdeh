@@ -26,6 +26,9 @@ composer.lock
 /*.html
 /*.php
 
+# Uploads #
+/wp-content/docs/
+
 # Plugins #
 /wp-content/plugins/*
 !wp-content/plugins/redsys-gateway/
