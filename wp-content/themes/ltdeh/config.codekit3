@@ -3299,6 +3299,14 @@
 		"oA": 0,
 		"oAP": "/template-parts/shared/doc-mail.php",
 		"oF": 0
+		},
+	"/template-parts/shared/front-notice.php": {
+		"cB": 0,
+		"ft": 8192,
+		"hM": 0,
+		"oA": 0,
+		"oAP": "/template-parts/shared/front-notice.php",
+		"oF": 0
 		}
 	},
 "hooks": [
