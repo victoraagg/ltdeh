@@ -13,19 +13,22 @@ get_header();
                                 <thead>
                                     <tr>
                                         <th scope="col">Documento</th>
-                                        <th scope="col">Acciones</th>
+                                        <th scope="col">Acciones / Importe</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <?php
                                     while ( have_posts() ) :
                                         the_post();
-                                    ?>
-                                    <tr>
-                                        <th scope="row" class="dx-table-topics p-10"><?= the_title(); ?></th>
-                                        <td class="dx-table-lastPost p-10"><a target="_blank" href="<?= content_url('/').get_post_meta(get_the_ID(), '_document_link',true) ?>">Descargar</a></td>
-                                    </tr>
-                                    <?php
+                                        echo '<tr>';
+                                        echo '<th scope="row" class="dx-table-topics p-10">'.get_the_title().'</th>';
+                                        if( get_post_meta(get_the_ID(), '_document_link',true) ){
+                                            echo '<td class="dx-table-lastPost p-10"><a target="_blank" href="'.content_url('/').get_post_meta(get_the_ID(), '_document_link',true).'">Descargar</a></td>';
+                                        }
+                                        if( get_post_meta(get_the_ID(), '_document_cost',true) ){
+                                            echo '<td class="dx-table-lastPost p-10">'.get_post_meta(get_the_ID(), '_document_cost',true).'</td>';
+                                        }
+                                        echo '</tr>';
                                     endwhile;
                                     ?>
                                 </tbody>
