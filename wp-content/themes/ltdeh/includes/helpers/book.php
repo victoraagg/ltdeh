@@ -122,18 +122,20 @@ function ltdeh_check_availability_book($dateTime, $calendar){
     $_end_hour = $max_end_hour.':'.$bookEnd[1].':'.$bookEnd[2];
     $newEnd = new DateTime(date('Y').'-'.$month.'-'.$day.'T'.$_end_hour);
 
+    //reference: https://codereview.stackexchange.com/questions/45784/test-2-time-ranges-to-see-if-they-overlap
     foreach ($prev_books as $prev_book) {
         $oldStart = new DateTime($prev_book['start']);
         $oldEnd = new DateTime($prev_book['end']);
         $calendarBookFull = explode(' | ', $prev_book['title']);
         $calendarBook = $calendarBookFull[0];
-        if ($calendar == $calendarBook && $newStart < $oldStart && $newEnd > $oldStart && $newEnd <= $oldEnd) {
-            $availability = false;
-        }elseif ($calendar == $calendarBook && $newStart >= $oldStart && $newEnd <= $oldEnd) {
-            $availability = false;
-        }elseif ($calendar == $calendarBook && $newStart >= $oldStart && $newStart < $oldEnd && $newEnd > $oldEnd) {
-            $availability = false;
-        }elseif ($calendar == $calendarBook && $newStart < $oldStart && $newEnd > $oldEnd) {
+        if($calendar != $calendarBook){
+            continue;
+        }
+        if( ($oldEnd <= $newStart) || ($newEnd <= $oldStart) ){
+            //not overlap
+            $availability = true;
+        }else{
+            //overlap
             $availability = false;
         }
     }
