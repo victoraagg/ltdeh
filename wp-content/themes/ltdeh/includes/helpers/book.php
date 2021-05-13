@@ -14,7 +14,7 @@ function ltdeh_get_all_books(){
                 'value' => 'Y',
                 'compare' => 'LIKE',
             ),
-        ),
+        )
     );
     $books = new WP_Query( $args );
     if ($books->have_posts()) {
@@ -81,6 +81,7 @@ function ltdeh_get_all_books(){
             if($_book_recurrence == 'Y'){
                 $days = explode(',',$_book_days_recurrence);
                 $book = [
+                    'ref' => get_the_ID(),
                     'title' => $_book_site.' | Horario: '.$_book_hour. ' - '.$_end_hour,
                     'id' => get_the_title(),
                     'color' => $color,
@@ -88,10 +89,13 @@ function ltdeh_get_all_books(){
                     'startRecur' => get_the_date('Y-m-d'),
                     //'endRecur' => 'YYYY-mm-dd',
                     'startTime' => $_book_hour,
-                    'endTime' => $_end_hour
+                    'endTime' => $_end_hour,
+                    'start' => get_the_date('Y').'-'.get_the_date('m').'-'.get_the_date('d').'T'.$_book_hour,
+                    'end' => get_the_date('Y').'-'.get_the_date('m').'-'.get_the_date('d').'T'.$_end_hour
                 ];
             }else{
                 $book = [
+                    'ref' => get_the_ID(),
                     'title' => $_book_site.' | Horario: '.$_book_hour. ' - '.$_end_hour,
                     'id' => get_the_title(),
                     'color' => $color,
@@ -108,6 +112,7 @@ function ltdeh_get_all_books(){
 
 function ltdeh_check_availability_book($dateTime, $calendar){
 
+    clear_old_books();
     $prev_books = ltdeh_get_all_books();
     $availability = true;
 
@@ -122,6 +127,7 @@ function ltdeh_check_availability_book($dateTime, $calendar){
     $_end_hour = $max_end_hour.':'.$bookEnd[1].':'.$bookEnd[2];
     $newEnd = new DateTime(date('Y').'-'.$month.'-'.$day.'T'.$_end_hour);
 
+    $prev_books = include_books_recurrent($prev_books);
     //reference: https://codereview.stackexchange.com/questions/45784/test-2-time-ranges-to-see-if-they-overlap
     foreach ($prev_books as $prev_book) {
         $oldStart = new DateTime($prev_book['start']);
@@ -137,11 +143,54 @@ function ltdeh_check_availability_book($dateTime, $calendar){
         }else{
             //overlap
             $availability = false;
+            break;
         }
     }
 
     return $availability;
 
+}
+
+function include_books_recurrent($prev_books){
+    foreach ($prev_books as $prev_book) {
+        $post_id = $prev_book['ref'];
+        $book_recurrence = get_post_meta( $post_id, '_book_recurrence', true );
+        $book_days_recurrence = get_post_meta( $post_id, '_book_days_recurrence', true );
+        if($book_recurrence == 'Y'){
+            $days = explode(',', $book_days_recurrence);
+            foreach ($days as $day) {
+                $prevStart = new DateTime($prev_book['start']);
+                $prevEnd = new DateTime($prev_book['end']);
+                $a = 0;
+                do {
+                    $nameDay = strtolower(jddayofweek($day-1, 1));
+
+                    $hourStart = $prevStart->format('H');
+                    $minStart = $prevStart->format('i');
+                    $prevStart->modify('next '.$nameDay);
+                    $prevStart->setTime($hourStart, $minStart, 00);
+
+                    $hourEnd = $prevEnd->format('H');
+                    $minEnd = $prevEnd->format('i');
+                    $prevEnd->modify('next '.$nameDay);
+                    $prevEnd->setTime($hourEnd, $minEnd, 00);
+
+                    $book = [
+                        'ref' => $prev_book['ref'],
+                        'title' => $prev_book['title'],
+                        'id' => $prev_book['id'],
+                        'color' => $prev_book['color'],
+                        'start' => $prevStart->format('Y-m-d H:i:s'),
+                        'end' => $prevEnd->format('Y-m-d H:i:s')
+                    ];
+
+                    $a++;
+                    array_push($prev_books, $book);
+                } while ($a <= 8);
+            }
+        }
+    }
+    return $prev_books;
 }
 
 function ltdeh_replace_name_months($month){
@@ -223,5 +272,18 @@ function ltdeh_check_book_is_sunday($post_id){
         return true;
     } else {
         return false;
+    }
+}
+
+function clear_old_books(){
+    $prev_books = ltdeh_get_all_books();
+    foreach ($prev_books as $prev_book) {
+        $date = explode('-', $prev_book['start']);
+        $year = $date[0];
+        $month = $date[1];
+        $day = explode('T', $date[2])[0];
+        if(new DateTime($year.'-'.$month.'-'.$day) < new DateTime('now') && !isset($prev_book['daysOfWeek'])){
+            update_post_meta( $prev_book['ref'], '_book_active', 'N' );
+        }
     }
 }
