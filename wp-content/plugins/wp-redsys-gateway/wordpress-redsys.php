@@ -102,30 +102,26 @@ function redsys_page() {
 function get_info_redsys_response() {
 	
 	if (!empty($_REQUEST)) {
-		if (!empty($_POST)) {
-			$data = $_POST["Ds_MerchantParameters"];
-			$apiObj = new RedsysAPI;
-			$decode = $apiObj->decodeMerchantParameters($data);
-			$response = $apiObj->getParameter('Ds_Response');
-			$id_trans = $apiObj->getParameter('Ds_AuthorisationCode');
-			$order = $apiObj->getParameter('Ds_Order');
-			$merchantData = $apiObj->getParameter('Ds_MerchantData');
-			$post_id = str_replace('X','',substr($order, 0, -4));
-			$post = get_post($post_id);
-			if ($response < 101 && preg_match("/^\w{1,6}$/", $id_trans)) {
-				if($post->post_type == 'book'){
-					update_post_meta( $post_id, '_book_active', 'Y' );
-					notify_event_managers($post_id);
-				}
-			}
-		} 
-		if(!empty($_GET)){
-			if ($_GET['result'] == 'ok') {
+		$data = $_REQUEST["Ds_MerchantParameters"];
+		$apiObj = new RedsysAPI;
+		$decode = $apiObj->decodeMerchantParameters($data);
+		$response = $apiObj->getParameter('Ds_Response');
+		$id_trans = $apiObj->getParameter('Ds_AuthorisationCode');
+		$order = $apiObj->getParameter('Ds_Order');
+		$merchantData = $apiObj->getParameter('Ds_MerchantData');
+		$post_id = str_replace('X','',substr($order, 0, -4));
+		$post = get_post($post_id);
+		if ($response < 101 && preg_match("/^\w{1,6}$/", $id_trans)) {
+			if($post->post_type == 'book'){
+				update_post_meta( $post_id, '_book_active', 'Y' );
+				notify_event_managers($post_id);
 				echo '<div class="alert dx-alert dx-alert-success">Pago completado</div>';
-			}elseif($_GET['result'] == 'ko'){
-				echo '<div class="alert dx-alert dx-alert-danger">Pago no completado</div>';	
 			}
+		}else{
+			echo '<div class="alert dx-alert dx-alert-danger">Pago no completado</div>';	
 		}
+	}else{
+		echo '<div class="alert dx-alert dx-alert-danger">Pago no completado</div>';	
 	}
 
 }

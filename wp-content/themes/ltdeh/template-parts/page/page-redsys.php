@@ -4,7 +4,7 @@
         <div class="dx-blog-post">
             <div class="dx-blog-post-box">
                 <?php 
-                if( isset($_POST['Ds_MerchantParameters']) || isset($_GET['result']) ){
+                if( isset($_REQUEST['Ds_MerchantParameters']) || isset($_REQUEST['result']) ){
 
                     do_action( 'access_api_redsys_public' );
 
