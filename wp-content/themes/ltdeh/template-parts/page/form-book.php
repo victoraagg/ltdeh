@@ -87,5 +87,5 @@
         </div>
     </div>
     <?php wp_nonce_field( 'noncename_book', 'book-request'); ?>
-    <input class="dx-btn dx-btn-lg" id="create-event" type="submit" value="Solicitar reserva" />
+    <input class="dx-btn dx-btn-lg" type="submit" value="Solicitar reserva" />
 </form>

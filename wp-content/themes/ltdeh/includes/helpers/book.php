@@ -112,7 +112,6 @@ function ltdeh_get_all_books(){
 
 function ltdeh_check_availability_book($dateTime, $calendar){
 
-    clear_old_books();
     $prev_books = ltdeh_get_all_books();
     $availability = true;
 
@@ -275,15 +274,27 @@ function ltdeh_check_book_is_sunday($post_id){
     }
 }
 
-function clear_old_books(){
-    $prev_books = ltdeh_get_all_books();
-    foreach ($prev_books as $prev_book) {
-        $date = explode('-', $prev_book['start']);
-        $year = $date[0];
-        $month = $date[1];
-        $day = explode('T', $date[2])[0];
-        if(new DateTime($year.'-'.$month.'-'.$day) < new DateTime('now') && !isset($prev_book['daysOfWeek'])){
-            update_post_meta( $prev_book['ref'], '_book_active', 'N' );
-        }
+function ltdeh_clear_old_books(){
+    $args = array(
+        'fields' => 'ids',
+        'post_type' => array( 'book' ),
+        'posts_per_page' => '-1',
+        'date_query' => array(
+            'column' => 'post_date',
+            'before' => '-4 months'
+        )
+    );
+    $query = new WP_Query( $args );
+    if ( $query->have_posts() ) {
+        while ( $query->have_posts() ) {
+            $query->the_post();
+            wp_trash_post( get_the_ID() ); //use this function if you have custom post type
+            //wp_delete_post(get_the_ID(), true); //use this function if you are working with default posts
+        }    
+    } else {
+        return false;
     }
+    die();
+    wp_reset_postdata();
 }
+add_action('init', 'ltdeh_clear_old_books');
