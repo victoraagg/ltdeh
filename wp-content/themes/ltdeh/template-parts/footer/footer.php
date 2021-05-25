@@ -43,7 +43,7 @@
                         <div class="dx-widget-portfolio">
                             <?php get_search_form(); ?>
                         </div>
-                        <div class="mt-30 dx-widget-title">Cita previa Consultorio</div>
+                        <div class="mt-30 dx-widget-title">Cita previa SESCAM</div>
                         <a class="dx-btn dx-btn-lg text-white" href="https://sescam.jccm.es/csalud/citas/inicioCita.jsf" target="_blank">Solicitar cita previa</a>     
                     </div>
                 </div>
