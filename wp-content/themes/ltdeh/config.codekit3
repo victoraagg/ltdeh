@@ -3199,14 +3199,6 @@
       "oAP" : "\/template-parts\/headers\/inscription.php",
       "oF" : 0
     },
-    "\/template-parts\/headers\/notifications.php" : {
-      "cB" : 0,
-      "ft" : 8192,
-      "hM" : 0,
-      "oA" : 0,
-      "oAP" : "\/template-parts\/headers\/notifications.php",
-      "oF" : 0
-    },
     "\/template-parts\/loop\/archive.php" : {
       "cB" : 0,
       "ft" : 8192,
@@ -3269,14 +3261,6 @@
       "hM" : 0,
       "oA" : 0,
       "oAP" : "\/template-parts\/page\/page-contact.php",
-      "oF" : 0
-    },
-    "\/template-parts\/page\/page-notifications.php" : {
-      "cB" : 0,
-      "ft" : 8192,
-      "hM" : 0,
-      "oA" : 0,
-      "oAP" : "\/template-parts\/page\/page-notifications.php",
       "oF" : 0
     },
     "\/template-parts\/page\/page-organization.php" : {
