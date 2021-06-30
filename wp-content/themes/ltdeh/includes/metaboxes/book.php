@@ -34,6 +34,7 @@ function ltdeh_custom_metabox_book_data_callback($post, $data) {
     $_book_representation = isset($postMeta['_book_representation']) ? $postMeta['_book_representation'][0] : '';
     $_book_activity = isset($postMeta['_book_activity']) ? $postMeta['_book_activity'][0] : '';
     $_book_recurrence = isset($postMeta['_book_recurrence']) ? $postMeta['_book_recurrence'][0] : '';
+    $_book_end_recurrence = isset($postMeta['_book_end_recurrence']) ? $postMeta['_book_end_recurrence'][0] : '';
     $_book_days_recurrence = isset($postMeta['_book_days_recurrence']) ? $postMeta['_book_days_recurrence'][0] : '';
 
     echo '<p>Estado</p>';
@@ -77,6 +78,8 @@ function ltdeh_custom_metabox_book_data_callback($post, $data) {
     echo '<option value="Y">SI</option>';
     echo '<option '.$selected.' value="N">NO</option>';
     echo '</select>';
+    echo '<p>Fin recurrencia (AAAA-mm-dd)</p>';
+    echo '<input type="text" name="_book_end_recurrence" value="'.$_book_end_recurrence.'" style="width: 100%;">';
     echo '<p>Días de recurrencia (0=Domingo y separados por comas)</p>';
     echo '<input type="text" name="_book_days_recurrence" value="'.$_book_days_recurrence.'" style="width: 100%;">';
 }
@@ -123,6 +126,9 @@ function ltdeh_custom_metabox_book_link_list_save($post_id, $post) {
     }
     if (isset($_POST['_book_recurrence'])){
         update_post_meta($post_id, '_book_recurrence', $_POST['_book_recurrence']);
+    }
+    if (isset($_POST['_book_end_recurrence'])){
+        update_post_meta($post_id, '_book_end_recurrence', $_POST['_book_end_recurrence']);
     }
     if (isset($_POST['_book_days_recurrence'])){
         update_post_meta($post_id, '_book_days_recurrence', $_POST['_book_days_recurrence']);
