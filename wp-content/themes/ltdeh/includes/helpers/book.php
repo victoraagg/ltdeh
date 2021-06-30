@@ -27,6 +27,7 @@ function ltdeh_get_all_books(){
             $_book_duration = get_post_meta( get_the_ID(), '_book_duration', true );
             $_book_site = get_post_meta( get_the_ID(), '_book_site', true );
             $_book_recurrence = get_post_meta( get_the_ID(), '_book_recurrence', true );
+            $_book_end_recurrence = get_post_meta( get_the_ID(), '_book_end_recurrence', true );
             $_book_days_recurrence = get_post_meta( get_the_ID(), '_book_days_recurrence', true );
             $_book_hour_desc = explode(':',$_book_hour);
             if (strpos($_book_duration, ':') !== false) {
@@ -86,12 +87,12 @@ function ltdeh_get_all_books(){
                     'id' => get_the_title(),
                     'color' => $color,
                     'daysOfWeek' => $days,
-                    'startRecur' => get_the_date('Y-m-d'),
-                    //'endRecur' => 'YYYY-mm-dd',
+                    'startRecur' => $_book_year.'-'.$_book_month.'-'.$_book_day,
+                    'endRecur' => $_book_end_recurrence,
                     'startTime' => $_book_hour,
                     'endTime' => $_end_hour,
-                    'start' => get_the_date('Y').'-'.get_the_date('m').'-'.get_the_date('d').'T'.$_book_hour,
-                    'end' => get_the_date('Y').'-'.get_the_date('m').'-'.get_the_date('d').'T'.$_end_hour
+                    'start' => $_book_year.'-'.$_book_month.'-'.$_book_day.'T'.$_book_hour,
+                    'end' => $_book_year.'-'.$_book_month.'-'.$_book_day.'T'.$_end_hour
                 ];
             }else{
                 $book = [
@@ -112,26 +113,30 @@ function ltdeh_get_all_books(){
 
 function ltdeh_check_availability_book($dateTime, $calendar){
 
-    $prev_books = ltdeh_get_all_books();
     $availability = true;
 
-    if(strlen($dateTime['day'])==1){ $day = '0'.$dateTime['day']; }else{ $day = $dateTime['day']; }
-    if(strlen($dateTime['month'])==1){ $month = '0'.$dateTime['month']; }else{ $month = $dateTime['month']; }
+    $day = adjust_lenght_date($dateTime['day']); 
+    $month = adjust_lenght_date($dateTime['month']); 
 
     $newStart = new DateTime(date('Y').'-'.$month.'-'.$day.'T'.$dateTime['start_time']);
     $bookEnd = explode(':',$dateTime['start_time']);
 
-    if($bookEnd[0]+$dateTime['duration'] > 24){ $max_end_hour = 24; }else{ $max_end_hour = $bookEnd[0]+$dateTime['duration']; }
+    if($bookEnd[0]+$dateTime['duration'] > 24){ 
+        $max_end_hour = 24; 
+    }else{ 
+        $max_end_hour = $bookEnd[0]+$dateTime['duration']; 
+    }
 
     $_end_hour = $max_end_hour.':'.$bookEnd[1].':'.$bookEnd[2];
     $newEnd = new DateTime(date('Y').'-'.$month.'-'.$day.'T'.$_end_hour);
 
+    $prev_books = ltdeh_get_all_books();
     $prev_books = include_books_recurrent($prev_books);
     //reference: https://codereview.stackexchange.com/questions/45784/test-2-time-ranges-to-see-if-they-overlap
     foreach ($prev_books as $prev_book) {
+        $calendarBookFull = explode(' | ', $prev_book['title']);
         $oldStart = new DateTime($prev_book['start']);
         $oldEnd = new DateTime($prev_book['end']);
-        $calendarBookFull = explode(' | ', $prev_book['title']);
         $calendarBook = $calendarBookFull[0];
         if($calendar != $calendarBook){
             continue;
@@ -175,10 +180,7 @@ function include_books_recurrent($prev_books){
                     $prevEnd->setTime($hourEnd, $minEnd, 00);
 
                     $book = [
-                        'ref' => $prev_book['ref'],
                         'title' => $prev_book['title'],
-                        'id' => $prev_book['id'],
-                        'color' => $prev_book['color'],
                         'start' => $prevStart->format('Y-m-d H:i:s'),
                         'end' => $prevEnd->format('Y-m-d H:i:s')
                     ];
@@ -191,6 +193,48 @@ function include_books_recurrent($prev_books){
     }
     return $prev_books;
 }
+
+function ltdeh_check_book_is_sunday($post_id){
+    $post_day = get_post_meta( $post_id, '_book_day', true );
+    $post_month = get_post_meta( $post_id, '_book_month', true );
+    $post_year = get_post_meta( $post_id, '_book_year', true );
+    $post_hour = get_post_meta( $post_id, '_book_hour', true );
+    $hours = explode(':',$post_hour);
+    $date = $post_year.'-'.$post_month.'-'.$post_day;
+    $timestamp = strtotime($date);
+    $weekday = date("l", $timestamp);
+    $normalized_weekday = strtolower($weekday);
+    if ($normalized_weekday == "sunday" && $hours[0] > '14') {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+function ltdeh_clear_old_books(){
+    $args = array(
+        'fields' => 'ids',
+        'post_type' => array( 'book' ),
+        'posts_per_page' => '-1',
+        'date_query' => array(
+            'column' => 'post_date',
+            'before' => '-4 months'
+        )
+    );
+    $query = new WP_Query( $args );
+    if ( $query->have_posts() ) {
+        while ( $query->have_posts() ) {
+            $query->the_post();
+            wp_trash_post( get_the_ID() ); //use this function if you have custom post type
+            //wp_delete_post(get_the_ID(), true); //use this function if you are working with default posts
+        }    
+    } else {
+        return false;
+    }
+    die();
+    wp_reset_postdata();
+}
+add_action('init', 'ltdeh_clear_old_books');
 
 function ltdeh_replace_name_months($month){
     switch ($month) {
@@ -257,44 +301,9 @@ function get_all_spaces(){
     return $sites;
 }
 
-function ltdeh_check_book_is_sunday($post_id){
-    $post_day = get_post_meta( $post_id, '_book_day', true );
-    $post_month = get_post_meta( $post_id, '_book_month', true );
-    $post_year = get_post_meta( $post_id, '_book_year', true );
-    $post_hour = get_post_meta( $post_id, '_book_hour', true );
-    $hours = explode(':',$post_hour);
-    $date = $post_year.'-'.$post_month.'-'.$post_day;
-    $timestamp = strtotime($date);
-    $weekday = date("l", $timestamp);
-    $normalized_weekday = strtolower($weekday);
-    if ($normalized_weekday == "sunday" && $hours[0] > '14') {
-        return true;
-    } else {
-        return false;
+function adjust_lenght_date($date){
+    if(strlen($date)==1){ 
+        $date = '0'.$date; 
     }
+    return $date;
 }
-
-function ltdeh_clear_old_books(){
-    $args = array(
-        'fields' => 'ids',
-        'post_type' => array( 'book' ),
-        'posts_per_page' => '-1',
-        'date_query' => array(
-            'column' => 'post_date',
-            'before' => '-4 months'
-        )
-    );
-    $query = new WP_Query( $args );
-    if ( $query->have_posts() ) {
-        while ( $query->have_posts() ) {
-            $query->the_post();
-            wp_trash_post( get_the_ID() ); //use this function if you have custom post type
-            //wp_delete_post(get_the_ID(), true); //use this function if you are working with default posts
-        }    
-    } else {
-        return false;
-    }
-    die();
-    wp_reset_postdata();
-}
-add_action('init', 'ltdeh_clear_old_books');
