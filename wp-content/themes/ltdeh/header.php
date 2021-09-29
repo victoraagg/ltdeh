@@ -17,6 +17,6 @@
 	<?php wp_head(); ?>
 </head>
 <body <?php body_class(); ?>>
-<?php get_template_part('template-parts/shared/cookies', ''); ?>
+<?php //get_template_part('template-parts/shared/cookies', ''); ?>
 <?php get_template_part('template-parts/header/navbar',''); ?>
 <?php get_template_part('template-parts/header/navbar','offcanvas'); ?>

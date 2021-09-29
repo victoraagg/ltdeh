@@ -86,7 +86,7 @@ function notify_event_managers($post_id){
     $headers[] = 'Bcc: arantza.fernandezmerino@gmail.com';
     $headers[] = 'Bcc: chaleco199879@gmail.com';
     if($calendar == 'Pista Pádel 1' || $calendar == 'Pista Pádel 2' || $calendar == 'Pabellón Polideportivo'){
-        $headers[] = 'Bcc: jjmartincaballero@gmail.com';
+        //$headers[] = 'Bcc: jjmartincaballero@gmail.com';
     }
     if (get_option( '_ltdeh_notify_managers' ) == 'Y') {
         if($post_meta['_book_active'][0] == 'Y'){

@@ -41,7 +41,7 @@
                 <option value="">Hora inicio</option>
                 <?php 
                 date_default_timezone_set("Europe/Madrid");
-                $range = range( strtotime("08:00"), strtotime("23:00"), 30*60 );
+                $range = range( strtotime("08:00"), strtotime("21:00"), 30*60 );
                 foreach($range as $time){ echo '<option value="'.date("H:i:s",$time).'">'.date("H:i",$time).'</option>'; }
                 ?>
             </select>
