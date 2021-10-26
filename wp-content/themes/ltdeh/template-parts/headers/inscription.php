@@ -30,6 +30,7 @@ if( isset($_POST['inscription-request']) && wp_verify_nonce( $_POST['inscription
     $body .= 'Información adicional: '.$_POST['notes'].'<br>';
     $headers[] = 'Content-Type: text/html; charset=UTF-8';
     $headers[] = 'Bcc: '.$_POST['email'];
+    $headers[] = 'Bcc: arantza.fernandezmerino@gmail.com';
     $headers[] = 'Bcc: works.alonsog@gmail.com';
     $headers[] = 'Bcc: chaleco199879@gmail.com';
     if (defined('WP_DEBUG') && WP_DEBUG === false) {

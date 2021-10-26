@@ -5,7 +5,7 @@ if (!defined('ABSPATH')) {
 
 function ltdeh_get_permalink($slug){
 
-    if (defined('WP_DEBUG') && WP_DEBUG === false) {
+    if (wp_get_environment_type() == 'production') {
         $environment = 'prod';
     }else{
         $environment = 'local';
@@ -34,7 +34,7 @@ function ltdeh_get_permalink($slug){
 
 function get_redsys_button_id($slug){
 
-    if (defined('WP_DEBUG') && WP_DEBUG === false) {
+    if (wp_get_environment_type() == 'production') {
         $environment = 'prod';
     }else{
         $environment = 'local';
