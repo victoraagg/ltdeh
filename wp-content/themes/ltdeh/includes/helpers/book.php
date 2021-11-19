@@ -119,19 +119,17 @@ function ltdeh_check_availability_book($dateTime, $calendar){
     $month = adjust_lenght_date($dateTime['month']); 
 
     $newStart = new DateTime(date('Y').'-'.$month.'-'.$day.'T'.$dateTime['start_time']);
-    $bookEnd = explode(':',$dateTime['start_time']);
-
-    if($bookEnd[0]+$dateTime['duration'] > 24){ 
-        $max_end_hour = 24; 
-    }else{ 
-        $max_end_hour = $bookEnd[0]+$dateTime['duration']; 
+    $duration = explode(':', $dateTime['duration']);
+    if(!isset($duration[1])){
+        $duration[1] = 0;
     }
-
-    $_end_hour = $max_end_hour.':'.$bookEnd[1].':'.$bookEnd[2];
-    $newEnd = new DateTime(date('Y').'-'.$month.'-'.$day.'T'.$_end_hour);
+    $newEnd = new DateTime(date('Y').'-'.$month.'-'.$day.'T'.$dateTime['start_time']);
+    $newEnd = $newEnd->modify($duration[0].' hours '.$duration[1].' minutes');
 
     $prev_books = ltdeh_get_all_books();
     $prev_books = include_books_recurrent($prev_books);
+    $prev_books = clean_books_different_today($prev_books, $newStart);
+    
     //reference: https://codereview.stackexchange.com/questions/45784/test-2-time-ranges-to-see-if-they-overlap
     foreach ($prev_books as $prev_book) {
         $calendarBookFull = explode(' | ', $prev_book['title']);
@@ -153,6 +151,18 @@ function ltdeh_check_availability_book($dateTime, $calendar){
 
     return $availability;
 
+}
+
+function clean_books_different_today($books, $newStart){
+    foreach($books as $key => $one) {
+        $expire_dt = new DateTime($one['start']);
+        $firstDate = $newStart->format('Y-m-d');
+        $secondDate = $expire_dt->format('Y-m-d');
+        if ($firstDate != $secondDate) { 
+            unset($books[$key]);    
+        }
+    }
+    return $books;
 }
 
 function include_books_recurrent($prev_books){

@@ -57,8 +57,6 @@
                 <option value="1:30">1:30 horas</option>
                 <option value="2">2 horas</option>
                 <option value="3">3 horas</option>
-                <option value="4">4 horas</option>
-                <option value="5">5 horas</option>
                 <option value="24">Día completo</option>
             </select>
         </div>
