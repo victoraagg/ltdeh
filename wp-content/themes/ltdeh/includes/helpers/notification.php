@@ -82,13 +82,10 @@ function notify_event_managers($post_id){
     $body .= '<strong>Actividad</strong>: '.$post_meta['_book_activity'][0].'<br>';
     $headers[] = 'Content-Type: text/html; charset=UTF-8';
     $headers[] = 'Bcc: '.$post_meta['_book_mail'][0];
-    $headers[] = 'Bcc: works.alonsog@gmail.com';
     $headers[] = 'Bcc: arantza.fernandezmerino@gmail.com';
     $headers[] = 'Bcc: chaleco199879@gmail.com';
     if($calendar == 'Pista Pádel 1' || $calendar == 'Pista Pádel 2' || $calendar == 'Pabellón Polideportivo'){
-        //$headers[] = 'Bcc: jjmartincaballero@gmail.com';
         $headers[] = 'Bcc: laurlocoloco@gmail.com';
-        //$headers[] = 'Bcc: adrian_1.6.98@hotmail.com';
     }
     if (get_option( '_ltdeh_notify_managers' ) == 'Y') {
         if($post_meta['_book_active'][0] == 'Y'){
