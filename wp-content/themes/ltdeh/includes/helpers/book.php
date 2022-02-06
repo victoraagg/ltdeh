@@ -300,7 +300,7 @@ function get_all_spaces(){
     $sites = array(
         'Pista Pádel 1',
         'Pista Pádel 2',
-        //'Pabellón Polideportivo',
+        'Pabellón Polideportivo',
         //'Pabellón Multiusos',
         //'Claustro - El Convento',
         //'Salón de Actos - El Convento',
