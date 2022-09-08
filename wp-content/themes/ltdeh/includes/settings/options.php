@@ -4,28 +4,32 @@ if (!defined('ABSPATH')) {
 }
 
 add_action('admin_menu', 'ltdeh_custom_menu_site_options_register');
-function ltdeh_custom_menu_site_options_register() {
+function ltdeh_custom_menu_site_options_register()
+{
     add_menu_page(
-        __('Opciones', 'ltdeh'), 
-        __('Opciones', 'ltdeh'), 
-        'manage_options', 
-        'ltdeh_custom_menu_site_options', 
+        __('Opciones', 'ltdeh'),
+        __('Opciones', 'ltdeh'),
+        'manage_options',
+        'ltdeh_custom_menu_site_options',
         'ltdeh_custom_menu_site_options_edit'
     );
 }
 
-function ltdeh_custom_menu_site_options_edit() {
+function ltdeh_custom_menu_site_options_edit()
+{
     if (!current_user_can('manage_options')) {
         wp_die(__('Insufficient permissions'));
     }
     $options = [
         '_ltdeh_enable_books' => ['Activar Reservas (Valores admitidos: Y/N)', 'text'],
+        '_ltdeh_disable_books_date' => ['Desactivar desde (mm/dd/YYYY)', 'text'],
         '_ltdeh_notify_managers' => ['Notificar eventos (Valores admitidos: Y/N)', 'text'],
     ];
     ltdeh_build_custom_menu_site_options(__('Site options', 'ltdeh'), $options);
 }
 
-function ltdeh_build_custom_menu_site_options($title, $options) {
+function ltdeh_build_custom_menu_site_options($title, $options)
+{
 
     $hidden_field_name = 'ltdeh_options_hidden';
 
@@ -45,7 +49,7 @@ function ltdeh_build_custom_menu_site_options($title, $options) {
                 update_option($key, $value);
             }
         }
-        echo '<div class="updated"><p><strong>'.__('Guardado', 'ltdeh').'</strong></p></div>';
+        echo '<div class="updated"><p><strong>' . __('Guardado', 'ltdeh') . '</strong></p></div>';
     } ?>
 
     <div class="wrap">
@@ -60,6 +64,6 @@ function ltdeh_build_custom_menu_site_options($title, $options) {
             <input type="submit" name="submit" class="button-primary" value="<?= __('Guardar', 'ltdeh') ?>" />
         </form>
     </div>
-    
-    <?php
+
+<?php
 }
