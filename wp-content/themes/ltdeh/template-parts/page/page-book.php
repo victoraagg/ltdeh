@@ -2,7 +2,6 @@
     <header class="mb-50">
         <a class="dx-btn" href="<?= ltdeh_get_permalink('calendario'); ?>">Volver al calendario</a>
     </header>
-    <h1>Solicitar reserva de espacio</h1>
     <?php
     if (isset($_GET['error-book'])) :
         switch ($_GET['error-book']) {
@@ -18,7 +17,7 @@
     <div class="alert alert-success" id="book-success"></div>
     <div class="alert alert-danger" id="book-error"></div>
     <?php
-    if (is_enable_books()) {
+    if (get_option('_ltdeh_enable_books') == 'Y') {
         get_template_part('template-parts/page/form', 'book');
     } else {
         echo '<h2>Lo sentimos, las reservas de espacios no están disponibles</h2>';

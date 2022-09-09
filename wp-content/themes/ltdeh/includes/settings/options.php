@@ -23,6 +23,7 @@ function ltdeh_custom_menu_site_options_edit()
     $options = [
         '_ltdeh_enable_books' => ['Activar Reservas (Valores admitidos: Y/N)', 'text'],
         '_ltdeh_disable_books_date' => ['Desactivar desde (mm/dd/YYYY)', 'text'],
+        '_ltdeh_hour_lights' => ['Horario de luz nocturna (Valores de hora enteros. EX: 10, 15, 19...)', 'text'],
         '_ltdeh_notify_managers' => ['Notificar eventos (Valores admitidos: Y/N)', 'text'],
     ];
     ltdeh_build_custom_menu_site_options(__('Site options', 'ltdeh'), $options);

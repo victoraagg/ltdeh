@@ -326,23 +326,12 @@ function adjust_lenght_date($date)
     return $date;
 }
 
-function is_enable_books()
+function is_enable_books($_book_month, $_book_day, $_book_year)
 {
-    $books_active = get_option('_ltdeh_enable_books');
-    $disableDate = get_option('_ltdeh_disable_books_date'); //example: 'mm/dd/YYYY'
-    $currentDate = date('Y-m-d', time());
-    $time1 = strtotime($disableDate);
-    $time2 = strtotime($currentDate);
-
-    if (current_user_can('administrator')) {
-        return true;
-    }
-
-    if ($books_active == 'N' && !$disableDate) {
-        return false;
-    } elseif ($books_active == 'N' && $time1 <= $time2) {
+    $dateLimit = strtotime(get_option('_ltdeh_disable_books_date'));
+    $dateSelected = strtotime($_book_month . '/' . $_book_day . '/' . $_book_year);
+    if ($dateLimit <= $dateSelected) {
         return false;
     }
-
     return true;
 }
