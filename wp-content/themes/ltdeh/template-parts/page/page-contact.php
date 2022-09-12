@@ -1,7 +1,7 @@
 <div class="col-xl-12">
     <form action="" class="dx-form" method="post">
         <h1>Contáctanos</h1>
-        <?php if(isset($_GET['result'])): ?>
+        <?php if (isset($_GET['result'])) : ?>
             <div class="alert dx-alert dx-alert-success" role="alert">Mensaje enviado, en breve responderemos su solicitud.</div>
         <?php endif; ?>
         <div class="dx-box-content">
@@ -29,12 +29,16 @@
         <div class="dx-box-content">
             <div class="dx-form-group">
                 <div class="custom-control custom-checkbox">
-                    <input type="checkbox" name="privacy" required class="custom-control-input" id="privacy">
-                    <label class="custom-control-label" for="privacy">Consiento el uso de mis datos para los fines indicados en la <a href="<?= get_privacy_policy_url(); ?>">Política de Privacidad</a>.</label>
+                    <input type="checkbox" name="accept-privacy" required class="custom-control-input" id="accept-privacy">
+                    <label class="custom-control-label" for="accept-privacy">Consiento el uso de mis datos para los fines indicados en la <a href="<?= get_privacy_policy_url(); ?>" target="_blank">Política de Privacidad</a>.</label>
+                </div>
+                <div class="custom-control custom-checkbox">
+                    <input type="checkbox" name="accept-conditions" class="custom-control-input" id="accept-conditions">
+                    <label class="custom-control-label" for="accept-conditions">Consiento el uso de mis datos personales para recibir publicidad de su entidad.</label>
                 </div>
             </div>
         </div>
-        <?php wp_nonce_field( 'noncename_contact', 'contact-request'); ?>
+        <?php wp_nonce_field('noncename_contact', 'contact-request'); ?>
         <button class="dx-btn dx-btn-lg" type="submit" name="button">Enviar</button>
     </form>
 </div>

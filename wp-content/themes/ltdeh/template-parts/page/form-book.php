@@ -89,6 +89,19 @@
                 <input class="form-control form-control-style-2" name="book-activity" type="text" id="event-activity" placeholder="Actividad" />
             </div>
         </div>
+        <div class="dx-separator"></div>
+        <div class="dx-box-content">
+            <div class="dx-form-group">
+                <div class="custom-control custom-checkbox">
+                    <input type="checkbox" name="accept-privacy" required class="custom-control-input" id="accept-privacy">
+                    <label class="custom-control-label" for="accept-privacy">Consiento el uso de mis datos para los fines indicados en la <a href="<?= get_privacy_policy_url(); ?>" target="_blank">Política de Privacidad</a>.</label>
+                </div>
+                <div class="custom-control custom-checkbox">
+                    <input type="checkbox" name="accept-conditions" class="custom-control-input" id="accept-conditions">
+                    <label class="custom-control-label" for="accept-conditions">Consiento el uso de mis datos personales para recibir publicidad de su entidad.</label>
+                </div>
+            </div>
+        </div>
         <?php wp_nonce_field('noncename_book', 'book-request'); ?>
         <input class="dx-btn dx-btn-lg" type="submit" value="Solicitar reserva" />
     </form>
