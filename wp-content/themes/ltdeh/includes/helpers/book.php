@@ -330,7 +330,7 @@ function is_enable_books($_book_month, $_book_day, $_book_year)
 {
     $dateLimit = strtotime(get_option('_ltdeh_disable_books_date'));
     $dateSelected = strtotime($_book_month . '/' . $_book_day . '/' . $_book_year);
-    if ($dateLimit <= $dateSelected) {
+    if ($dateLimit && $dateLimit <= $dateSelected) {
         return false;
     }
     return true;
