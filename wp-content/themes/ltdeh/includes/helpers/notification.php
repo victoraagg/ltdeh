@@ -1,16 +1,17 @@
 <?php
-require_once ABSPATH.'vendor/autoload.php';
+require_once ABSPATH . 'vendor/autoload.php';
 if (!defined('ABSPATH')) {
     exit;
 }
 
-function generate_doc_auth($event_id, $details){
+function generate_doc_auth($event_id, $details)
+{
     $footer_1 = '<p>Al solicitar el uso de dichos locales se compromete a cumplir las normas establecidas para su uso que, en síntesis, son las siguientes:</p>';
     $footer_1 .= '<p>1.- Compromiso de respetar el mobiliario y enseres de las dependencias.</p>';
     $footer_1 .= '<p>2.- Compromiso de dejar el mobiliario tal y como se encuentre, sin alterar su orden.</p>';
     $footer_1 .= '<p>3.- Prohibición de fumar e introducir bebidas en las dependencias.</p>';
     $footer_1 .= '<p>4.- Cualquier desperfecto ocasionado en el desarrollo de la actividad será de la responsabilidad del peticionario, que deberá asumir los gastos ocasionados en su reparación.</p>';
-    
+
     $footer_2 = '<p>Al solicitar el uso de dichos locales se compromete a cumplir las normas establecidas para su uso que, en síntesis, son las siguientes:</p>';
     $footer_2 .= '<p>1.- Compromiso de respetar el mobiliario y enseres de las dependencias.</p>';
     $footer_2 .= '<p>2.- Compromiso de dejar el mobiliario tal y como se encuentre, sin alterar su orden. Limpio y en buen estado.</p>';
@@ -42,14 +43,16 @@ function generate_doc_auth($event_id, $details){
     ob_end_clean();
     $mpdf = new \Mpdf\Mpdf();
     $mpdf->WriteHTML($html);
-    $mpdf->Output('./wp-content/solicitudes/'.$event_id.'.pdf', \Mpdf\Output\Destination::FILE);
+    $mpdf->Output('./wp-content/solicitudes/' . $event_id . '.pdf', \Mpdf\Output\Destination::FILE);
 }
 
-function get_doc_auth($event_id){
-    return array(ABSPATH.'/wp-content/solicitudes/'.$event_id.'.pdf');
+function get_doc_auth($event_id)
+{
+    return array(ABSPATH . '/wp-content/solicitudes/' . $event_id . '.pdf');
 }
 
-function notify_event_managers($post_id){
+function notify_event_managers($post_id)
+{
 
     $post_info = get_post($post_id);
     $post_meta = get_post_meta($post_id);
@@ -68,29 +71,28 @@ function notify_event_managers($post_id){
     $attachment = get_doc_auth($event_id);
 
     $to = 'oficinatorre@gmail.com';
-    $subject = __('Reserva '.$event_id.' de '.$calendar, 'ltdeh');
-    $body = 'Reserva '.$event_id.'<br><br>';
-    $body .= '<strong>Instalación</strong>: '.$calendar.'<br>';
-    $body .= '<strong>Día</strong>: '.$post_meta['_book_day'][0].' de '.ltdeh_replace_name_months($post_meta['_book_month'][0]).' de '.$post_meta['_book_year'][0].'<br>';
-    $body .= '<strong>Hora inicio</strong>: '.$post_meta['_book_hour'][0].' h.<br>';
-    $body .= '<strong>Duración</strong>: '.$post_meta['_book_duration'][0].' h.<br>';
-    $body .= '<strong>Nombre</strong>: '.$post_meta['_book_name'][0].'<br>';
-    $body .= '<strong>Email</strong>: '.$post_meta['_book_mail'][0].'<br>';
-    $body .= '<strong>Teléfono</strong>: '.$post_meta['_book_phone'][0].'<br>';
-    $body .= '<strong>D.N.I.:</strong>: '.$post_meta['_book_dni'][0].'<br>';
-    $body .= '<strong>En representación de</strong>: '.$post_meta['_book_representation'][0].'<br>';
-    $body .= '<strong>Actividad</strong>: '.$post_meta['_book_activity'][0].'<br>';
+    $subject = __('Reserva ' . $event_id . ' de ' . $calendar, 'ltdeh');
+    $body = 'Reserva ' . $event_id . '<br><br>';
+    $body .= '<strong>Instalación</strong>: ' . $calendar . '<br>';
+    $body .= '<strong>Día</strong>: ' . $post_meta['_book_day'][0] . ' de ' . ltdeh_replace_name_months($post_meta['_book_month'][0]) . ' de ' . $post_meta['_book_year'][0] . '<br>';
+    $body .= '<strong>Hora inicio</strong>: ' . $post_meta['_book_hour'][0] . ' h.<br>';
+    $body .= '<strong>Duración</strong>: ' . $post_meta['_book_duration'][0] . ' h.<br>';
+    $body .= '<strong>Nombre</strong>: ' . $post_meta['_book_name'][0] . '<br>';
+    $body .= '<strong>Email</strong>: ' . $post_meta['_book_mail'][0] . '<br>';
+    $body .= '<strong>Teléfono</strong>: ' . $post_meta['_book_phone'][0] . '<br>';
+    $body .= '<strong>D.N.I.:</strong>: ' . $post_meta['_book_dni'][0] . '<br>';
+    $body .= '<strong>En representación de</strong>: ' . $post_meta['_book_representation'][0] . '<br>';
+    $body .= '<strong>Actividad</strong>: ' . $post_meta['_book_activity'][0] . '<br>';
     $headers[] = 'Content-Type: text/html; charset=UTF-8';
-    $headers[] = 'Bcc: '.$post_meta['_book_mail'][0];
+    $headers[] = 'Bcc: ' . $post_meta['_book_mail'][0];
     $headers[] = 'Bcc: arantza.fernandezmerino@gmail.com';
     $headers[] = 'Bcc: chaleco199879@gmail.com';
-    if($calendar == 'Pista Pádel 1' || $calendar == 'Pista Pádel 2' || $calendar == 'Pabellón Polideportivo'){
+    if ($calendar == 'Pista Pádel 1' || $calendar == 'Pista Pádel 2' || $calendar == 'Pabellón Polideportivo') {
         $headers[] = 'Bcc: laurlocoloco@gmail.com';
     }
-    if (get_option( '_ltdeh_notify_managers' ) == 'Y') {
-        if($post_meta['_book_active'][0] == 'Y'){
-            wp_mail( $to, $subject, $body, $headers, $attachment );
+    if (get_option('_ltdeh_notify_managers') == 'Y') {
+        if ($post_meta['_book_active'][0] == 'Y') {
+            wp_mail($to, $subject, $body, $headers, $attachment);
         }
     }
-
 }
