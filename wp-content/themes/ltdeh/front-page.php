@@ -13,8 +13,7 @@ get_header();
 			<div class="row">
 				<div class="col-12 col-md-8 col-lg-9 col-xl-9">
 					<h1 class="display-3 text-white t-600">Ayuntamiento de La Torre de Esteban Hambrán</h1>
-					<p class="lead text-1">Información local acerca del COVID-19</p>
-					<a href="<?= get_tag_link(25); ?>" class="dx-btn dx-btn-lg text-center">Más información</a>
+					<p class="lead text-1">Tu espacio municipal online</p>
 				</div>
 			</div>
 		</div>
@@ -25,11 +24,12 @@ get_header();
 			<div class="mt-50 col-sm-12 mb-50 text-center">
 				<p class="h3">Buscador</p>
 				<?php get_search_form(); ?>
-				<?php //get_template_part('template-parts/shared/front','notice'); ?>
+				<?php //get_template_part('template-parts/shared/front','notice'); 
+				?>
 			</div>
 		</div>
 	</div>
-	
+
 	<div class="dx-box-1 bg-grey-6">
 		<div class="container">
 			<div class="row vertical-gap">
@@ -52,12 +52,12 @@ get_header();
 					<a href="https://sede.oapgt.es/Paginas/inicio.aspx" target="_blank" class="dx-btn dx-btn-lg text-center">Acceder</a>
 				</div>
 				<div class="col-sm-6 col-lg-8">
-					<?php get_template_part('template-parts/post/featured',''); ?>
+					<?php get_template_part('template-parts/post/featured', ''); ?>
 				</div>
 			</div>
 		</div>
 	</div>
-	
+
 	<div class="row no-gutters">
 		<div class="col-lg-6 bg-secondary-color-2">
 			<div class="row justify-content-center">

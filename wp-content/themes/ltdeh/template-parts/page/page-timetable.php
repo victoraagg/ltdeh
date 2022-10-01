@@ -54,7 +54,7 @@
                         <td>--</td>
                         <td>
                             <!--<a href="https://sescam.castillalamancha.es/ciudadanos/farmacias-de-guardia" target="_blank">Ver horarios</a>-->
-                            <a target="_blank" href="<?= content_url('docs/farmacias-guardia/'.date('m').'-'.date('Y').'.jpg') ?>">Ver horarios</a>
+                            <a target="_blank" href="<?= content_url('docs/farmacias-guardia/' . date('m') . '-' . date('Y') . '.jpg') ?>">Ver horarios</a>
                         </td>
                     </tr>
                     <tr>
@@ -72,11 +72,18 @@
                         <td>estebaran-@hotmail.com</td>
                     </tr>
                     <tr>
-                        <th scope="row" class="dx-table-default-product">Autobús El Gato</th>
+                        <th scope="row" class="dx-table-default-product">Autobuses a Toledo</th>
                         <td>--</td>
                         <td>--</td>
                         <td>--</td>
-                        <td><a href="<?= content_url('/docs/horarios-autobus-el-gato.pdf'); ?>" target="_blank">Ver horarios</a></td>
+                        <td><a href="<?= content_url('/docs/transporte/horarios-cevesa.jpg'); ?>" target="_blank">Ver horarios</a></td>
+                    </tr>
+                    <tr>
+                        <th scope="row" class="dx-table-default-product">Autobuses a Madrid</th>
+                        <td>--</td>
+                        <td>--</td>
+                        <td>--</td>
+                        <td><a href="<?= content_url('/docs/transporte/horarios-autobus-el-gato.pdf'); ?>" target="_blank">Ver horarios</a></td>
                     </tr>
                     <tr>
                         <th scope="row" class="dx-table-default-product">Recodiga de enseres</th>
