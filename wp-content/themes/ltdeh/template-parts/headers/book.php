@@ -3,15 +3,23 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-if( isset($_POST['book-request']) && wp_verify_nonce( $_POST['book-request'], 'noncename_book' ) ){
+if (isset($_POST['book-request']) && wp_verify_nonce($_POST['book-request'], 'noncename_book')) {
 
     $empty = false;
-    if(empty($_POST['book-name'])){
+    if (empty($_POST['book-name'])) {
+        $empty = true;
+    }
+    if (!in_array($_POST['book-calendar'], get_all_spaces())) {
+        $empty = true;
+    }
+    $dateBook = date('Y') . '-' . $_POST['book-month'] . '-' . $_POST['book-day'];
+    $dateToday = date('Y-m-d');
+    if ($dateBook < $dateToday) {
         $empty = true;
     }
 
-    if($empty){
-        wp_redirect(ltdeh_get_permalink('reserva').'?error-book=data');
+    if ($empty) {
+        wp_redirect(ltdeh_get_permalink('reserva') . '?error-book=data');
         exit();
     }
 
@@ -33,23 +41,23 @@ if( isset($_POST['book-request']) && wp_verify_nonce( $_POST['book-request'], 'n
     );
 
     $availability = ltdeh_check_availability_book($details['event_time'], $details['calendar']);
-    if(!$availability){
-        wp_redirect(ltdeh_get_permalink('reserva').'?error-book=availability');
+    if (!$availability) {
+        wp_redirect(ltdeh_get_permalink('reserva') . '?error-book=availability');
         exit();
     }
-    
-    if(strlen($details['event_time']['day'])==1){ 
-        $day = '0'.$details['event_time']['day']; 
-    }else{ 
-        $day = $details['event_time']['day']; 
+
+    if (strlen($details['event_time']['day']) == 1) {
+        $day = '0' . $details['event_time']['day'];
+    } else {
+        $day = $details['event_time']['day'];
     }
 
-    if(strlen($details['event_time']['month'])==1){ 
-        $month = '0'.$details['event_time']['month']; 
-    }else{ 
-        $month = $details['event_time']['month']; 
+    if (strlen($details['event_time']['month']) == 1) {
+        $month = '0' . $details['event_time']['month'];
+    } else {
+        $month = $details['event_time']['month'];
     }
-    
+
     $new_book = array(
         'post_title' => $event_id,
         'post_status' => 'publish',
@@ -69,9 +77,8 @@ if( isset($_POST['book-request']) && wp_verify_nonce( $_POST['book-request'], 'n
             '_book_representation' => $details['representation'],
             '_book_activity' => $details['activity']
         )
-    );    
-    $post_id = wp_insert_post( $new_book );
+    );
+    $post_id = wp_insert_post($new_book);
     generate_doc_auth($event_id, $details);
-    wp_redirect(ltdeh_get_permalink('redsys').'?payment_book='.$event_id);
-    
+    wp_redirect(ltdeh_get_permalink('redsys') . '?payment_book=' . $event_id);
 }
