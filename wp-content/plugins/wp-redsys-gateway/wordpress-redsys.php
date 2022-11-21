@@ -103,7 +103,6 @@ function redsys_page()
 
 function get_info_redsys_response()
 {
-
 	if (!empty($_REQUEST)) {
 		$data = $_REQUEST["Ds_MerchantParameters"];
 		$apiObj = new RedsysAPI;
@@ -115,8 +114,6 @@ function get_info_redsys_response()
 		$post = get_post($post_id);
 		if ($response < 101 && preg_match("/^\w{1,6}$/", $id_trans)) {
 			if ($post->post_type == 'book') {
-				update_post_meta($post_id, '_book_active', 'Y');
-				update_post_meta($post_id, '_Ds_MerchantParameters', $data);
 				if (isset($_GET['Ds_MerchantParameters'])) {
 					notify_event_managers($post_id);
 				}
@@ -130,3 +127,23 @@ function get_info_redsys_response()
 	}
 }
 add_action('access_api_redsys_public', 'get_info_redsys_response');
+
+function get_info_redsys_notification()
+{
+	//https://pagosonline.redsys.es/conexion-redireccion.html
+	$apiObj = new RedsysAPI;
+	$data = $_POST["Ds_MerchantParameters"];
+	$apiObj->decodeMerchantParameters($data);
+	$response = $apiObj->getParameter('Ds_Response');
+	$id_trans = $apiObj->getParameter('Ds_AuthorisationCode');
+	$merchantData = $apiObj->getParameter('Ds_MerchantData');
+	$post_id = substr($merchantData, 7);
+	$post = get_post($post_id);
+	if ($response < 101 && preg_match("/^\w{1,6}$/", $id_trans)) {
+		if ($post->post_type == 'book') {
+			update_post_meta($post_id, '_book_active', 'Y');
+			update_post_meta($post_id, '_Ds_MerchantParameters', $data);
+		}
+	}
+}
+add_action('access_api_redsys_notification', 'get_info_redsys_notification');

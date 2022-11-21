@@ -34,7 +34,6 @@ function generate_doc_auth($event_id, $details)
             break;
     }
 
-    // Send PDF to administration
     set_query_var('details', $details);
     set_query_var('footer', $footer);
     ob_start();
@@ -46,30 +45,12 @@ function generate_doc_auth($event_id, $details)
     $mpdf->Output('./wp-content/solicitudes/' . $event_id . '.pdf', \Mpdf\Output\Destination::FILE);
 }
 
-function get_doc_auth($event_id)
-{
-    return array(ABSPATH . '/wp-content/solicitudes/' . $event_id . '.pdf');
-}
-
 function notify_event_managers($post_id)
 {
-
     $post_info = get_post($post_id);
     $post_meta = get_post_meta($post_id);
     $event_id = $post_info->post_title;
     $calendar = $post_meta['_book_site'][0];
-
-    switch ($calendar) {
-        case 'Pista Pádel 1':
-        case 'Pista Pádel 2':
-        case 'Pabellón Polideportivo':
-        case 'Pabellón Multiusos':
-            $attachment = NULL;
-            break;
-    }
-
-    $attachment = get_doc_auth($event_id);
-
     $to = 'oficinatorre@gmail.com';
     $subject = __('Reserva ' . $event_id . ' de ' . $calendar, 'ltdeh');
     $body = 'Reserva ' . $event_id . '<br><br>';
@@ -83,6 +64,8 @@ function notify_event_managers($post_id)
     $body .= '<strong>D.N.I.:</strong>: ' . $post_meta['_book_dni'][0] . '<br>';
     $body .= '<strong>En representación de</strong>: ' . $post_meta['_book_representation'][0] . '<br>';
     $body .= '<strong>Actividad</strong>: ' . $post_meta['_book_activity'][0] . '<br>';
+    $body .= '<strong>Documento de reserva</strong>:<br>';
+    $body .= '<a target="_blank" href="' . content_url('/solicitudes/' . $event_id . '.pdf') . '">Descargar</a><br>';
     $headers[] = 'Content-Type: text/html; charset=UTF-8';
     $headers[] = 'Bcc: ' . $post_meta['_book_mail'][0];
     $headers[] = 'Bcc: arantza.fernandezmerino@gmail.com';
@@ -92,7 +75,7 @@ function notify_event_managers($post_id)
     }
     if (get_option('_ltdeh_notify_managers') == 'Y') {
         if ($post_meta['_book_active'][0] == 'Y') {
-            wp_mail($to, $subject, $body, $headers, $attachment);
+            wp_mail($to, $subject, $body, $headers);
         }
     }
 }

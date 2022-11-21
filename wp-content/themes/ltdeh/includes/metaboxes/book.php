@@ -99,6 +99,8 @@ function ltdeh_custom_metabox_book_data_callback($post, $data)
     echo '<input type="text" name="_book_days_recurrence" value="' . $_book_days_recurrence . '" style="width: 100%;">';
     echo '<p>TPV Redsys Ds_MerchantParameters</p>';
     echo '<input type="text" name="_Ds_MerchantParameters" readonly value="' . $_Ds_MerchantParameters . '" style="width: 100%;">';
+    echo '<p>Documento de reserva</p>';
+    echo '<a target="_blank" href="' . content_url('/solicitudes/' . get_the_title(get_the_ID()) . '.pdf') . '">' . get_the_title(get_the_ID()) . '</a>';
 }
 
 function ltdeh_custom_metabox_book_link_list_save($post_id, $post)
