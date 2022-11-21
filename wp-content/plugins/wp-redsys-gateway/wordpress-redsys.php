@@ -114,9 +114,6 @@ function get_info_redsys_response()
 		$post = get_post($post_id);
 		if ($response < 101 && preg_match("/^\w{1,6}$/", $id_trans)) {
 			if ($post->post_type == 'book') {
-				if (isset($_GET['Ds_MerchantParameters'])) {
-					notify_event_managers($post_id);
-				}
 				echo '<div class="alert dx-alert dx-alert-success">Pago completado</div>';
 			}
 		} else {
@@ -143,6 +140,7 @@ function get_info_redsys_notification()
 		if ($post->post_type == 'book') {
 			update_post_meta($post_id, '_book_active', 'Y');
 			update_post_meta($post_id, '_Ds_MerchantParameters', $data);
+			notify_event_managers($post_id);
 		}
 	}
 }
