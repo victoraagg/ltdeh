@@ -68,8 +68,6 @@ function notify_event_managers($post_id)
     $body .= '<a target="_blank" href="' . content_url('/solicitudes/' . $event_id . '.pdf') . '">Descargar</a><br>';
     $headers[] = 'Content-Type: text/html; charset=UTF-8';
     $headers[] = 'Bcc: ' . $post_meta['_book_mail'][0];
-    $headers[] = 'Bcc: arantza.fernandezmerino@gmail.com';
-    $headers[] = 'Bcc: chaleco199879@gmail.com';
     if ($calendar == 'Pista Pádel 1' || $calendar == 'Pista Pádel 2' || $calendar == 'Pabellón Polideportivo') {
         $headers[] = 'Bcc: laurlocoloco@gmail.com';
     }

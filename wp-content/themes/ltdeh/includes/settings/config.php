@@ -4,10 +4,11 @@ if (!defined('ABSPATH')) {
 }
 
 //Disable Admin Bar
-function remove_admin_bar() {
+function remove_admin_bar()
+{
     if (current_user_can('administrator') || current_user_can('editor')) {
         show_admin_bar(true);
-    }else{
+    } else {
         show_admin_bar(false);
     }
 }
@@ -17,7 +18,7 @@ add_action('after_setup_theme', 'remove_admin_bar');
 add_theme_support('post-thumbnails');
 
 // Enable shortcodes into widgets
-add_filter('widget_text','do_shortcode');
+add_filter('widget_text', 'do_shortcode');
 
 // Menus
 add_theme_support('menus');
@@ -27,25 +28,28 @@ add_theme_support('automatic-feed-links');
 
 // Login page
 add_action("login_head", "my_login_head");
-function my_login_head() {
+function my_login_head()
+{
     echo "
 	<style>
 	body.login #login h1 a {
-		background: url('".get_bloginfo('template_url')."/assets/images/escudo.jpg') no-repeat scroll center top transparent;
+		background: url('" . get_bloginfo('template_url') . "/assets/images/escudo.jpg') no-repeat scroll center top transparent;
 		height: 135px;
 		width: 135px;
 	}
 	</style>
 	";
 }
-add_filter( 'login_headerurl', 'ltdeh_loginlogo_url' );
-function ltdeh_loginlogo_url($url) {
+add_filter('login_headerurl', 'ltdeh_loginlogo_url');
+function ltdeh_loginlogo_url($url)
+{
     return get_site_url();
 }
 
 // Flush URL´s
 add_action('init', 'ltdeh_rewrite_rules', 1);
-function ltdeh_rewrite_rules() {
+function ltdeh_rewrite_rules()
+{
     global $wp_rewrite;
     $wp_rewrite->search_base = 'buscar';
     $wp_rewrite->pagination_base = 'pagina';
@@ -53,11 +57,13 @@ function ltdeh_rewrite_rules() {
 }
 
 // Change email info
-function ltdeh_sender_email( $original_email_address ) {
-    return 'latorredeestebanhambran@gmail.com';
+function ltdeh_sender_email($original_email_address)
+{
+    return 'oficinatorre@gmail.com';
 }
 //add_filter( 'wp_mail_from', 'ltdeh_sender_email' );
-function ltdeh_sender_name( $original_email_from ) {
+function ltdeh_sender_name($original_email_from)
+{
     return 'Ayuntamiento - La Torre de Esteban Hambrán';
 }
-add_filter( 'wp_mail_from_name', 'ltdeh_sender_name' );
+add_filter('wp_mail_from_name', 'ltdeh_sender_name');
