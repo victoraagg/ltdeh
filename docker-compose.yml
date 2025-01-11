@@ -1,0 +1,47 @@
+version: '3.8'
+name: ltdeh
+services:
+  web:
+    build: .
+    container_name: apache_ltdeh
+    ports:
+      - "80:80"
+    hostname: latorredestebanhambran.test
+    volumes:
+      - ./:/var/www/html
+    networks:
+      - frontend
+      - backend
+  db:
+    image: mysql:8.0
+    container_name: mysql_ltdeh
+    restart: always
+    environment:
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+    volumes:
+      - db_data:/var/lib/mysql
+    ports:
+      - "3306:3306"
+    networks:
+      - backend
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: phpmyadmin_ltdeh
+    restart: always
+    environment:
+      PMA_HOST: db
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+    ports:
+      - "8080:80"
+    networks:
+      - backend
+networks:
+  frontend:
+    driver: bridge
+  backend:
+    driver: bridge
+volumes:
+  db_data:
